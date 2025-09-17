@@ -1,0 +1,11 @@
+# 测试环境
+测试环境:
+  cg_base_url: "https://cg-3f3ab907.gaojidata.com"
+  ubi_base_url: "https://ubi-3f3ab907.gaojidata.com"
+  loginTypeId:
+  username:
+  password:
+正式环境:
+  base_url: "https://cg-beta.gaojidata.com"
+  username:
+  password:

@@ -1,0 +1,13 @@
+Overview:
+  version:
+    description: 获取版本
+    method: get
+    url: /ubi-api/v1/ranking/version
+    headers:
+        Content-Type: application/json, text/plain, */*
+    default_data:
+        start:
+        end:
+    expected:
+      code: 200
+      message: "success"
