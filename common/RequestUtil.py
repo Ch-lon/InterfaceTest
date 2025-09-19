@@ -1,4 +1,4 @@
-# common/request_util.py
+# common/RequestUtil.py
 import requests
 from common.logger import get_logger
 from urllib.parse import urljoin
@@ -47,5 +47,3 @@ class RequestUtil:
 if __name__ == '__main__':
     x = "https://cg-3f3ab907.gaojidata.com"
     y = "/api/v1/sso/login/loginByPwd"
-    c = RequestUtil()._build_full_url(x,y)
-    print(c)

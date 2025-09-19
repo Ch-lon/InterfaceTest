@@ -1,7 +1,9 @@
 import os
+from typing import Any
 import yaml
 
 class FileManager:
+
     def create_directory_if_not_exists(self,filepath):
         """
         使用 os.makedirs 的 exist_ok 参数来创建文件夹，如果已存在则忽略。
@@ -13,8 +15,7 @@ class FileManager:
         except OSError as e:
             print(f"创建文件夹 '{filepath}' 时出错: {e}")
 
-
-    def load_yaml_file(self,filepath):
+    def load_yaml_file(self,filepath : str)-> Any | None:
         """
         加载 YAML 文件。
         Args:
@@ -23,7 +24,7 @@ class FileManager:
             dict: 加载的 YAML 文件内容。
         """
         try:
-            with open(filepath, encoding="utf-8") as f:
+            with open(filepath,"r", encoding="utf-8") as f:
                 return yaml.safe_load(f)
         except FileNotFoundError:
             print(f"文件 '{filepath}' 不存在")

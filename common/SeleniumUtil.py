@@ -1,4 +1,4 @@
-# InterfaceTest/common/selenium_util.py
+# InterfaceTest/common/SeleniumUtil.py
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 # 导入 WebDriverWait 和相关模块
@@ -29,7 +29,6 @@ def get_cookies_from_browser(url: str) -> dict:
 
         # --- 核心修改 ---
         # 显式等待 'authToken' cookie 出现，最长等待10秒
-        print("正在等待 'authToken' cookie出现...")
         WebDriverWait(driver, 10).until(
             lambda d: d.get_cookie('authToken') is not None
         )

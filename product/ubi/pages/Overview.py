@@ -7,27 +7,22 @@
 @Desc    : 
 """
 from product.ubi.pages.UbiCommon import UbiCommon
-from common.apis_loader import ApiLoader
+from common.ApiLoader import ApiLoader
 from common.path_util import get_absolute_path
 from common.FileManager import FileManager
 
 class Overview(UbiCommon):
     def __init__(self, session):
         super().__init__(session)
-        self.fm = FileManager
+        self.fm = FileManager()
         self.ru = session
-        api_path = get_absolute_path("../apis/")
+        api_path = get_absolute_path("product/ubi/apis/")
         self.al = ApiLoader(api_path)
 
     def get_version(self,**kwargs):
         """
-        数据导出接口
-        Args:
-            company_id (str): 公司ID，会填充到URL路径中
-            date (str): 日期，会填充到URL路径中
-            **kwargs: 查询参数，例如 start=21, end=30
         """
-        api_config = self.al.get_api('Overview', 'version')
+        api_config = self.al.get_api('Overview', 'Overview','version')
 
         # 1. 格式化URL，将路径参数填充进去
         url = api_config['url']

@@ -21,7 +21,7 @@ def get_logger(name="接口自动化测试"):
         # 2. 拼接日志文件名
         log_file_name = f"{today}.log"
         # 3. 获取日志文件的绝对路径
-        log_path = get_absolute_path(f"../logs/{log_file_name}")
+        log_path = get_absolute_path(f"logs/{log_file_name}")
 
         # --- 修改结束 ---
         # 确保日志目录存在

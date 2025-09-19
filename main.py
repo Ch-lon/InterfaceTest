@@ -5,7 +5,7 @@ import yaml
 from common.path_util import get_absolute_path
 
 config_path = get_absolute_path("config/config.yml")
-api_path = get_absolute_path("product/ubi/apis/login_cg.yml")
+api_path = get_absolute_path("product/cg/apis/login_cg.yml")
 def load_config(path):
     with open(path, 'r', encoding='utf-8') as f:
         return yaml.safe_load(f)

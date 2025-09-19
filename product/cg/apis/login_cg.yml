@@ -7,13 +7,13 @@ login_cg:
     headers:
       Content-Type: multipart/form-data
     default_data:
-      LoginName: chenglong.yu
-      Password: shanghai1008
+      LoginName:
+      Password:
     expected:
       code: 200
       message: "success"
 
-  cookie:
+  school_cookie:
     url: /login?loginTypeId={loginTypeId}&univCode={school_code}&loginName={loginName}&token={auth}
     method: GET
     description: 获取cookie
