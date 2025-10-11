@@ -14,6 +14,24 @@ login_cg:
       message: "success"
 
   school_cookie:
-    url: /login?loginTypeId={loginTypeId}&univCode={school_code}&loginName={loginName}&token={auth}
+    description: 获取cookie,(从浏览器中获取cookies，现在不用)
     method: GET
-    description: 获取cookie
+    url: /login?loginTypeId={loginTypeId}&univCode={univCode}&loginName={loginName}&token={token}
+
+  ubi_login:
+    description: 国际360登录接口
+    method: POST
+    url: /ubi-api/v1/auth/login
+    data:
+        loginTypeId:
+        univCode:
+        loginName:
+        token:
+    headers:
+        Content-Type: application/json
+        Origin: https://ubi-3f3ab907.gaojidata.com
+        Referer: https://ubi-3f3ab907.gaojidata.com/login?loginTypeId={loginTypeId}&univCode={univCode}&loginName={loginName}
+        User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+    expected:
+      code: 200
+      message: "success"

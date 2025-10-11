@@ -30,7 +30,6 @@ def get_logger(name="接口自动化测试"):
         log_dir = os.path.dirname(log_path)
         fm = FileManager()
         fm.create_directory_if_not_exists(log_dir)
-
         # 创建一个文件处理器，将日志写入到文件：encoding="utf-8"：指定文件编码为UTF-8，确保中文正常显示
         fh = logging.FileHandler(log_path, encoding="utf-8")
         # 创建一个流处理器，将日志输出到控制台（标准输出）：既可以输出到文件，也可以输出到控制台

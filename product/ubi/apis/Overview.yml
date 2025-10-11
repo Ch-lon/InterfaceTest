@@ -11,3 +11,21 @@ Overview:
     expected:
       code: 200
       message: "success"
+
+  range:
+    description: 获取同排名区间范围
+    method: get
+    url: https://ubi-3f3ab907.gaojidata.com/ubi-api/v1/overview/{rankingTypeId}/{verNo}
+    headers:
+        Content-Type: application/json, text/plain, */*
+    expected:
+      code: 200
+      message: "success"
+
+  data_export:
+    description: 数据导出
+    method: POST
+    url: /ubi-api/v1/export/overview/{rankingTypeId}/{verNo}?start={range_start}&end={range_end}
+    headers:
+        Content-Type: application/x-www-form-urlencoded
+

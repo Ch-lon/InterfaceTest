@@ -19,10 +19,8 @@ PROJECT_ROOT = Path(__file__).parent.parent # 路径从 InterfaceTest/
 def get_absolute_path(relative_path_from_root: str) -> str:
     """
     将一个相对于【项目根目录】的路径转换为绝对路径。
-
     Args:
         relative_path_from_root (str): 相对于项目根目录(InterfaceTest/)的路径。
-
     Returns:
         str: 转换后的绝对路径字符串。
     """

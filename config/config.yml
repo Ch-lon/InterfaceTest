@@ -1,10 +1,12 @@
 # 测试环境
 测试环境:
   cg_base_url: "https://cg-3f3ab907.gaojidata.com"
+  ub_base_url: "https://ub-3f3ab907.gaojidata.com"
   ubi_base_url: "https://ubi-3f3ab907.gaojidata.com"
-  loginTypeId:
-  username:
-  password:
+  vub_base_url: "https://vub-3f3ab907.gaojidata.com"
+  loginTypeId: 2
+  username: chenglong.yu
+  password: shanghai1008
 正式环境:
   base_url: "https://cg-beta.gaojidata.com"
   username:

@@ -1,7 +1,13 @@
-# InterfaceTest/common/SeleniumUtil.py
+# -*- coding: utf-8 -*-
+"""
+@Project : InterfaceTest
+@File    : SeleniumUtil.py
+@Author  : Chlon
+@Date    : 2025/10/11 13:23
+@Desc    : 原本是打算从浏览器中获取cookies，后来找到了每个产品的登录接口，这里便不用了
+"""
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
-# 导入 WebDriverWait 和相关模块
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.ie.service import Service

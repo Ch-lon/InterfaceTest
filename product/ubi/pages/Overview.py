@@ -19,26 +19,21 @@ class Overview(UbiCommon):
         api_path = get_absolute_path("product/ubi/apis/")
         self.al = ApiLoader(api_path)
 
-    def get_version(self,**kwargs):
-        """
-        """
-        api_config = self.al.get_api('Overview', 'Overview','version')
-
-        # 1. 格式化URL，将路径参数填充进去
-        url = api_config['url']
-
-        # 2. 准备查询参数
-        #params = api_config.get('default_data', {}).copy()
-        #params.update(kwargs)
-        headers = api_config.get('headers')
-
-        # 4. 【修改】: 发送请求时，同时传入 params 和 headers
-        # params - 将参数放入URL
-        # headers - 手动指定Content-Type，即使请求体为空
+    def data_export(self,verNo,rankingTypeId,range_start,range_end):
+        api_data_export = self.al.get_api('Overview', 'Overview', 'data_export')
+        url = api_data_export['url']
+        url_params = {
+            "rankingTypeId": rankingTypeId,
+            "verNo": verNo,
+            "range_start": range_start,
+            "range_end": range_end
+        }
         response = self.ru.request(
-            method=api_config['method'],
-            url=url,
-            #data=params,
-            headers=headers  # 核心改动：将YML中定义的headers传入
+            method=api_data_export['method'],
+            url=url.format(**url_params),
+            headers=api_data_export.get('headers')
         )
         return response
+
+    def test(self):
+        response = 1

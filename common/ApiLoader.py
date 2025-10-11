@@ -67,7 +67,7 @@ class ApiLoader:
             return self.apis[module_name][api_name].copy()
         except KeyError:
             # 如果加载后依然找不到，说明配置确实不存在
-            raise ValueError(f"API配置不存在: {module_name}.{api_name}")
+            raise ValueError(f"API配置 {api_file_name}.yml 中不存在: {module_name}.{api_name}")
 
     def get_url(self,api_file_name, module_name, api_name, **path_params):
         """获取完整的URL（处理路径参数）"""

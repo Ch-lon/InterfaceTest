@@ -1,46 +1,34 @@
-from http.client import responses
-from common.logger import get_logger
 import requests
-import yaml
-from common.path_util import get_absolute_path
+import selenium
+from selenium import webdriver
+from selenium.webdriver.ie.service import Service
+from selenium.webdriver.support.ui import WebDriverWait
 
-config_path = get_absolute_path("config/config.yml")
-api_path = get_absolute_path("product/cg/apis/login_cg.yml")
-def load_config(path):
-    with open(path, 'r', encoding='utf-8') as f:
-        return yaml.safe_load(f)
+cg_url = "https://cg-3f3ab907.gaojidata.com/api/v1/sso/login/loginByPwd"
+test_url = "https://ubi-3f3ab907.gaojidata.com/login?loginTypeId=2&univCode={univCode}&loginName=chenglong.yu&token={token}"
+login_url = "https://ubi-3f3ab907.gaojidata.com/ubi-api/v1/auth/login"
+#test_url1 = "https://ubi-3f3ab907.gaojidata.com/login?loginTypeId=2&univCode=RC00005&loginName=chenglong.yu&token=dsBGXN2pBOsjN2FHj5XQ3brp_oknJzhERDOa6JtG1lw="
 
+response = requests.post(cg_url, data={"LoginName": "chenglong.yu", "Password": "shanghai1008"})
+print(response.json())
+auth = response.json()["data"]
+print(auth)
 
+params = {
+    "loginTypeId": 2,
+    "univCode": "RC00005",
+    "loginName": "chenglong.yu",
+    "token": auth
+}
 
-if __name__ == '__main__':
-    config = load_config(config_path)
-    api_config = load_config(api_path)
-    print(config)
-    print(api_config)
+headers = {
+    "Content-Type": "application/json",
+    "Origin": "https://ubi-3f3ab907.gaojidata.com",
+    "Referer": "https://ubi-3f3ab907.gaojidata.com/login?loginTypeId=2&univCode=RC00119&loginName=chenglong.yu",
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
+}
+session = requests.Session()
+res = session.post(login_url, json=params)
 
-    base_url =config['测试环境']['base_url']
-    login_config = api_config['login_cg']['login_page']
-    url = login_config['url']
-    full_url = base_url + url
-    print(full_url)
-
-    headers = login_config["headers"]
-    print(headers)
-
-    data = login_config["default_data"]
-    print(data)
-
-    responses = requests.request(
-        "post",
-        url=full_url,
-        #不要加请求头，Content-Type: multipart/form-data; boundary=xxxx是浏览器自动生成，不应该写死
-        #requests 会自动生成正确的，服务器就能解析
-        #headers=headers,
-        data=data)
-    logger = get_logger()
-    logger.info(f"请求：{full_url} {data}")
-    print(responses.status_code)
-    print(responses.reason)
-    print(responses.json()["code"])
-    print(responses.text)
-    logger.info(f"响应：{responses.status_code} {responses.reason} {responses.json()}")
+print("登录响应：", res.status_code, res.text)
+print("登录后的 cookies：", session.cookies.get_dict())
