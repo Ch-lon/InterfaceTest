@@ -10,7 +10,7 @@ from product.cg.pages.CGOperations import CGOperations
 @allure.tag("API","Overview")
 class TestOverview:
 
-    test_data = ["RC00005"]
+    test_data = ["RI02727"]
 
     # 参数化测试，为不同的 school_code 运行测试
     @pytest.fixture(scope="module",params=test_data)
@@ -21,22 +21,36 @@ class TestOverview:
         school_code = request.param
         #self.cg = CGOperations(cg_session,config)
         session = choose_product_session("ubi",school_code)
-        yield session,school_code
+        yield session
 
+    @pytest.fixture(scope="module",params=test_data)
+    def univCode(self, request):
+        """从 ubi_session_data 中提取并返回 school_code。"""
+        school_code = request.param
+        return school_code
 
-    @pytest.fixture(scope="function", autouse=True)
+    @pytest.fixture(scope="module", autouse=True)
     def load_page(self,ubi_session):
-        self.session,self.school_code= ubi_session
+        self.session= ubi_session
         page = Overview(self.session)
         yield page
+
+    @pytest.fixture(scope="module")
+    def indicators_data(self,load_page):
+        """
+        获取总定位数据
+        """
+        rankingTypeId, verNo = load_page.get_version()
+        list_ind_data = load_page.get_indicators_info(rankingTypeId, verNo)
+        yield list_ind_data,rankingTypeId,verNo
 
     @allure.story("数据导出校验")
     @allure.title("检查数据导出的响应")
     @allure.tag("regression")
     @allure.description("检查数据导出的响应是否符合预期")
-    def test_Overview01(self, load_page):
+    def test_Overview01(self, load_page,indicators_data,univCode):
         # 获取版本及排名类型信息
-        rankingTypeId, verNo = load_page.get_version()
+        _,rankingTypeId, verNo = indicators_data
         # 获取该版本下的该校数据
         overview_data = load_page.get_overview_data(verNo, rankingTypeId)
         # 提取同排名区间
@@ -44,21 +58,39 @@ class TestOverview:
         # 数据导出请求
         response = load_page.data_export(verNo, rankingTypeId, range_start, range_end)
         # 设置导出文件命名
-        filename = f"{self.school_code}_总体定位_{verNo}.xlsx"
-        assert response.status_code == 200
-        # 清空下载目录
-        load_page.fm.clear_directory(load_page.download_files_path)
-        try:
-            file_path = load_page.fm.write_binary_file_and_save(response.content,load_page.download_files_path, filename)
-            assert file_path is not None, "文件未能成功保存"
-            # 断言3：检查文件大小是否符合要求（例如，大于1KB）
-            file_size = load_page.fm.get_file_size(file_path)
-            # 设定一个合理的最小文件大小阈值，例如1024字节 (1KB)
-            # 一个空的Excel文件也占用一定空间，所以这个值通常比0大
-            assert file_size > 1 * 1024, f"文件大小 {file_size} 字节, 小于预期的最小值 1 KB"
-        except Exception as e:
-            # 将异常作为附件内容添加到测试报告中
-            allure.attach(str(e), "异常信息", allure.attachment_type.TEXT)
+        filename = f"{univCode}_总体定位_{verNo}.xlsx"
+        load_page.check_export_response(response,"xlsx",filename)
 
-    # def test_Overview02(self, load_page):
-    #     response = 1
+    @allure.story("总体定位指标排名校验")
+    @allure.title("检查指标排名数值")
+    @allure.tag("regression")
+    @allure.description("指标排名不会为0或0+")
+    def test_Overview02(self, load_page,indicators_data):
+        list_ind_data,rankingTypeId, verNo = indicators_data
+        #list_ind_data = load_page.get_indicators_info(rankingTypeId,verNo)
+        # 断言指标排名为不能为0
+        for dict_indicators in list_ind_data:
+            #ind_data是一个字典
+            ind_name,ind_data = load_page.do.get_value_from_dict(dict_indicators, "name","indData")
+            ind_rank = load_page.do.get_value_from_dict(ind_data, "rankTyp")
+            assert ind_rank not in ["0", "0+"], f"指标 {ind_name} 的指标排名为 {ind_rank},与逻辑不符！"
+
+    @allure.story("总体定位明细点击校验")
+    @allure.title("点击指标明细")
+    @allure.tag("regression")
+    @allure.description("查看指标明细是否有数据")
+    def test_Overview03(self, load_page,indicators_data):
+        list_ind_data,rankingTypeId, verNo = indicators_data
+        list_fail_indicators = []
+        for dict_indicators in list_ind_data:
+            # 列表直接解包到变量
+            ind_name,editable,detailDefId,ind_data = load_page.do.get_value_from_dict(dict_indicators, "name","editable","detailDefId","indData")
+            # 指标：明细类和数值类
+            indValId = load_page.do.get_value_from_dict(ind_data, "indValId")
+            if editable != "val" and indValId != 0 and detailDefId != 0:
+                print(f"指标 {ind_name} 的明细类指标ID为：{indValId}")
+                response = load_page.detail_click(indValId, verNo,detailDefId)
+                list_ind_detail = response["details"]
+                if len(list_ind_detail) == 0:
+                    list_fail_indicators.append(ind_name)
+        assert not list_fail_indicators, f"共有 {len(list_fail_indicators)} 个指标明细点击后为空：{list_fail_indicators}"

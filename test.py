@@ -1,26 +1,102 @@
+import requests
 
-code = x["code"]
-print(code)
-# url_params = {"univCode": "RC00119", "token": auth}
-# test_full_url = test_url.format(**url_params)
-# options = webdriver.ChromeOptions()
-# options.add_argument("--headless")
-# options.add_argument("--disable-gpu")
-# options.add_argument("--no-sandbox")
-# driver = webdriver.Chrome(
-#     service=Service(executable_path="C:\Program Files\Google\Chrome\Application\chromedriver.exe"),
-#     options=options,
-# )
-#
-# driver.get(test_full_url)
-#
-# WebDriverWait(driver, 10).until(
-#             lambda d: d.get_cookie('authToken') is not None
-#         )
-# cookies = driver.get_cookies()
-# cookies_dict = {c['name']: c['value'] for c in cookies}
-# print(cookies_dict)
-# driver.quit()
+res = requests.post("https://cg-3f3ab907.gaojidata.com/api/v1/employee-user/add", headers={"Authorization":"dnqqyW-pYjvma-PkT83Hn5AMf9aEf6Hb70_GM_ExZ2Q="}
+,json={"creator": "chenglong.yu",
+"productCode": "ubi",
+"univCode": "RC00562",
+"remark": ""})
+print(res.json())
 
-# test_response = requests.get(test_full_url, cookies=cookies_dict)
-# print(test_response.text)
+x=[
+    {'name': '诺奖菲奖校友折合数', 'code': 'arind1', 'editable': 'detail', 'detailDefId': 1263,
+     'indData': {'indValId': 0, 'value': 0,
+                 'effSrc': '诺贝尔奖官网（https://www.nobelprize.org/）；菲尔兹奖官网（https://www.mathunion.org/）',
+                 'effectVer': '1901-2025', 'ranking': '', 'rankTyp': '318+', 'rankAll': '318+', 'RankKind': '',
+                 'rankNgov': '0+', 'maxVal': 39.2, 'score': None, 'accurateScore': None, 'pencentScore': ''}},
+    {'name': '诺贝尔奖校友折合数', 'code': 'ind115', 'editable': '', 'detailDefId': 1263,
+     'indData': {'indValId': 0, 'value': 0, 'effSrc': '诺贝尔奖官网（https://www.nobelprize.org/）',
+                 'effectVer': '1901-2025', 'ranking': '', 'rankTyp': '306+', 'rankAll': '306+', 'RankKind': '',
+                 'rankNgov': '0+', 'maxVal': 34.6, 'score': None, 'accurateScore': None, 'pencentScore': ''}},
+    {'name': '菲尔兹奖校友折合数', 'code': 'ind116', 'editable': '', 'detailDefId': 1263,
+     'indData': {'indValId': 0, 'value': 0, 'effSrc': '菲尔兹奖官网（https://www.mathunion.org/）',
+                 'effectVer': '1901-2025', 'ranking': '', 'rankTyp': '50+', 'rankAll': '50+', 'RankKind': '',
+                 'rankNgov': '0+', 'maxVal': 4.9, 'score': None, 'accurateScore': None, 'pencentScore': ''}},
+    {'name': '诺奖菲奖教师折合数', 'code': 'arind2', 'editable': 'detail', 'detailDefId': 1258,
+     'indData': {'indValId': 0, 'value': 0,
+                 'effSrc': '诺贝尔奖官网（https://www.nobelprize.org/）；菲尔兹奖官网（https://www.mathunion.org/）',
+                 'effectVer': '1901-2025', 'ranking': '', 'rankTyp': '160+', 'rankAll': '160+', 'RankKind': '',
+                 'rankNgov': '0+', 'maxVal': 12.27499999, 'score': None, 'accurateScore': None, 'pencentScore': ''}},
+    {'name': '诺贝尔奖教师折合数', 'code': 'ind106', 'editable': '', 'detailDefId': 1258,
+     'indData': {'indValId': 0, 'value': 0, 'effSrc': '诺贝尔奖官网（https://www.nobelprize.org/）',
+                 'effectVer': '1901-2025', 'ranking': '', 'rankTyp': '155+', 'rankAll': '155+', 'RankKind': '',
+                 'rankNgov': '0+', 'maxVal': 9.75555556, 'score': None, 'accurateScore': None, 'pencentScore': ''}},
+    {'name': '菲尔兹奖教师折合数', 'code': 'ind107', 'editable': '', 'detailDefId': 1258,
+     'indData': {'indValId': 0, 'value': 0, 'effSrc': '菲尔兹奖官网（https://www.mathunion.org/）',
+                 'effectVer': '1901-2025', 'ranking': '', 'rankTyp': '31+', 'rankAll': '31+', 'RankKind': '',
+                 'rankNgov': '0+', 'maxVal': 5.93181818, 'score': None, 'accurateScore': None, 'pencentScore': ''}},
+    {'name': '高被引科学家', 'code': 'arind3', 'editable': 'detail', 'detailDefId': 399,
+     'indData': {'indValId': 5422959, 'value': 33, 'effSrc': '科睿唯安官网', 'effectVer': '2024', 'ranking': '',
+                 'rankTyp': '32', 'rankAll': '32', 'RankKind': '', 'rankNgov': '32', 'maxVal': 231, 'score': 37.7964473,
+                 'accurateScore': None, 'pencentScore': ''}},
+    {'name': 'Nature和Science论文折合数', 'code': 'arind4', 'editable': 'detail', 'detailDefId': 1284,
+     'indData': {'indValId': 5423761, 'value': 51.15, 'effSrc': '科睿唯安官网', 'effectVer': '2020-2024', 'ranking': '',
+                 'rankTyp': '46', 'rankAll': '46', 'RankKind': '', 'rankNgov': '46', 'maxVal': 467.3,
+                 'score': 33.08452688, 'accurateScore': None, 'pencentScore': ''}},
+    {'name': 'Nature论文', 'code': 'indnature', 'editable': '', 'detailDefId': 1284,
+     'indData': {'indValId': 5448490, 'value': 28.95, 'effSrc': '科睿唯安官网', 'effectVer': '2020-2024', 'ranking': '',
+                 'rankTyp': '52', 'rankAll': '52', 'RankKind': '', 'rankNgov': '52', 'maxVal': 311.8,
+                 'score': 30.47096642, 'accurateScore': None, 'pencentScore': ''}},
+    {'name': 'Science论文', 'code': 'indscience', 'editable': '', 'detailDefId': 1284,
+     'indData': {'indValId': 5450192, 'value': 22.2, 'effSrc': '科睿唯安官网', 'effectVer': '2020-2024', 'ranking': '',
+                 'rankTyp': '42', 'rankAll': '42', 'RankKind': '', 'rankNgov': '42', 'maxVal': 155.5,
+                 'score': 37.78429215, 'accurateScore': None, 'pencentScore': ''}},
+    {'name': '国际论文折合数', 'code': 'arind5', 'editable': 'val', 'detailDefId': 0,
+     'indData': {'indValId': 5425625, 'value': 21416, 'effSrc': 'Web of Science官网（http://www.webofscience.com/）',
+                 'effectVer': '2024', 'ranking': '', 'rankTyp': '2', 'rankAll': '2', 'RankKind': '', 'rankNgov': '2',
+                 'maxVal': 22380, 'score': 97.82258567, 'accurateScore': None, 'pencentScore': ''}},
+    {'name': 'SCIE论文', 'code': 'ind230', 'editable': '', 'detailDefId': 0,
+     'indData': {'indValId': 5440135, 'value': 20020,
+                 'effSrc': '原始数据来源于Web of Science官网。此数值是由软科世界大学学术排名的“国际论文”（PUB）得分重新计算的。',
+                 'effectVer': '2024', 'ranking': '', 'rankTyp': '2', 'rankAll': '2', 'RankKind': '', 'rankNgov': '2',
+                 'maxVal': 20463, 'score': 98.91163584, 'accurateScore': None, 'pencentScore': ''}},
+    {'name': 'SSCI论文', 'code': 'ind231', 'editable': '', 'detailDefId': 0,
+     'indData': {'indValId': 5442920, 'value': 1049,
+                 'effSrc': '原始数据来源于Web of Science官网。此数值是由软科世界大学学术排名的“国际论文”（PUB）得分重新计算的。',
+                 'effectVer': '2024', 'ranking': '', 'rankTyp': '52', 'rankAll': '52', 'RankKind': '', 'rankNgov': '52',
+                 'maxVal': 2914, 'score': 59.99885609, 'accurateScore': None, 'pencentScore': ''}},
+    {'name': '被SCIE或SSCI收录的论文数', 'code': 'ind232', 'editable': '', 'detailDefId': 0,
+     'indData': {'indValId': 5445705, 'value': 20601,
+                 'effSrc': '原始数据来源于Web of Science官网。此数值是由软科世界大学学术排名的“国际论文”（PUB）得分重新计算的。',
+                 'effectVer': '2024', 'ranking': '', 'rankTyp': '2', 'rankAll': '2', 'RankKind': '', 'rankNgov': '2',
+                 'maxVal': 21275, 'score': 98.40323287, 'accurateScore': None, 'pencentScore': ''}},
+    {'name': '师均表现综合得分', 'code': 'pcp', 'editable': '', 'detailDefId': 0,
+     'indData': {'indValId': 5451569, 'value': 6.01313513,
+                 'effSrc': '参考指标“校友获奖”、“教师获奖”、“高被引学者”、“N&S论文”、“国际论文”和“全时教师数”',
+                 'effectVer': '2024', 'ranking': '', 'rankTyp': '105', 'rankAll': '0', 'RankKind': '', 'rankNgov': '0',
+                 'maxVal': 75.01499002, 'score': 28.31238491, 'accurateScore': None, 'pencentScore': ''}},
+    {'name': '诺奖菲奖校友折合数（师均）', 'code': 'arind6', 'editable': '', 'detailDefId': 0,
+     'indData': {'indValId': 5428407, 'value': 0, 'effSrc': '参考指标“诺奖菲奖校友折合数”和“全时教师数”',
+                 'effectVer': '1901-2025', 'ranking': '', 'rankTyp': '318+', 'rankAll': '0+', 'RankKind': '',
+                 'rankNgov': '0+', 'maxVal': 0.03807947, 'score': 0, 'accurateScore': None, 'pencentScore': ''}},
+    {'name': '诺奖菲奖教师折合数（师均）', 'code': 'arind7', 'editable': '', 'detailDefId': 0,
+     'indData': {'indValId': 5431192, 'value': 0, 'effSrc': '参考指标“诺奖菲奖教师折合数”和“全时教师数”',
+                 'effectVer': '1901-2025', 'ranking': '', 'rankTyp': '160+', 'rankAll': '0+', 'RankKind': '',
+                 'rankNgov': '0+', 'maxVal': 0.01567329, 'score': 0, 'accurateScore': None, 'pencentScore': ''}},
+    {'name': '高被引科学家（师均）', 'code': 'arind8', 'editable': '', 'detailDefId': 0,
+     'indData': {'indValId': 5433977, 'value': 0.00820487, 'effSrc': '参考指标“高被引科学家”和“全时教师数”',
+                 'effectVer': '2024', 'ranking': '', 'rankTyp': '138', 'rankAll': '138', 'RankKind': '',
+                 'rankNgov': '138', 'maxVal': 0.14224138, 'score': 24.0172276, 'accurateScore': None,
+                 'pencentScore': ''}},
+    {'name': 'Nature和Science论文折合数（师均）', 'code': 'arind9', 'editable': '', 'detailDefId': 0,
+     'indData': {'indValId': 5436762, 'value': 0.01271755,
+                 'effSrc': '参考指标“Nature和Science论文折合数”和“全时教师数”', 'effectVer': '2020-2024', 'ranking': '',
+                 'rankTyp': '185', 'rankAll': '185', 'RankKind': '', 'rankNgov': '185', 'maxVal': 0.53344371,
+                 'score': 15.4403602, 'accurateScore': None, 'pencentScore': ''}},
+    {'name': '国际论文折合数（师均）', 'code': 'arind10', 'editable': '', 'detailDefId': 0,
+     'indData': {'indValId': 5417214, 'value': 5.32471407, 'effSrc': '参考指标“SCIE论文”、“SSCI论文”和“全时教师数”',
+                 'effectVer': '2024', 'ranking': '', 'rankTyp': '59', 'rankAll': '59', 'RankKind': '', 'rankNgov': '59',
+                 'maxVal': 12.91748768, 'score': 64.20356119, 'accurateScore': None, 'pencentScore': ''}},
+    {'name': '全时教师数', 'code': 'arind11', 'editable': 'val', 'detailDefId': 0,
+     'indData': {'indValId': 5419999, 'value': 4022, 'effSrc': '《本科教学质量报告》', 'effectVer': '2024', 'ranking': '',
+                 'rankTyp': '13', 'rankAll': '13', 'RankKind': '', 'rankNgov': '13', 'maxVal': 5291,
+                 'score': 87.18708391, 'accurateScore': None, 'pencentScore': ''}}]

@@ -1,13 +1,23 @@
 # 测试环境
+database:
+  name: '@gj2401do.mysql@业务平台测试'
+  user: devtestchenglong
+  password: Mgn9wVcgkd9V8EF26pJ5
+  host: gj2401do.mysql.rds.aliyuncs.com
+  port: 63306
 测试环境:
   cg_base_url: "https://cg-3f3ab907.gaojidata.com"
   ub_base_url: "https://ub-3f3ab907.gaojidata.com"
   ubi_base_url: "https://ubi-3f3ab907.gaojidata.com"
   vub_base_url: "https://vub-3f3ab907.gaojidata.com"
-  loginTypeId:
-  username:
-  password:
+  loginTypeId: 2
+  username: chenglong.yu
+  password: shanghai1008
 正式环境:
-  base_url: "https://cg-beta.gaojidata.com"
-  username:
-  password:
+  cg_base_url: "https://cg-beta.gaojidata.com"
+  ub_base_url: "https://ub.gaojidata.com"
+  ubi_base_url: "https://ubi.gaojidata.com"
+  vub_base_url: "https://vub.gaojidata.com"
+  loginTypeId: 2
+  username: chenglong.yu
+  password: shanghai1008

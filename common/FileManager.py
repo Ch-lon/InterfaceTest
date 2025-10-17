@@ -73,7 +73,7 @@ class FileManager:
             except Exception as e:
                 print(f"清空目录 '{directory_path}' 时出错: {e}")
 
-    @allure.step("将二进制内容写入至文件，并保存到指定路径下")
+    @allure.step("将二进制内容写入文件，并保存到指定路径下")
     def write_binary_file_and_save(self, response_content : bytes, download_dir:str, file_name:str):
         """
         将二进制内容保存为文件。
@@ -107,7 +107,7 @@ class FileManager:
         """
         获取文件的大小。
         Args:
-            file_path (str): 文件路径。
+            file_path (str): 完整文件路径。
         Returns:
             int: 文件大小（字节）。
         """

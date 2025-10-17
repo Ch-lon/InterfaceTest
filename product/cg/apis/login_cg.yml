@@ -13,6 +13,21 @@ login_cg:
       code: 200
       message: "success"
 
+  add_account:
+    description: 添加用户接口
+    method: POST
+    url: /api/v1/employee-user/add
+    headers:
+        Content-Type: application/json
+    data:
+      creator:
+      productCode:
+      remark:
+      univCode:
+    expected:
+        code: 200
+        message: "success"
+
   school_cookie:
     description: 获取cookie,(从浏览器中获取cookies，现在不用)
     method: GET
@@ -28,10 +43,13 @@ login_cg:
         loginName:
         token:
     headers:
-        Content-Type: application/json
-        Origin: https://ubi-3f3ab907.gaojidata.com
-        Referer: https://ubi-3f3ab907.gaojidata.com/login?loginTypeId={loginTypeId}&univCode={univCode}&loginName={loginName}
-        User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+        Accept: application/json, text/plain, */*
+        Content-Type: application/x-www-form-urlencoded
+        Accept-encoding: gzip, deflate, br, zstd
+        Accept-language: zh-CN
+        #Origin: https://ubi-3f3ab907.gaojidata.com
+        #Referer: https://ubi-3f3ab907.gaojidata.com/login?loginTypeId={loginTypeId}&univCode={univCode}&loginName={loginName}
+        #User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64)
     expected:
       code: 200
       message: "success"

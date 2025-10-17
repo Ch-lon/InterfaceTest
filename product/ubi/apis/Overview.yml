@@ -1,23 +1,33 @@
 Overview:
   version:
     description: 获取版本
-    method: get
+    method: GET
     url: /ubi-api/v1/ranking/version
     headers:
-        Content-Type: application/json, text/plain, */*
+      Content-Type: application/json, text/plain, */*
     default_data:
-        start:
-        end:
+      start:
+      end:
     expected:
       code: 200
       message: "success"
 
   range:
     description: 获取同排名区间范围
-    method: get
-    url: https://ubi-3f3ab907.gaojidata.com/ubi-api/v1/overview/{rankingTypeId}/{verNo}
+    method: GET
+    url: /ubi-api/v1/overview/{rankingTypeId}/{verNo}
     headers:
-        Content-Type: application/json, text/plain, */*
+      Content-Type: application/json, text/plain, */*
+    expected:
+      code: 200
+      message: "success"
+
+  indicators_info:
+    description: 最新版本的各指标信息
+    method: GET
+    url: /ubi-api/v1/indicator/{rankingTypeId}/{verNo}?include=indData
+    headers:
+      Accept: application/json, text/plain, */*
     expected:
       code: 200
       message: "success"
@@ -27,5 +37,17 @@ Overview:
     method: POST
     url: /ubi-api/v1/export/overview/{rankingTypeId}/{verNo}?start={range_start}&end={range_end}
     headers:
-        Content-Type: application/x-www-form-urlencoded
+      Content-Type: application/json, text/plain, */*
+
+
+  ind_detail:
+      description: 明细点击
+      method: GET
+      url: /ubi-api/v1/ind_detail/{indValId}/?verNo={verNo}&detailDefId={detailDefId}&indType=0
+      headers:
+        Accept: application/json, text/plain, */*
+      expected:
+        code: 200
+        message: "success"
+
 

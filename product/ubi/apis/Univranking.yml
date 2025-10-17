@@ -1,0 +1,13 @@
+Univranking:
+  rank:
+    description: 院校排名数据
+    method: GET
+    url: /ubi-api/v1/ranking/{rankingTypeId}/{verNo}?compareVerNo={compareVerNo}&suffix=Typ
+    headers:
+      Accept: application/json, text/plain, */*
+    default_data:
+      start:
+      end:
+    expected:
+      code: 200
+      message: "success"
