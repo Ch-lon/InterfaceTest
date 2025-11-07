@@ -7,6 +7,7 @@ from common.FileManager import FileManager
 from common.path_util import get_absolute_path
 from common.logger import get_logger
 from common.ApiLoader import ApiLoader
+from product.ubi.pages.UbiCommon import UbiCommon
 
 
 logging = get_logger(__name__)
@@ -17,14 +18,13 @@ def config():
     config_path = get_absolute_path('config/config.yml')
     fm = FileManager()
     config_data = fm.load_yaml_file(config_path)
-    return config_data['测试环境']
+    return config_data['正式环境']
 
 
 @pytest.fixture(scope="session")
 def cg_session(config):
     """为 CG 平台创建一个 RequestUtil 实例"""
     cg_base_url = config.get('cg_base_url')
-    print(f"创建 CG Session，Base URL: {cg_base_url}")
     cg_session = RequestUtil(cg_base_url)
     # 将config附加到session实例上，方便后续调用
     cg_session.config = config
@@ -109,3 +109,10 @@ def choose_product_session(auth_token, cg_ops, cg_api_loader, config):
 
     # 外层 fixture 返回内部函数
     return _choose_product_session
+
+# @pytest.fixture(scope="session")
+# def version():
+#     """获取当前版本信息"""
+#     ubi = UbiCommon()
+#     rankingTypeId, verNo = ubi.get_version()
+#     return rankingTypeId, verNo

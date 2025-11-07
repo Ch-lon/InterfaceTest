@@ -23,6 +23,12 @@ class TestUnivranking:
         session = choose_product_session("ubi",school_code)
         yield session
 
+    @pytest.fixture(scope="module",params=test_data)
+    def univCode(self, request):
+        """从 ubi_session_data 中提取并返回 school_code。"""
+        school_code = request.param
+        return school_code
+
     @pytest.fixture(scope="module")
     def load_page(self,ubi_session):
         session= ubi_session
@@ -45,3 +51,13 @@ class TestUnivranking:
     def test_Univranking01(self, load_page, indicators_data):
         _, rankingTypeId, verNo = indicators_data
         load_page.get_all_univ_ranking( rankingTypeId,verNo,"202508")
+
+    @allure.story("动态排名数据导出校验")
+    @allure.title("导出各学校当前版本的排名")
+    @allure.tag("regression")
+    @allure.description("导出各学校当前版本的排名")
+    def test_Univranking02(self, load_page, indicators_data, univCode):
+        _, rankingTypeId, verNo = indicators_data
+        res = load_page.export_univ_ranking(rankingTypeId, verNo, "202508")
+        file_name = f"{univCode}-动态排名-{verNo}.xlsx"
+        load_page.check_export_response(res, "xlsx", file_name)

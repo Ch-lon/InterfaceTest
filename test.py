@@ -7,6 +7,17 @@ res = requests.post("https://cg-3f3ab907.gaojidata.com/api/v1/employee-user/add"
 "remark": ""})
 print(res.json())
 
+
+def get_all_ranks(dictionary) -> dict:
+    """获取所有键的排名信息"""
+    result = {}
+    for key, value in dictionary.items():
+        result[key] = {
+            'rank': value.get('rank'),
+            'rankComp': value.get('rankComp')
+        }
+    return result
+
 x=[
     {'name': '诺奖菲奖校友折合数', 'code': 'arind1', 'editable': 'detail', 'detailDefId': 1263,
      'indData': {'indValId': 0, 'value': 0,

@@ -63,6 +63,7 @@ class FileManager:
         Args:
             directory_path (str): 要清空的目录路径。
         """
+        self.create_directory_if_not_exists(directory_path)
         for filename in os.listdir(directory_path):
             filepath = os.path.join(directory_path, filename)
             try:
@@ -88,7 +89,7 @@ class FileManager:
         from common.logger import get_logger
         logging = get_logger(__name__)
         # 确保目录存在
-        self.create_directory_if_not_exists(download_dir)
+        #self.create_directory_if_not_exists(download_dir)
         # 创建文件的路径
         file_path = os.path.join(download_dir, file_name)
         # 将二进制内容写入文件

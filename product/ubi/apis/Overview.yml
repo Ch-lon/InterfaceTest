@@ -32,13 +32,22 @@ Overview:
       code: 200
       message: "success"
 
+  picture_download:
+    description: 图片下载
+    method: GET
+    url: /ubi-api/v1/export/overview/{rankingTypeId}/{verNo}?start={range_start}&end={range_end}
+    headers:
+      Accept: application/json, text/plain, */*
+
   data_export:
     description: 数据导出
     method: POST
     url: /ubi-api/v1/export/overview/{rankingTypeId}/{verNo}?start={range_start}&end={range_end}
     headers:
       Content-Type: application/json, text/plain, */*
-
+    expected:
+      code: 200
+      message: "success"
 
   ind_detail:
       description: 明细点击

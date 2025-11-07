@@ -30,18 +30,19 @@ class Overview(UbiCommon):
             url=url,
             headers=api_data_export.get('headers')
         )
+        assert response.status_code == api_data_export["expected"]["code"], f"总体定位数据导出请求失败！实际请求响应:{response}"
         return response
 
-    def detail_click(self,indValId,verNo,detailDefId):
-        api_ind_detail = self.al.get_api('Overview', 'Overview', 'ind_detail')
-        origin_url = api_ind_detail['url']
-        url = self.do.format_url(origin_url,indValId=indValId,verNo=verNo,detailDefId=detailDefId)
-
-        response = self.ru.request(
-            method=api_ind_detail['method'],
-            url=url,
-            #headers=api_ind_detail.get('headers')
-        )
-        response_json = response.json()
-        assert response_json["code"] == api_ind_detail["expected"]["code"], f"明细请求响应:{response_json}"
-        return response_json["data"]
+    # def detail_click(self,indValId,verNo,detailDefId):
+    #     api_ind_detail = self.al.get_api('Overview', 'Overview', 'ind_detail')
+    #     origin_url = api_ind_detail['url']
+    #     url = self.do.format_url(origin_url,indValId=indValId,verNo=verNo,detailDefId=detailDefId)
+    #
+    #     response = self.ru.request(
+    #         method=api_ind_detail['method'],
+    #         url=url,
+    #         #headers=api_ind_detail.get('headers')
+    #     )
+    #     response_json = response.json()
+    #     assert response_json["code"] == api_ind_detail["expected"]["code"], f"明细请求响应:{response_json}"
+    #     return response_json["data"]

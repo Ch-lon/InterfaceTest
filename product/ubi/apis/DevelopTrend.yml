@@ -1,0 +1,56 @@
+DevelopTrend:
+  developtrend_indicators:
+    description: 排名趋势指标体系
+    method: GET
+    url: /ubi-api/v1/indicator/{rankingTypeId}/{verNo}
+    headers:
+        Accept: application/json, text/plain, */*
+    expected:
+        code: 200
+        message: "success"
+
+  indicators_data:
+    description: 排名趋势指标数据
+    method: GET
+    url: /ubi-api/v1/trend/compare/{rankingTypeId}/{verNo}?compareVerNo={compareVerNo}
+    headers:
+      Accept: application/json, text/plain, */*
+    expected:
+      code: 200
+      message: "success"
+
+  image_download:
+    description: 下载图片
+    method: GET
+    url: /image/trend/ranking-prefix.svg
+    headers:
+      Content-Type: image/svg+xml
+    expected:
+      code: 200
+
+  data_export:
+    description: 导出数据
+    method: POST
+    url: /ubi-api/v1/export/trend/{rankingTypeId}/{verNo}?compareVerNo={compareVerNo}
+    headers:
+      content-disposition: attachment; filename=Develop%20Trend.xlsx
+      content-type: application/octet-stream
+    expected:
+      code: 200
+      message: "success"
+
+  rankingAnalysis:
+    description: 各指标趋势分析
+    method: POST
+    url: /ubi-api/v1/trend/rankingAnalysis
+    data:
+      indId:
+      verNo:
+      compUnivCode:
+    headers:
+      Content-Type: application/json; charset=utf-8
+    expected:
+      code: 200
+      message: "success"
+
+

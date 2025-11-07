@@ -18,6 +18,6 @@ InterfaceTest /
 │   └── test_login.py
 └── requirements.txt
 
-
+ pytest  testcases -q --alluredir=allure_reports
 
 

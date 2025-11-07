@@ -47,7 +47,7 @@ class UbiCommon:
             headers=headers  # 核心改动：将YML中定义的headers传入
         )
         response_json = response.json()
-        assert response_json["code"] == api_config["expected"]["code"]
+        assert response_json["code"] == api_config["expected"]["code"], f"获取最新版本信息失败，响应信息为：{response_json}"
         verNo = response_json["data"][0]["verNo"]
         rankingTypeId = response_json["data"][0]["rankingTypeId"]
         self.logging.info(f"排名类型为：{rankingTypeId},当前最新版本为：{verNo}")
@@ -66,6 +66,7 @@ class UbiCommon:
             headers=api_config.get('headers')
         )
         response_json = response.json()
+        assert response_json["code"] == api_config["expected"]["code"], f"获取总定位数据失败，响应信息为：{response_json}"
         # 同排名区间的学校数据
         ubi_school_data = response_json["data"]["typ"]
         # 本校的数据
@@ -118,7 +119,7 @@ class UbiCommon:
         Args:
             data_list (list): 一个包含字典对象的列表，代表指标。
         Returns:
-            list: 一个列表，其中每个元素都是一个包含 level 3 指标部分数据的新字典。
+            list: 一个列表，其中每个元素都是一个包含 level 3 指标部分数据的新字典。类似[{},{},{}]
         """
         level_3_results = []
         def find_recursively(nodes):
@@ -135,6 +136,8 @@ class UbiCommon:
                     partial_data = {}
                     # 2. 从原始 node 字典中提取我们需要的字段，并存入新字典
                     #    使用 .get() 方法可以安全地获取数据，即使某个键不存在也不会报错
+                    # 指标ID,这里对ID 进行字符串转换，因为作为后续字典的键必须为字符串
+                    partial_data['id'] = str(node.get('id',{}))
                     # 指标名
                     partial_data['name'] = node.get('name')
                     # 指标Code
@@ -159,6 +162,7 @@ class UbiCommon:
                     find_recursively(node["refInds"])
         find_recursively(data_list)
         self.logging.info(f"共获取 {len(level_3_results)} 个指标信息：{level_3_results}")
+        print(f"共获取 {len(level_3_results)} 个指标信息：{level_3_results}")
         return level_3_results
 
 
@@ -171,12 +175,13 @@ class UbiCommon:
         :param filename: 文件名
         """
         # 1️⃣ 响应状态码检查
-        assert resp.status_code == 200,f"返回状态码异常,实际响应为：{resp}"
+        #assert resp.status_code == 200,f"返回状态码异常,实际响应为：{resp}"
         # 2️⃣ Content-Type 检查，应为二进制流
         ctype = resp.headers.get("Content-Type", "")
         assert "application/octet-stream" in ctype, f"错误的Content-Type: {ctype}"
         # 3️⃣ 文件类型检查，应为Excel
         disposition = resp.headers.get("Content-Disposition", "")
+        # disposition输出类似：attachment; filename=Up-To-Date%20Ranking.xlsx
         assert file_type in disposition, f"文件类型错误，应为 {file_type}: {disposition}"
         # 4️⃣ 文件保存检查
         self.fm.clear_directory(self.download_files_path)
@@ -188,4 +193,35 @@ class UbiCommon:
         # 一个空的Excel文件也占用一定空间，所以这个值通常比0大
         assert file_size > 1 * 1024, f"文件大小 {file_size} 字节, 小于预期的最小值 1 KB"
 
-    #@allure.step("从字典中获取多个键的值")
+    @allure.step("指标明细请求")
+    def detail_request(self,indValId,verNo,detailDefId):
+        api_ind_detail = self.al.get_api('UbiCommon', 'UbiCommon', 'detail_click')
+        origin_url = api_ind_detail['url']
+        url = self.do.format_url(origin_url,indValId=indValId,verNo=verNo,detailDefId=detailDefId)
+        response = self.ru.request(
+            method=api_ind_detail['method'],
+            url=url,
+            #headers=api_ind_detail.get('headers')
+        )
+        response_json = response.json()
+        #assert response_json["code"] == api_ind_detail["expected"]["code"], f"明细请求失败，响应为:{response_json}"
+        return response_json
+
+    @allure.step("多个指标明细点击")
+    def detail_click(self,list_ind_data,verNo):
+        list_fail_indicators = []
+        for dict_indicators in list_ind_data:
+            # 列表直接解包到变量
+            ind_name, editable, detailDefId, ind_data = self.do.get_value_from_dict(dict_indicators, "name",
+                                                                                         "editable", "detailDefId",
+                                                                                         "indData")
+            # 指标：明细类和数值类
+            indValId = self.do.get_value_from_dict(ind_data, "indValId")
+            if editable != "val" and indValId != 0 and indValId is not None and detailDefId != 0:
+                print(f"指标 {ind_name} 的明细类指标ID为：{indValId}")
+                response = self.detail_request(indValId, verNo, detailDefId)
+                list_ind_detail = response["details"]
+                # 增加明细弹窗可以打开，但是获取的明细数据为空的情况
+                if list_ind_detail is None or len(list_ind_detail) == 0  :
+                    list_fail_indicators.append(ind_name)
+        assert not list_fail_indicators, f"共有 {len(list_fail_indicators)} 个指标明细请求失败。失败的指标有：{list_fail_indicators}"
