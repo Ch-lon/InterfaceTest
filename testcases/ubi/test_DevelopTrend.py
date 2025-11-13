@@ -9,16 +9,13 @@
 import os
 import pytest
 import allure
-import io                          # <--- 1. 导入 io 库
-from svglib.svglib import svg2rlg    # <--- 2. 导入 svglib
-from reportlab.graphics import renderPM  # <--- 3. 导入 reportlab
 from common.logger import get_logger
 from product.ubi.pages.DevelopTrend import DevelopTrend
 
 class TestDevelopTrend:
 
     logging = get_logger(__name__)
-    test_data = ["RC00005"]
+    test_data = ["RI02727"]
 
     # 参数化测试，为不同的 school_code 运行测试
     @pytest.fixture(scope="module", params=test_data)

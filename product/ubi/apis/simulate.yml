@@ -1,0 +1,61 @@
+simulate:
+  simulate_indicators:
+    description: 排名推演指标体系
+    method: GET
+    url: /ubi-api/v1/indicator/{rankingTypeId}/{verNo}?include=simulate
+    headers:
+      Accept: application/json, text/plain, */*
+    expected:
+      code: 200
+      message: "success"
+
+  origin_simulate_data:
+      description: 排名推演默认的数据
+      method: GET
+      url: /ubi-api/v1/sim/{rankingTypeId}/{verNo}/ind_target
+      headers:
+        Accept: application/json, text/plain, */*
+      expected:
+        code: 200
+        message: "success"
+
+  univ_alliance:
+    description: 10个大学联盟code
+    method: GET
+    url: /ubi-api/v1/benchmark/bg_code?suffix={suffix}&rankingTypeId={rankingTypeId}
+    headers:
+      Accept: application/json, text/plain, */*
+    expected:
+      code: 200
+      message: "success"
+
+  univ_alliance_default_param:
+    description: 获取单个大学联盟默认参数
+    method: GET
+    url: /ubi-api/v1/benchmark/{rankingTypeId}/{verNo}/locate?bg={bg}
+    headers:
+      Accept: application/json, text/plain, */*
+    expected:
+      code: 200
+      message: "success"
+
+  simulate_with_param:
+    description: 根据传入的参数进行排名推演
+    method: POST
+    url: /ubi-api/v1/sim/{rankingTypeId}/{verNo}/result
+    headers:
+      Accept: application/json, text/plain, */*
+    expected:
+      code: 200
+      message: "success"
+
+  data_export:
+    description: 数据导出
+    method: POST
+    url: /ubi-api/v1/export/simulate/{rankingTypeId}/{verNo}
+    headers:
+      Accept: application/json, text/plain, */*
+      Content-Type: application/json;charset=UTF-8
+    expected:
+      code: 200
+      message: "success"

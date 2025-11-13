@@ -19,5 +19,7 @@ InterfaceTest /
 └── requirements.txt
 
  pytest  testcases -q --alluredir=allure_reports
+allure serve allure_reports
+Ctrl+Alt+L
 
 

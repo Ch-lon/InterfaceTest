@@ -7,8 +7,6 @@ from common.FileManager import FileManager
 from common.path_util import get_absolute_path
 from common.logger import get_logger
 from common.ApiLoader import ApiLoader
-from product.ubi.pages.UbiCommon import UbiCommon
-
 
 logging = get_logger(__name__)
 
@@ -18,7 +16,7 @@ def config():
     config_path = get_absolute_path('config/config.yml')
     fm = FileManager()
     config_data = fm.load_yaml_file(config_path)
-    return config_data['正式环境']
+    return config_data['测试环境']
 
 
 @pytest.fixture(scope="session")

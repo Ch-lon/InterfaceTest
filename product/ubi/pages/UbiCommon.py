@@ -146,6 +146,10 @@ class UbiCommon:
                     partial_data['editable'] = node.get('editable')
                     # 指标明细定义ID
                     partial_data['detailDefId'] = node.get('detailDefId')
+                    # 是否是排名指标
+                    partial_data['isRank'] = node.get('isRank')
+                    # 是否进行模拟
+                    partial_data['isSim'] = node.get('isSim')
                     # 指标数据
                     partial_data['indData'] = node.get('indData', {})
                     # 安全地提取嵌套在 indData 中的 value
@@ -204,7 +208,7 @@ class UbiCommon:
             #headers=api_ind_detail.get('headers')
         )
         response_json = response.json()
-        #assert response_json["code"] == api_ind_detail["expected"]["code"], f"明细请求失败，响应为:{response_json}"
+        assert response_json["code"] == api_ind_detail["expected"]["code"], f"{detailDefId} 明细请求失败，响应为:{response_json}"
         return response_json
 
     @allure.step("多个指标明细点击")
@@ -220,7 +224,7 @@ class UbiCommon:
             if editable != "val" and indValId != 0 and indValId is not None and detailDefId != 0:
                 print(f"指标 {ind_name} 的明细类指标ID为：{indValId}")
                 response = self.detail_request(indValId, verNo, detailDefId)
-                list_ind_detail = response["details"]
+                list_ind_detail = response["data"]["details"]
                 # 增加明细弹窗可以打开，但是获取的明细数据为空的情况
                 if list_ind_detail is None or len(list_ind_detail) == 0  :
                     list_fail_indicators.append(ind_name)

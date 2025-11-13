@@ -247,13 +247,14 @@ class DevelopTrend(UbiCommon):
         请求不同指标的对比数据
         """
         # 增加一个“整体趋势”
-        list_ind_info.append({"id":0,"name": "整体趋势","editable":"val"})
+        list_ind_info.append({"id":0,"name": "整体趋势","isRank": True})
         # 存放请求失败的指标列表
         list_fail_ind_data = []
         set_fail_ind_rank = set()
         for dict_ind_info in list_ind_info:
-            ind_id,ind_name,editable = self.do.get_value_from_dict(dict_ind_info, 'id',"name","editable")
-            if editable in("val", "detail"):
+            ind_id,ind_name,editable,isRank = self.do.get_value_from_dict(dict_ind_info, 'id',"name","editable","isRank")
+            # 只请求排名的指标
+            if isRank is True:
                 print(f"请求指标 {ind_name}")
                 list_ind_comp_data = self.request_rankingAnalysis(ind_id,verNo,compUnivCode)
                 if list_ind_comp_data is None or len(list_ind_comp_data) == 0:
