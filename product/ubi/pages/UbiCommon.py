@@ -49,6 +49,7 @@ class UbiCommon:
         response_json = response.json()
         assert response_json["code"] == api_config["expected"]["code"], f"获取最新版本信息失败，响应信息为：{response_json}"
         verNo = response_json["data"][0]["verNo"]
+        #verNo = response_json["data"][0]["filerVerNo"]
         rankingTypeId = response_json["data"][0]["rankingTypeId"]
         self.logging.info(f"排名类型为：{rankingTypeId},当前最新版本为：{verNo}")
         return rankingTypeId,verNo
@@ -113,7 +114,7 @@ class UbiCommon:
         all_ind_info: list = self.extract_partial_level_3_data(indicators)
         return all_ind_info
 
-    def extract_partial_level_3_data(self,data_list):
+    def extract_partial_level_3_data(self,data_list) -> list:
         """
         递归遍历指标对象列表，查找所有 "level": 3 的项，并只提取部分关键数据。
         Args:
@@ -146,6 +147,8 @@ class UbiCommon:
                     partial_data['editable'] = node.get('editable')
                     # 指标明细定义ID
                     partial_data['detailDefId'] = node.get('detailDefId')
+                    # 指标权重
+                    partial_data['weight'] = node.get('weight')
                     # 是否是排名指标
                     partial_data['isRank'] = node.get('isRank')
                     # 是否进行模拟
@@ -198,7 +201,7 @@ class UbiCommon:
         assert file_size > 1 * 1024, f"文件大小 {file_size} 字节, 小于预期的最小值 1 KB"
 
     @allure.step("指标明细请求")
-    def detail_request(self,indValId,verNo,detailDefId):
+    def detail_request(self,indValId,verNo,detailDefId,ind_name):
         api_ind_detail = self.al.get_api('UbiCommon', 'UbiCommon', 'detail_click')
         origin_url = api_ind_detail['url']
         url = self.do.format_url(origin_url,indValId=indValId,verNo=verNo,detailDefId=detailDefId)
@@ -208,7 +211,7 @@ class UbiCommon:
             #headers=api_ind_detail.get('headers')
         )
         response_json = response.json()
-        assert response_json["code"] == api_ind_detail["expected"]["code"], f"{detailDefId} 明细请求失败，响应为:{response_json}"
+        assert response_json["code"] == api_ind_detail["expected"]["code"], f"{ind_name} 明细请求失败，响应为:{response_json}"
         return response_json
 
     @allure.step("多个指标明细点击")
@@ -222,10 +225,10 @@ class UbiCommon:
             # 指标：明细类和数值类
             indValId = self.do.get_value_from_dict(ind_data, "indValId")
             if editable != "val" and indValId != 0 and indValId is not None and detailDefId != 0:
-                print(f"指标 {ind_name} 的明细类指标ID为：{indValId}")
-                response = self.detail_request(indValId, verNo, detailDefId)
+                print(f"点击指标 {ind_name} ，其明细类指标ID为：{indValId}")
+                response = self.detail_request(indValId, verNo, detailDefId,ind_name)
                 list_ind_detail = response["data"]["details"]
                 # 增加明细弹窗可以打开，但是获取的明细数据为空的情况
-                if list_ind_detail is None or len(list_ind_detail) == 0  :
+                if list_ind_detail is None or len(list_ind_detail) == 0 :
                     list_fail_indicators.append(ind_name)
         assert not list_fail_indicators, f"共有 {len(list_fail_indicators)} 个指标明细请求失败。失败的指标有：{list_fail_indicators}"

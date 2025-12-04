@@ -20,11 +20,19 @@ class FileManager:
         """
         try:
             with open(filepath,"r", encoding="utf-8") as f:
-                return yaml.safe_load(f)
+                file_data = yaml.safe_load(f)
+                if file_data is None:
+                    raise ValueError(f"文件 '{filepath}' 返回为None，请检查YAML文件内容格式是否正确！")
+                return file_data
         except FileNotFoundError:
             print(f"文件 '{filepath}' 不存在")
+            return None
         except yaml.YAMLError as e:
             print(f"加载 YAML 文件 '{filepath}' 时出错: {e}")
+            return None
+        except ValueError as e:
+            print(f"YAML 文件内容错误: {e}")
+            return None
 
     @allure.step("如果文件夹不存在，则创建，否则忽略")
     def create_directory_if_not_exists(self,filepath):

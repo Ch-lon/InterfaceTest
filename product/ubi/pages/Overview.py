@@ -13,13 +13,13 @@ from common.FileManager import FileManager
 from common.DataOperation import DataOperation
 
 class Overview(UbiCommon):
-    def __init__(self, session):
-        super().__init__(session)
-        self.fm = FileManager()
-        self.do = DataOperation()
-        self.ru = session
-        api_path = get_absolute_path("product/ubi/apis/")
-        self.al = ApiLoader(api_path)
+    # def __init__(self, session):
+    #     super().__init__(session)
+    #     self.fm = FileManager()
+    #     self.do = DataOperation()
+    #     self.ru = session
+    #     api_path = get_absolute_path("product/ubi/apis/")
+    #     self.al = ApiLoader(api_path)
 
     def data_export(self,verNo,rankingTypeId,range_start,range_end):
         api_data_export = self.al.get_api('Overview', 'Overview', 'data_export')

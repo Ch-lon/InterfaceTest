@@ -1,0 +1,21 @@
+benchmark:
+  benchmark_indicators:
+    description: 标杆对比指标体系
+    method: GET
+    url: /ubi-api/v1/indicator/{rankingTypeId}/{verNo}
+    headers:
+      Accept: application/json, text/plain, */*
+    expected:
+      code: 200
+      message: "success"
+
+  compare_univ_indicators_info:
+      description: 获取对比学校指标信息
+      method: GET
+      url: /ubi-api/v1/benchmark/{rankingTypeId}/{verNo}/compare
+      headers:
+        Accept: application/json, text/plain, */*
+      expected:
+        code: 200
+        message: "success"
+

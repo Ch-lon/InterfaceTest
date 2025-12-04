@@ -10,7 +10,7 @@ from product.cg.pages.CGOperations import CGOperations
 @allure.tag("API","Overview")
 class TestOverview:
 
-    test_data = ["RC00005"]
+    test_data = ["RI02727"]
 
     # 参数化测试，为不同的 school_code 运行测试
     @pytest.fixture(scope="module",params=test_data)
@@ -80,7 +80,12 @@ class TestOverview:
     @allure.tag("regression")
     @allure.description("查看指标明细是否有数据")
     def test_Overview03(self, load_page,indicators_data):
+        #rankingTypeId, list_verNo = indicators_data
         list_ind_data,rankingTypeId, verNo = indicators_data
+        # 202208和202108版本不支持明细
+        #list_verNo = [verNo for verNo in list_verNo if verNo not in [202208,202108]]
+        #for verNo in list_verNo:
+            #list_ind_data = load_page.get_indicators_info(rankingTypeId, verNo)
         list_fail_indicators = []
         for dict_indicators in list_ind_data:
             # 列表直接解包到变量
@@ -90,9 +95,9 @@ class TestOverview:
             if editable != "val" and indValId != 0 and indValId is not None and detailDefId != 0:
                 print(f"指标 {ind_name} 的明细类指标ID为：{indValId}")
                 # response = load_page.detail_click(indValId, verNo,detailDefId)
-                response= load_page.detail_request(indValId,verNo,detailDefId)
+                response= load_page.detail_request(indValId,verNo,detailDefId,ind_name)
                 list_ind_detail = response["data"]["details"]
                 # 增加明细弹窗可以打开，但是获取的明细数据为空的情况
                 if response["code"] != 200 or list_ind_detail is None or len(list_ind_detail) == 0 :
                     list_fail_indicators.append(ind_name)
-        assert not list_fail_indicators, f"共有 {len(list_fail_indicators)} 个指标明细请求失败。失败的指标有：{list_fail_indicators}"
+        assert not list_fail_indicators, f"{verNo} 下共有 {len(list_fail_indicators)} 个指标明细请求失败。失败的指标有：{list_fail_indicators}"

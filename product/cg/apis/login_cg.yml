@@ -43,13 +43,9 @@ login_cg:
         loginName:
         token:
     headers:
-        Accept: application/json, text/plain, */*
-        Content-Type: application/x-www-form-urlencoded
-        Accept-encoding: gzip, deflate, br, zstd
+        #Accept: application/json, text/plain, */*
+        #Content-Type: application/x-www-form-urlencoded
         Accept-language: zh-CN
-        #Origin: https://ubi-3f3ab907.gaojidata.com
-        #Referer: https://ubi-3f3ab907.gaojidata.com/login?loginTypeId={loginTypeId}&univCode={univCode}&loginName={loginName}
-        #User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64)
     expected:
       code: 200
       message: "success"

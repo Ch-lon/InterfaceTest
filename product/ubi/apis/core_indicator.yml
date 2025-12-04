@@ -1,0 +1,20 @@
+core_indicator:
+  core_indicator_info:
+    description: 核心指标指标体系
+    method: GET
+    url: /ubi-api/v1/core_ind/{rankingTypeId}/{verNo}?suffix={suffix}
+    headers:
+      Accept: application/json, text/plain, */*
+    expected:
+      code: 200
+      message: "success"
+
+  data_export:
+    description: 数据导出
+    method: POST
+    url: /ubi-api/v1/export/core_ind/{rankingTypeId}/{verNo}?suffix={suffix}
+    headers:
+        Accept: application/json, text/plain, */*
+    expected:
+        code: 200
+        message: "success"

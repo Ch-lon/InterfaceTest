@@ -16,7 +16,7 @@ def config():
     config_path = get_absolute_path('config/config.yml')
     fm = FileManager()
     config_data = fm.load_yaml_file(config_path)
-    return config_data['测试环境']
+    return config_data['正式环境']
 
 
 @pytest.fixture(scope="session")
@@ -90,19 +90,19 @@ def choose_product_session(auth_token, cg_ops, cg_api_loader, config):
             method=product_login_config["method"],
             url=url_template,
             json=data,
-            #headers=product_login_config["headers"]
+            headers=product_login_config["headers"]
         )
         response = res.json()
         # 记录在log中
         #logging.debug(f"{productCode}的登录响应：{response}")
-        assert response["code"] == 200, f"登录{productCode}预期的状态码为 200，实际返回的状态码为 {response['code']}"
+        assert response["code"] == 200, f"登录 {productCode} 失败！，实际响应为 {response}"
         cookies = res.cookies.get_dict()
         if not cookies:
             pytest.fail(f"未能从 {full_url} 获取到 cookie。")
         # 将 cookie 注入到 requests session 中
         product_session.session.cookies.update(cookies)
         # 同样可以将 token 设置到请求头中,传入'Accept-language': 'zh-CN'，确保中文版
-        product_session.session.headers.update({'Authorization': auth_token, 'Accept-language': 'zh-CN'})
+        product_session.session.headers.update({'Authorization': auth_token,'Accept-language': 'zh-CN'})
         return product_session
 
     # 外层 fixture 返回内部函数

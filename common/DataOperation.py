@@ -19,7 +19,8 @@ class DataOperation:
         Returns:
             list_value: 包含所有键对应值的列表
         """
-        list_value = [dictionary.get(key, None) for key in keys]
+        #list_value = [dictionary.get(key, None) for key in keys]
+        list_value = [dictionary.get(key, f"该键{key}获取失败") for key in keys]
         if len(keys) == 1:
             # 如果只有一个键，确保返回该键对应的值，而不是一个列表,以便后续直接解包
             return list_value[0]
