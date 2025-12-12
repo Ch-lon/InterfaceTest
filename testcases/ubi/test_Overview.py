@@ -95,7 +95,7 @@ class TestOverview:
             if editable != "val" and indValId != 0 and indValId is not None and detailDefId != 0:
                 print(f"指标 {ind_name} 的明细类指标ID为：{indValId}")
                 # response = load_page.detail_click(indValId, verNo,detailDefId)
-                response= load_page.detail_request(indValId,verNo,detailDefId,ind_name)
+                response= load_page.detail_request(indValId,detailDefId,ind_name,verNo)
                 list_ind_detail = response["data"]["details"]
                 # 增加明细弹窗可以打开，但是获取的明细数据为空的情况
                 if response["code"] != 200 or list_ind_detail is None or len(list_ind_detail) == 0 :

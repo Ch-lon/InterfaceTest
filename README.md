@@ -18,7 +18,9 @@ InterfaceTest /
 │   └── test_login.py
 └── requirements.txt
 
- pytest  testcases -q --alluredir=allure_reports
+pytest -q testcases/ubi --alluredir=reports/allure_results 
+pytest -q testcases/ubi/test_benchmark.py --alluredir=reports/allure_results
+allure generate reports/allure_results -o reports/allure_reports --clean
 allure serve allure_reports
 Ctrl+Alt+L
 

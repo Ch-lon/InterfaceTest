@@ -10,8 +10,8 @@ import allure
 import pytest
 from product.ubi.pages.core_indicator import CoreIndicator
 
-class TestCoreIndicator:
 
+class TestCoreIndicator:
     test_data = ["RC00005"]
 
     # 参数化测试，为不同的 school_code 运行测试
@@ -44,7 +44,7 @@ class TestCoreIndicator:
         """
         rankingTypeId, verNo = load_page.get_version()
         list_ind_info = load_page.get_core_indicator_info(rankingTypeId, verNo)
-        yield list_ind_info,rankingTypeId, verNo
+        yield list_ind_info, rankingTypeId, verNo
 
     @allure.step("核心指标数据导出")
     @allure.title("核心指标数据导出功能及文件是否正常")
@@ -54,7 +54,7 @@ class TestCoreIndicator:
         """
         核心指标数据导出
         """
-        _,rankingTypeId, verNo = indicators_data
+        _, rankingTypeId, verNo = indicators_data
         response = load_page.export_data_core_indicator_request(rankingTypeId, verNo)
         filename = f"{univCode}_核心指标_{verNo}.xlsx"
         load_page.check_export_response(response, "xlsx", filename)
@@ -67,8 +67,8 @@ class TestCoreIndicator:
         """
         指标明细请求
         """
-        list_ind_info,rankingTypeId, verNo = indicators_data
-        load_page.detail_click(list_ind_info,verNo)
+        list_ind_info, rankingTypeId, verNo = indicators_data
+        load_page.detail_click(list_ind_info, verNo)
 
     @allure.step("核心指标数据及排名形式验证")
     @allure.title("核心指标数据及排名形式验证")
@@ -79,24 +79,29 @@ class TestCoreIndicator:
         """
         核心指标数据及排名形式验证
         """
-        list_ind_info,_,_= indicators_data
+        list_ind_info, _, _ = indicators_data
         for ind_info in list_ind_info:
-            name,weight,indData = load_page.do.get_value_from_dict(ind_info, "name", "weight", "indData")
-            value,score,percentScore,rankTyp = load_page.do.get_value_from_dict(indData, "value", "score", "pencentScore", "rankTyp")
-            print(f"指标 {name} 权重为 {weight}，数据为 {value}，得分为 {score}，百分比得分为 {percentScore}，排名为 {rankTyp}")
+            name, weight, indData = load_page.do.get_value_from_dict(ind_info, "name", "weight", "indData")
+            value, score, percentScore, rankTyp = load_page.do.get_value_from_dict(indData, "value", "score",
+                                                                                   "pencentScore", "rankTyp")
+            print(
+                f"指标 {name} 权重为 {weight}，数据为 {value}，得分为 {score}，百分比得分为 {percentScore}，排名为 {rankTyp}")
             # 缓存字符串操作结果
             is_plus_ranking = rankTyp.endswith("+")
             if weight == 0:
                 if value == 0:
-                    assert  is_plus_ranking, (f"指标 {name} 展示形式有误,请检查， "
-                                              f"权重为 {weight}，数据为 {value}时，得分为 {score}，百分比得分为 {percentScore}，排名为 {rankTyp}")
+                    assert is_plus_ranking, (f"指标 {name} 展示形式有误,请检查， "
+                                             f"权重为 {weight}，数据为 {value}时，得分为 {score}，百分比得分为 {percentScore}，排名为 {rankTyp}")
                 else:
-                    assert score != 0 and percentScore == '0.0%' and not is_plus_ranking, (f"指标 {name} 展示形式有误,请检查， "
-                                                                                           f"权重为 {weight}，数据为 {value}，得分为 {score}，百分比得分为 {percentScore}，排名为 {rankTyp}")
+                    assert score != 0 and percentScore == '0.0%' and not is_plus_ranking, (
+                        f"指标 {name} 展示形式有误,请检查， "
+                        f"权重为 {weight}，数据为 {value}，得分为 {score}，百分比得分为 {percentScore}，排名为 {rankTyp}")
             else:
                 if value == 0:
-                    assert score == 0 and percentScore == '0.0%' and is_plus_ranking, (f"指标 {name} 展示形式有误,请检查， "
-                                                                                     f"权重为 {weight}，数据为 {value}，得分为 {score}，百分比得分为 {percentScore}，排名为 {rankTyp}")
+                    assert score == 0 and percentScore == '0.0%' and is_plus_ranking, (
+                        f"指标 {name} 展示形式有误,请检查， "
+                        f"权重为 {weight}，数据为 {value}，得分为 {score}，百分比得分为 {percentScore}，排名为 {rankTyp}")
                 else:
-                    assert score != 0 and percentScore.endswith("%") and not is_plus_ranking, (f"指标 {name} 展示形式有误,请检查， "
-                                                                                         f"权重为 {weight}，数据为 {value}，得分为 {score}，百分比得分为 {percentScore}，排名为 {rankTyp}")
+                    assert score != 0 and percentScore.endswith("%") and not is_plus_ranking, (
+                        f"指标 {name} 展示形式有误,请检查， "
+                        f"权重为 {weight}，数据为 {value}，得分为 {score}，百分比得分为 {percentScore}，排名为 {rankTyp}")

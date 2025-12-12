@@ -9,14 +9,14 @@ from common.logger import get_logger
 from common.ApiLoader import ApiLoader
 
 logging = get_logger(__name__)
+fm = FileManager()
 
 @pytest.fixture(scope="session", autouse=True)
 def config():
     """全局配置初始化"""
     config_path = get_absolute_path('config/config.yml')
-    fm = FileManager()
     config_data = fm.load_yaml_file(config_path)
-    return config_data['正式环境']
+    return config_data['测试环境']
 
 
 @pytest.fixture(scope="session")
@@ -98,7 +98,7 @@ def choose_product_session(auth_token, cg_ops, cg_api_loader, config):
         assert response["code"] == 200, f"登录 {productCode} 失败！，实际响应为 {response}"
         cookies = res.cookies.get_dict()
         if not cookies:
-            pytest.fail(f"未能从 {full_url} 获取到 cookie。")
+            pytest.fail(f"未能从 {full_url} 获取到 cookies。")
         # 将 cookie 注入到 requests session 中
         product_session.session.cookies.update(cookies)
         # 同样可以将 token 设置到请求头中,传入'Accept-language': 'zh-CN'，确保中文版

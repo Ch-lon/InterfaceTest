@@ -189,7 +189,7 @@ class UbiCommon:
         # 3️⃣ 文件类型检查，应为Excel
         disposition = resp.headers.get("Content-Disposition", "")
         # disposition输出类似：attachment; filename=Up-To-Date%20Ranking.xlsx
-        assert file_type in disposition, f"文件类型错误，应为 {file_type}: {disposition}"
+        assert file_type in disposition, f"文件类型错误，应为 {file_type}, 实际为： {disposition}"
         # 4️⃣ 文件保存检查
         self.fm.clear_directory(self.download_files_path)
         file_path = self.fm.write_binary_file_and_save(resp.content, self.download_files_path, filename)
@@ -201,7 +201,7 @@ class UbiCommon:
         assert file_size > 1 * 1024, f"文件大小 {file_size} 字节, 小于预期的最小值 1 KB"
 
     @allure.step("指标明细请求")
-    def detail_request(self,indValId,verNo,detailDefId,ind_name):
+    def detail_request(self,indValId,detailDefId,ind_name,verNo):
         api_ind_detail = self.al.get_api('UbiCommon', 'UbiCommon', 'detail_click')
         origin_url = api_ind_detail['url']
         url = self.do.format_url(origin_url,indValId=indValId,verNo=verNo,detailDefId=detailDefId)
@@ -226,7 +226,7 @@ class UbiCommon:
             indValId = self.do.get_value_from_dict(ind_data, "indValId")
             if editable != "val" and indValId != 0 and indValId is not None and detailDefId != 0:
                 print(f"点击指标 {ind_name} ，其明细类指标ID为：{indValId}")
-                response = self.detail_request(indValId, verNo, detailDefId,ind_name)
+                response = self.detail_request(indValId, detailDefId,ind_name, verNo)
                 list_ind_detail = response["data"]["details"]
                 # 增加明细弹窗可以打开，但是获取的明细数据为空的情况
                 if list_ind_detail is None or len(list_ind_detail) == 0 :

@@ -1,6 +1,6 @@
 UbiCommon:
   detail_click:
-    description: 通用明细点击接口
+    description: 通用明细接口请求
     method: GET
     url: /ubi-api/v1/ind_detail/{indValId}/?verNo={verNo}&detailDefId={detailDefId}&indType=0
     headers:

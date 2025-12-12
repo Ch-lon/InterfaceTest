@@ -197,7 +197,7 @@ class DevelopTrend(UbiCommon):
             # indDetailDefId = self.do.get_value_from_dict(dict_ind_indVal, 'indDetailDefId')
             if indValId != 0 and indDetailDefId != 0:
                 print(f"点击指标 {ind_name}")
-                response = self.detail_request(indValId, verNo, indDetailDefId,ind_name)
+                response = self.detail_request(indValId, indDetailDefId,ind_name, verNo)
                 list_ind_detail = response["data"]["details"]
                 # 增加明细弹窗可以打开，但是获取的明细数据为空的情况
                 if response["code"] != 200 or list_ind_detail is None or len(list_ind_detail) == 0 :
@@ -208,7 +208,7 @@ class DevelopTrend(UbiCommon):
             # indDetailDefIdComp = self.do.get_value_from_dict(dict_ind_indValComp, 'indDetailDefId')
             if indValIdComp != 0 and indDetailDefIdComp != 0:
                 print(f"点击对比版本指标 {ind_name}")
-                response_comp = self.detail_request(indValIdComp, compareVerNo, indDetailDefIdComp,ind_name)
+                response_comp = self.detail_request(indValIdComp,  indDetailDefIdComp,ind_name,compareVerNo)
                 list_ind_detail_comp = response_comp["data"]["details"]
                 # 添加对比版本明细请求失败的指标
                 if response_comp["code"] != 200 or list_ind_detail_comp is None or len(list_ind_detail_comp) == 0:
