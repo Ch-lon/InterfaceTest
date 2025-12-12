@@ -19,3 +19,14 @@ benchmark:
         code: 200
         message: "success"
 
+  data_export:
+      description: 数据导出
+      method: POST
+      url: /ubi-api/v1/export/benchmark/11/202512?bg=&start=&end=&regionId=&countryId=
+      headers:
+          Accept: application/json, text/plain, */*
+          Content-Type: application/x-www-form-urlencoded
+      expected:
+          code: 200
+          message: "success"
+

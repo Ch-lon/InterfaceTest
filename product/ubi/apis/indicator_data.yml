@@ -1,0 +1,51 @@
+indicator_data:
+  indicators_info:
+    description: 排名趋势指标体系
+    method: GET
+    url: /ubi-api/v1/ind_latest
+    headers:
+      Accept: application/json, text/plain, */*
+    expected:
+      code: 200
+      message: "success"
+
+  ind_collection:
+    description: 获取全部指标页面的指标数据和indValId
+    method: GET
+    url: /ubi-api/v1/ind_latest/collection
+    headers:
+      Accept: application/json, text/plain, */*
+      Content-Type: application/json
+    expected:
+      code: 200
+      message: "success"
+
+  benchmark_univ:
+    description: 获取标杆学校
+    method: GET
+    url: /ubi-api/v1/benchmark/univ
+    headers:
+      Accept: application/json, text/plain, */*
+    expected:
+      code: 200
+      message: "success"
+
+  data_export:
+    description: 获取指标数据导出接口
+    method: POST
+    url: /ubi-api/v1/export/ind_all_year
+    headers:
+      accept-encoding: gzip, deflate, br, zstd
+      Accept: application/json, text/plain, */*
+      cache-control: no-cache
+      Connection: keep-alive
+      Content-Type: application/json
+    params:
+      univRange: ""
+      univCodes: #一个包含所有学校code的列表
+      indRange: "All" #全部指标
+      indCodes: []
+      exportIndDetail: true #是否导出明细
+    expected:
+      code: 200
+      message: "success"

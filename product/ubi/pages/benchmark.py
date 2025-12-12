@@ -77,3 +77,15 @@ class Benchmark(UbiCommon):
                 dict_compare_univ_new['details'][key] = detail['indValId']
             result[dict_compare_univ_new['univCode']] = dict_compare_univ_new
         return  result
+
+    @allure.step("标杆对比数据导出")
+    def data_export_request(self):
+        api_export_data = self.al.get_api('benchmark', 'benchmark', 'data_export')
+        url = api_export_data["url"]
+        response = self.ru.request(
+            method=api_export_data['method'],
+            url=url,
+            headers=api_export_data.get('headers')
+        )
+        assert response.status_code == api_export_data["expected"]["code"], f"标杆对比数据导出请求失败，响应为{response.text}"
+        return response
