@@ -1,0 +1,21 @@
+ranking_monitor:
+  data_export:
+    description: 排名监测数据导出
+    method: POST
+    url: /ubi-api/v1/export/rankings
+    headers:
+      Accept: application/json, text/plain, */*
+      Content-Type: application/x-www-form-urlencoded
+    expected:
+      code: 200
+      message: "success"
+
+  ranking_data:
+    description: 各类排名数据
+    method: GET
+    url: /ubi-api/v1/rankings/self
+    headers:
+        Accept: application/json, text/plain, */*
+    expected:
+        code: 200
+        message: "success"
