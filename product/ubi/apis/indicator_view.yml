@@ -1,0 +1,37 @@
+indicator_view:
+    indicator_info:
+      description: 指标查看指标体系
+      method: GET
+      url: /ubi-api/v1/ind_view/indList
+      headers:
+        Accept: application/json, text/plain, */*
+      expected:
+        code: 200
+        message: "success"
+
+    search_indicator:
+      description: 搜索指标
+      method: GET
+      url: /ubi-api/v1/ind_view/SearchInd?value={value}
+      headers:
+        Accept: application/json, text/plain, */*
+      expected:
+        code: 200
+        message: "success"
+
+    single_indicator_data:
+      description: 搜索后的各院校指标数据
+      method: POST
+      url: /ubi-api/v1/ind_view
+      headers:
+        Accept: application/json, text/plain, */*
+        Content-Type: application/json
+      payload:
+        indCode:
+        pageIndex:
+        pageSize:
+        showOurCompare:
+        year:
+      expected:
+        code: 200
+        message: "success"

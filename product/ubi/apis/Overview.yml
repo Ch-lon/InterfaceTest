@@ -1,17 +1,4 @@
 Overview:
-  version:
-    description: 获取版本
-    method: GET
-    url: /ubi-api/v1/ranking/version
-    headers:
-      Content-Type: application/json, text/plain, */*
-    default_data:
-      start:
-      end:
-    expected:
-      code: 200
-      message: "success"
-
   range:
     description: 获取同排名区间范围
     method: GET

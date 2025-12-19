@@ -22,7 +22,7 @@ class RankingMonitor(UbiCommon):
         """
         api_ranking_monitor_data_export = self.al.get_api('ranking_monitor', 'ranking_monitor', 'data_export')
         url = api_ranking_monitor_data_export['url']
-        response = self.ru.reuest(
+        response = self.ru.request(
             method=api_ranking_monitor_data_export['method'],
             url=url,
             headers=api_ranking_monitor_data_export.get('headers')

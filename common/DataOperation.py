@@ -7,6 +7,7 @@
 @Desc    : 数据处理的通用操作
 """
 import copy
+import urllib.parse
 
 class DataOperation:
 
@@ -58,4 +59,21 @@ class DataOperation:
         #对于 int 或 str 等不可变类型，它会直接返回原对象（因为没必要复制）。
         return copy.copy(value)
 
+    def url_encode(self, value: str) -> str:
+        """
+        将文本编码为URL格式
+        Args:
+            value: 中文文本
+        Returns:
+            百分号编码结果
+        Raises:
+            TypeError: 当option不是字符串类型时
+            AttributeError: 当option为None时
+        """
+        if value is None:
+            raise AttributeError(f"传入的编码参数 {value} 不能为空！")
 
+        if not isinstance(value, str):
+            raise TypeError(f"{value} 必须是字符串类型")
+
+        return urllib.parse.quote(value)

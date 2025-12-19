@@ -4,7 +4,7 @@
 @File    : ApiLoader.py
 @Author  : Chlon
 @Date    : 2025/9/1 11:50
-@Desc    : api配置文件处理类
+@Desc    : api配置文件处理
 """
 from pathlib import Path
 from common.FileManager import FileManager

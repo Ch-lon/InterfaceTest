@@ -30,7 +30,7 @@ class UbiCommon:
     def get_version(self):
         """
         """
-        api_config = self.al.get_api('Overview', 'Overview','version')
+        api_config = self.al.get_api('UbiCommon', 'UbiCommon','version')
         # 1. 格式化URL，将路径参数填充进去
         url = api_config['url']
         # 2. 准备查询参数
@@ -114,7 +114,7 @@ class UbiCommon:
         all_ind_info: list = self.extract_partial_level_3_data(indicators)
         return all_ind_info
 
-    def extract_partial_level_3_data(self,data_list) -> list:
+    def extract_partial_level_3_data(self,data_list: list) -> list:
         """
         递归遍历指标对象列表，查找所有 "level": 3 的项，并只提取部分关键数据。
         Args:
@@ -147,6 +147,10 @@ class UbiCommon:
                     partial_data['editable'] = node.get('editable')
                     # 指标明细定义ID
                     partial_data['detailDefId'] = node.get('detailDefId')
+                    # 可选年份
+                    partial_data['availVer'] = node.get('availVer')
+                    # 监测年份
+                    partial_data['targetVerName'] = node.get('targetVerName')
                     # 指标权重
                     partial_data['weight'] = node.get('weight')
                     # 是否是排名指标

@@ -1,4 +1,17 @@
 UbiCommon:
+  version:
+    description: 获取版本
+    method: GET
+    url: /ubi-api/v1/ranking/version
+    headers:
+      Content-Type: application/json, text/plain, */*
+    default_data:
+      start:
+      end:
+    expected:
+      code: 200
+      message: "success"
+
   detail_click:
     description: 通用明细接口请求
     method: GET
