@@ -7,6 +7,7 @@
 @Desc    : 数据处理的通用操作
 """
 import copy
+import random
 import urllib.parse
 
 class DataOperation:
@@ -67,8 +68,8 @@ class DataOperation:
         Returns:
             百分号编码结果
         Raises:
-            TypeError: 当option不是字符串类型时
-            AttributeError: 当option为None时
+            TypeError: 当value不是字符串类型时
+            AttributeError: 当value为None时
         """
         if value is None:
             raise AttributeError(f"传入的编码参数 {value} 不能为空！")
@@ -77,3 +78,17 @@ class DataOperation:
             raise TypeError(f"{value} 必须是字符串类型")
 
         return urllib.parse.quote(value)
+
+    def get_random_key_and_value_from_dict(self, dict_values: dict):
+        """
+        从字典中随机获取一个键值对
+        Args:
+            dict_values: 字典
+        Returns:
+            str: 随机获取的键和值
+        """
+        if not dict_values:
+            raise ValueError("字典不能为空！")
+        key = random.choice(list(dict_values.keys()))
+        value = dict_values[key]
+        return key, value

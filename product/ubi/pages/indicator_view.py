@@ -44,13 +44,31 @@ class IndicatorView(UbiCommon):
         """
         从全部指标列表中只提取指标名，并组成一个列表
         :param all_ind_info: 全部指标列表
-        :return:
+        :return:只包含指标名的列表
         """
         ind_info: list = []
         for dict_indicators in all_ind_info:
             ind_name = dict_indicators["name"]
             ind_info.append(ind_name)
         return ind_info
+
+    @allure.step("从全部指标列表中提取指标名和指标code，并组成一个字典")
+    def extract_indicator_with_name_and_code(self, all_ind_info: list)->dict:
+        """
+        从全部指标列表中提取指标名和指标code，并组成一个字典
+        :param all_ind_info: 全部指标列表
+        :return:包含指标名和指标code的字典,类似{"留学生数":VG0007}
+        """
+        dict_all_info: dict = {}
+        for dict_indicators in all_ind_info:
+            try:
+                indName = dict_indicators["name"]
+                indCode = dict_indicators["code"]
+                dict_all_info.update({indName: indCode})
+            except KeyError as e:
+                # 处理缺少必要键的情况
+                raise ValueError(f"字典中缺少必要的键: {e}")
+        return dict_all_info
 
     @allure.step("从全部指标列表中提取指标Code和监测年份")
     def extract_indCode_and_year(self, all_ind_info: list)->list[dict]:
@@ -105,9 +123,9 @@ class IndicatorView(UbiCommon):
     @allure.step("使用线程池对所有指标进行并发搜索请求（submit + 重试）")
     def search_all_indicator_by_concurrent(
             self,
-            list_all_only_indicators,
-            max_workers=5,
-            retry_times=2
+            list_all_only_indicators: list,
+            max_workers: int=5,
+            retry_times: int=2
     ):
         """
         使用线程池对所有指标进行搜索请求（submit + 重试）
@@ -408,3 +426,72 @@ class IndicatorView(UbiCommon):
             "empty_data": list_empty_data,
             "fail": list_fail
         }
+
+    @allure.step("指标查看页面的指标收藏列表请求")
+    def getCollectInds_request(self) -> list:
+        """
+        指标查看页面的指标收藏列表请求
+        :return: 指标包含指标名的收藏列表
+        """
+        api_indicator_collect_list = self.al.get_api('indicator_view', 'indicator_view', 'getCollectInds')
+        url= api_indicator_collect_list["url"]
+        response = self.ru.request(
+            method=api_indicator_collect_list['method'],
+            url=url,
+            headers=api_indicator_collect_list.get('headers')
+        )
+        response_json = response.json()
+        assert response_json['code'] == api_indicator_collect_list["expected"]["code"],f"指标查看页面指标收藏列表获取失败，响应为{response_json}"
+        list_collect_inds = response_json["data"]
+        list_indName = []
+        for dict_collect_ind in list_collect_inds:
+            indName= self.do.get_value_from_dict(dict_collect_ind,"name")
+            list_indName.append(indName)
+        return list_indName
+
+    @allure.step("收藏指标接口请求")
+    def addCollectInds_request(self,indCodes:str):
+        """
+        收藏指标接口请求
+        :param indCodes: 一个列表，里面只有一个指标名，如：['硕士留学生数']
+        """
+        api_indicator_collect_list = self.al.get_api('indicator_view', 'indicator_view', 'addCollectInds')
+        url= api_indicator_collect_list["url"]
+        payload = self.do.get_copy_key_from_dict(api_indicator_collect_list,"payload")
+        payload.update({
+            "indCodes":[f"{indCodes}"]
+        })
+        response = self.ru.request(
+            method=api_indicator_collect_list['method'],
+            url=url,
+            headers=api_indicator_collect_list.get('headers'),
+            json=payload
+        )
+        response_json = response.json()
+        assert response_json['code'] == api_indicator_collect_list["expected"]["code"],f"指标查看页面收藏指标{indCodes}时发生错误，响应为{response_json}"
+
+
+    @allure.step("取消收藏指标接口请求")
+    def removeCollectInds_request(self,indCodes:str):
+        """
+        :param indCodes:
+        :return:
+        """
+        api_indicator_collect_list = self.al.get_api('indicator_view', 'indicator_view', 'removeCollectInds')
+        url= api_indicator_collect_list["url"]
+        payload = self.do.get_copy_key_from_dict(api_indicator_collect_list,"payload")
+        payload.update({
+            "indCodes":[f"{indCodes}"]
+        })
+        response = self.ru.request(
+            method=api_indicator_collect_list['method'],
+            url=url,
+            headers=api_indicator_collect_list.get('headers'),
+            json=payload
+        )
+        response_json = response.json()
+        assert response_json['code'] == api_indicator_collect_list["expected"]["code"],f"指标查看页面取消收藏指标{indCodes}时发生错误，响应为{response_json}"
+
+if __name__ == '__main__':
+    IndicatorView = IndicatorView(UbiCommon)
+    IndicatorView.addCollectInds_request("hao")

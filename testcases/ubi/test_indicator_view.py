@@ -7,7 +7,7 @@
 @Desc    : 指标查看测试用例
 """
 import pytest
-import allure
+import allure,random,time
 from common.logger import get_logger
 from product.ubi.pages.indicator_view import IndicatorView
 
@@ -112,6 +112,39 @@ class TestIndicatorView:
 
             # 4. 触发测试失败，打印汇总信息
             pytest.fail(f"指标查看数据请求失败！发现异常指标：\n{final_error_msg}")
+
+    @allure.story("收藏和取消收藏指标校验")
+    @allure.title("收藏或取消收藏指标，并查看收藏列表中是否存在")
+    @allure.tag("regression")
+    @allure.description("若收藏列表中已存在该指标，则请求取消收藏接口；若不存在，则请求收藏接口")
+    def test_IndicatorView03(self, load_page, indicators_data):
+        # 获取包含指标名称和指标代码的字典
+        dict_all_indicators_with_name_and_code = load_page.extract_indicator_with_name_and_code(indicators_data)
+        # 随机选择一个指标
+        random_indName,random_indCode =load_page.do.get_random_key_and_value_from_dict(dict_all_indicators_with_name_and_code) #"获权威奖项教师","indt"
+        print("随机选中指标：", random_indName)
+        # 获取未收藏指标前的收藏列表
+        list_indName_before_collect = load_page.getCollectInds_request ()
+        print("已收藏列表：", list_indName_before_collect)
+        # 如果随机选的指标在已收藏列表中，则进行取消收藏操作
+        if random_indName in list_indName_before_collect:
+            print("已收藏列表中已存在该指标，将取消收藏该指标")
+            # 取消收藏
+            load_page.removeCollectInds_request (random_indCode)
+            # 获取取消收藏后的列表
+            list_indName_after_removeCollectInds = load_page.getCollectInds_request()
+            print("取消收藏后的已收藏列表：", list_indName_after_removeCollectInds)
+            assert random_indName not in list_indName_after_removeCollectInds, f"取消收藏指标{random_indName}后，收藏列表{list_indName_after_removeCollectInds}中仍存在该指标！"
+        else:
+            print("已收藏列表中未存在该指标，将收藏该指标")
+            # 否则进行收藏操作
+            load_page.addCollectInds_request (random_indCode)
+            # 获取进行添加收藏后的收藏列表
+            list_indName_after_addCollectInds = load_page.getCollectInds_request ()
+            print("添加收藏后的已收藏列表：", list_indName_after_addCollectInds)
+            assert random_indName in list_indName_after_addCollectInds, f"添加收藏指标{random_indName}后，收藏列表{list_indName_after_addCollectInds}中不存在该指标！"
+
+
 
 
 

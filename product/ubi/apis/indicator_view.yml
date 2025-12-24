@@ -35,3 +35,39 @@ indicator_view:
       expected:
         code: 200
         message: "success"
+
+    getCollectInds:
+      description: 获取收藏指标
+      method: GET
+      url: /ubi-api/v1/ind_view/getCollectInds
+      headers:
+          Accept: application/json, text/plain, */*
+      expected:
+        code: 200
+        message: "success"
+
+    addCollectInds:
+      description: 收藏指标
+      method: POST
+      url: /ubi-api/v1/ind_view/addCollectInds
+      headers:
+          Accept: application/json, text/plain, */*
+          Content-Type: application/json
+      payload:
+        indCodes: []
+      expected:
+        code: 200
+        message: "success"
+
+    removeCollectInds:
+      description: 取消收藏指标
+      method: POST
+      url: /ubi-api/v1/ind_view/removeCollectInds
+      headers:
+        Accept: application/json, text/plain, */*
+        Content-Type: application/json
+      payload:
+        indCodes: []
+      expected:
+        code: 200
+        message: "success"

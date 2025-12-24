@@ -21,8 +21,8 @@ InterfaceTest /
 pytest -q testcases/ubi --alluredir=reports/allure_results 
 pytest -q testcases/ubi/test_indicator_view.py/test_IndicatorView01 --alluredir=reports/allure_results
 pytest -q testcases/ubi/test_indicator_view.py::TestIndicatorView::test_IndicatorView02 --alluredir=reports/allure_results
-allure generate reports/allure_results -o reports/allure_reports --clean
-allure serve allure_reports
+allure serve reports/allure_reports
+allure-combine reports/allure_reports
 Ctrl+Alt+L
 
 
