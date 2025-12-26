@@ -12,7 +12,7 @@ from product.ubi.pages.Univranking import Univranking
 
 class TestUnivranking:
 
-    test_data =["RC00005"]
+    test_data =["RI02727"]
 
     @pytest.fixture(scope="module",params=test_data)
     def ubi_session(self,choose_product_session, request):

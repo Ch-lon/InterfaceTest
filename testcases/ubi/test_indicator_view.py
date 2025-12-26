@@ -55,7 +55,7 @@ class TestIndicatorView:
     def test_IndicatorView01(self, load_page, indicators_data):
         list_ind_info= indicators_data
         # 方法一：并发请求搜索所有指标
-        list_all_indicators_name = load_page.extract_all_indicator_name(list_ind_info)
+        list_all_indicators_name = load_page.extract_indicator_name_list(list_ind_info)
         results = load_page.search_all_indicator_by_concurrent(list_all_indicators_name)
         # 2. 分别提取 "请求失败" 和 "数据为空" 的指标列表
         failed_indicators = results.get("unsearchable", [])
@@ -144,6 +144,22 @@ class TestIndicatorView:
             print("添加收藏后的已收藏列表：", list_indName_after_addCollectInds)
             assert random_indName in list_indName_after_addCollectInds, f"添加收藏指标{random_indName}后，收藏列表{list_indName_after_addCollectInds}中不存在该指标！"
 
+    # @allure.story("指标查看tabs接口请求校验")
+    # @allure.title("检查指标查看tabs接口请求")
+    # @allure.tag("regression")
+    # @allure.description("请求增加标签接口，然后再请求关闭所有标签接口")
+    # def test_IndicatorView04(self, load_page, indicators_data):
+    #     # 获取包含指标名称和指标代码的字典
+    #     dict_all_indicators_with_name_and_code = load_page.extract_indicator_with_name_and_code(indicators_data)
+    #     # 随机选择一个指标
+    #     random_indName, random_indCode = load_page.do.get_random_key_and_value_from_dict(
+    #         dict_all_indicators_with_name_and_code)
+    #     print("随机选中指标：", random_indName, random_indCode)
+    #     load_page.updateIndViewTab_request (random_indCode,random_indCode)
+    #     list_tabName = load_page.getIndViewTabs_request()
+    #     print(f"添加标签 【{random_indName}】 后的标签列表：", list_tabName)
+    #     assert random_indName in list_tabName, f"添加标签【{random_indName}】后，标签列表{list_tabName}中仍不存在该标签！"
+    #     #load_page.deleteIndViewTabAll_request()
 
 
 

@@ -1,0 +1,27 @@
+detail_query:
+  benchmark_code:
+    description: 数据查询页面的标杆学校code
+    method: GET
+    url: /ubi-api/v1/benchmark/univ_code
+    headers:
+      Accept: application/json, text/plain, */*
+    expected:
+      code: 200
+      message: "success"
+
+  search_detail:
+    description: 数据查询页面的搜索接口
+    method: POST
+    url: /ubi-api/v1/search/search_detail
+    headers:
+        Accept: application/json, text/plain, */*
+        Content-Type: application/json
+    payload:
+      benchmarkdata:
+      instcode:
+      pageindex:
+      pagesize:
+      searchvalue:
+    expected:
+        code: 200
+        message: "success"

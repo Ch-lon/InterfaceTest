@@ -12,7 +12,7 @@ from product.ubi.pages.core_indicator import CoreIndicator
 
 
 class TestCoreIndicator:
-    test_data = ["RC00005"]
+    test_data = ["RI02727"]
 
     # 参数化测试，为不同的 school_code 运行测试
     @pytest.fixture(scope="module", params=test_data)

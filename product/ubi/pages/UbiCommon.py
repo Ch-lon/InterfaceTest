@@ -97,8 +97,8 @@ class UbiCommon:
         self.logging.info(f"当前院校同排名区间为：{range_val}")
         return range_val[0], range_val[1]
 
-    @allure.step("获取当前院校的各指标信息")
-    def get_indicators_info(self,rankingTypeId,verNo ) -> list :
+    @allure.step("获取当前院校总体定位的各指标信息")
+    def get_overview_indicators_info(self,rankingTypeId,verNo ) -> list :
         """从已获取的总体定位数据中提取各指标信息"""
         api_indicators = self.al.get_api('Overview', 'Overview', 'indicators_info')
         origin_url = api_indicators['url']
@@ -113,6 +113,40 @@ class UbiCommon:
         indicators = response_json["data"]
         all_ind_info: list = self.extract_partial_level_3_data(indicators)
         return all_ind_info
+
+    @allure.step("获取全部指标页面的全部指标信息")
+    def get_indicator_data_info(self) -> list:
+        """
+        获取排名趋势页当前版本的指标体系
+        :return:类似[{},{},{}]
+        """
+        api_indicator_data = self.al.get_api('indicator_data', 'indicator_data', 'indicators_info')
+        url = api_indicator_data['url']
+        response = self.ru.request(
+            method=api_indicator_data['method'],
+            url=url,
+            headers=api_indicator_data.get('headers')
+        )
+        response_json = response.json()
+        assert response_json["code"] == api_indicator_data["expected"][
+            "code"], f"全部指标页指标体系请求失败！请求响应:{response_json}"
+        # 指标信息是个列表
+        indicators = response_json["data"]
+        all_ind_info: list = self.extract_partial_level_3_data(indicators)
+        return all_ind_info
+
+    @allure.step("从全部指标列表中只提取指标名，并组成一个列表")
+    def extract_indicator_name_list(self, all_ind_info: list):
+        """
+        从全部指标列表中只提取指标名，并组成一个列表
+        :param all_ind_info: 全部指标列表
+        :return:只包含指标名的列表
+        """
+        ind_info: list = []
+        for dict_indicators in all_ind_info:
+            ind_name = dict_indicators["name"]
+            ind_info.append(ind_name)
+        return ind_info
 
     def extract_partial_level_3_data(self,data_list: list) -> list:
         """

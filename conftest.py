@@ -16,7 +16,7 @@ def config():
     """全局配置初始化"""
     config_path = get_absolute_path('config/config.yml')
     config_data = fm.load_yaml_file(config_path)
-    return config_data['测试环境']
+    return config_data['正式环境']
 
 
 @pytest.fixture(scope="session")

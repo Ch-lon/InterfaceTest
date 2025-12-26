@@ -39,19 +39,6 @@ class IndicatorView(UbiCommon):
         all_ind_info: list = self.extract_partial_level_3_data(indicators)
         return all_ind_info
 
-    @allure.step("从全部指标列表中只提取指标名，并组成一个列表")
-    def extract_all_indicator_name(self, all_ind_info: list):
-        """
-        从全部指标列表中只提取指标名，并组成一个列表
-        :param all_ind_info: 全部指标列表
-        :return:只包含指标名的列表
-        """
-        ind_info: list = []
-        for dict_indicators in all_ind_info:
-            ind_name = dict_indicators["name"]
-            ind_info.append(ind_name)
-        return ind_info
-
     @allure.step("从全部指标列表中提取指标名和指标code，并组成一个字典")
     def extract_indicator_with_name_and_code(self, all_ind_info: list)->dict:
         """
@@ -474,8 +461,8 @@ class IndicatorView(UbiCommon):
     @allure.step("取消收藏指标接口请求")
     def removeCollectInds_request(self,indCodes:str):
         """
-        :param indCodes:
-        :return:
+        取消收藏指标接口请求
+        :param indCodes:需要取消收藏的指标code
         """
         api_indicator_collect_list = self.al.get_api('indicator_view', 'indicator_view', 'removeCollectInds')
         url= api_indicator_collect_list["url"]
@@ -491,6 +478,68 @@ class IndicatorView(UbiCommon):
         )
         response_json = response.json()
         assert response_json['code'] == api_indicator_collect_list["expected"]["code"],f"指标查看页面取消收藏指标{indCodes}时发生错误，响应为{response_json}"
+
+
+    @allure.step("指标查看页面所有标签tabs请求")
+    def getIndViewTabs_request(self) -> list:
+        """
+        :return:所有指标标签名
+        """
+        api_getIndViewTabs = self.al.get_api('indicator_view', 'indicator_view', 'getIndViewTabs')
+        url= api_getIndViewTabs["url"]
+        response = self.ru.request(
+            method=api_getIndViewTabs['method'],
+            url=url,
+            headers=api_getIndViewTabs.get('headers')
+        )
+        response_json = response.json()
+        assert response_json['code'] == api_getIndViewTabs["expected"]["code"],f"指标查看页面所有标签tabs请求失败，响应为{response_json}"
+        list_tabs = response_json["data"]
+        list_all_tabs = []
+        for dict_tab in list_tabs:
+            if not list_tabs:
+                continue
+            tabName = self.do.get_value_from_dict(dict_tab,"tabName")
+            list_all_tabs.append(tabName)
+        return list_all_tabs
+
+    @allure.step("指标查看页面添加标签tab请求")
+    def updateIndViewTab_request(self,tabName:str,indCode):
+        """
+        添加标签请求
+        :param tabName: 标签名
+        :param indCode:指标code
+        """
+        api_updateIndViewTab = self.al.get_api('indicator_view', 'indicator_view', 'updateIndViewTab')
+        url= api_updateIndViewTab["url"]
+        payload = self.do.get_copy_key_from_dict(api_updateIndViewTab,"payload")
+        payload.update({
+            "tabName":tabName,
+            "indCode":indCode
+        })
+        response = self.ru.request(
+            method=api_updateIndViewTab['method'],
+            url=url,
+            headers=api_updateIndViewTab.get('headers'),
+            json=payload
+        )
+        response_json = response.json()
+        assert response_json['code'] == api_updateIndViewTab["expected"]["code"],f"指标查看页面添加标签{tabName}请求失败，响应为{response_json}"
+
+    @allure.step("指标查看页面关闭所有标签tabs请求")
+    def deleteIndViewTabAll_request(self):
+        """
+        关闭所有标签页
+        """
+        api_deleteIndViewTabAll = self.al.get_api('indicator_view', 'indicator_view', 'deleteIndViewTabAll')
+        url= api_deleteIndViewTabAll["url"]
+        response = self.ru.request(
+            method=api_deleteIndViewTabAll['method'],
+            url=url,
+            headers=api_deleteIndViewTabAll.get('headers')
+        )
+        response_json = response.json()
+        assert response_json['code'] == api_deleteIndViewTabAll["expected"]["code"],f"指标查看页面关闭所有标签页请求失败，响应为{response_json}"
 
 if __name__ == '__main__':
     IndicatorView = IndicatorView(UbiCommon)

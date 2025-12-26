@@ -33,3 +33,32 @@ report_center:
     expected:
         code: 200
         message: "success"
+
+  upload_images:
+    description: 上传图片
+    method: POST
+    url: /ubi-api/v1/attachment/upload-report-images
+    headers:
+      Accept: application/json, text/plain, */*
+    # 专门定义一个 files 节点，用于存放文件上传的配置
+    files:
+      # 接口要求的字段名 (对应抓包里的 name="files")
+      field_name: "files"
+      # 本地准备的实际图片路径 (建议用相对路径)
+      #file_path: "product/image/test_image.png"
+      # 传给服务器的伪造文件名 (对应 filename="...")
+      #virtual_name: "chart1-cn_186_CDVCVKLPK72kX3imE.png"
+      # 文件类型
+      #mime_type: "image/png"
+      items:
+        - file_path: "product/image/test_image.png"
+          virtual_name: "chart1-cn_186_001.png"
+          mime_type: "image/png"
+        - file_path: "product/image/test_image2.png"
+          virtual_name: "chart1-cn_186_002.png"
+          mime_type: "image/png"
+    payload:
+    expected:
+        code: 200
+        message: "success"
+

@@ -18,27 +18,6 @@ class IndicatorData(UbiCommon):
     """
     指标数据页面类
     """
-
-    @allure.step("获取全部指标页面的指标")
-    def get_indicator_data_info(self ) -> list:
-        """
-        获取排名趋势页当前版本的指标体系
-        :return:类似[{},{},{}]
-        """
-        api_indicator_data = self.al.get_api('indicator_data', 'indicator_data', 'indicators_info')
-        url = api_indicator_data['url']
-        response = self.ru.request(
-            method=api_indicator_data['method'],
-            url=url,
-            headers=api_indicator_data.get('headers')
-        )
-        response_json = response.json()
-        assert response_json["code"] == api_indicator_data["expected"]["code"], f"全部指标页指标体系请求失败！请求响应:{response_json}"
-        # 指标信息是个列表
-        indicators = response_json["data"]
-        all_ind_info: list = self.extract_partial_level_3_data(indicators)
-        return all_ind_info
-
     @allure.step("全部指标页面所有学校的指标数据")
     def get_all_school_indicator_data(self) -> dict:
         """

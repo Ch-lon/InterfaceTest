@@ -71,3 +71,37 @@ indicator_view:
       expected:
         code: 200
         message: "success"
+
+    getIndViewTabs:
+      description: 获取指标查看tabs
+      method: GET
+      url: /ubi-api/v1/ind_view/getIndViewTabs
+      headers:
+          Accept: application/json, text/plain, */*
+      expected:
+        code: 200
+        message: "success"
+
+    updateIndViewTab:
+      description: 更新指标查看tabs
+      method: POST
+      url: /ubi-api/v1/ind_view/updateIndViewTab
+      headers:
+          Accept: application/json, text/plain, */*
+          Content-Type: application/json
+      payload:
+          tabName:
+          indCode:
+      expected:
+          code: 200
+          message: "success"
+
+    deleteIndViewTabAll:
+      description: 删除指标查看所有tabs
+      method: POST
+      url: /ubi-api/v1/ind_view/deleteIndViewTabAll
+      headers:
+          Accept: application/json, text/plain, */*
+      expected:
+          code: 200
+          message: "success"
