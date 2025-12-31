@@ -10,7 +10,8 @@ import allure
 import pytest
 from product.ubi.pages.core_indicator import CoreIndicator
 
-
+@allure.feature("核心指标页")
+@allure.tag("API", "CoreIndicator")
 class TestCoreIndicator:
     test_data = ["RI02727"]
 
@@ -46,9 +47,10 @@ class TestCoreIndicator:
         list_ind_info = load_page.get_core_indicator_info(rankingTypeId, verNo)
         yield list_ind_info, rankingTypeId, verNo
 
-    @allure.step("核心指标数据导出")
+    @allure.story("核心指标数据导出")
     @allure.title("核心指标数据导出功能及文件是否正常")
-    @allure.tag("regression")
+    @allure.severity(allure.severity_level.CRITICAL)
+    @allure.tag("regression","API")
     @allure.description("核心指标数据导出功能及文件是否正常")
     def test_core_indicator01(self, indicators_data, load_page, univCode):
         """
@@ -59,9 +61,10 @@ class TestCoreIndicator:
         filename = f"{univCode}_核心指标_{verNo}.xlsx"
         load_page.check_export_response(response, "xlsx", filename)
 
-    @allure.step("指标明细请求")
+    @allure.story("指标明细请求")
     @allure.title("检查指标明细是否可以请求成功，以及是否有数据")
-    @allure.tag("regression")
+    @allure.severity(allure.severity_level.CRITICAL)
+    @allure.tag("regression", "API")
     @allure.description("检查指标明细是否可以请求成功，以及是否有数据")
     def test_core_indicator02(self, indicators_data, load_page):
         """
@@ -70,9 +73,10 @@ class TestCoreIndicator:
         list_ind_info, rankingTypeId, verNo = indicators_data
         load_page.detail_click(list_ind_info, verNo)
 
-    @allure.step("核心指标数据及排名形式验证")
+    @allure.story("核心指标数据及排名形式验证")
     @allure.title("核心指标数据及排名形式验证")
-    @allure.tag("regression")
+    @allure.severity(allure.severity_level.CRITICAL)
+    @allure.tag("regression", "API")
     @allure.description("1、该指标权重为0时：若数据为0，得分和百分比得分为'-'，排名为N+;数据不为0，得分有数值，但百分比得分均为0.0%，排名为N"
                         "2、指标权重不为0时：数据为0，得分为0，百分比得分为0.0%，排名为N+;数据不为0，得分和百分比得分均有数值，排名为N")
     def test_core_indicator03(self, indicators_data, load_page):

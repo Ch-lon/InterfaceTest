@@ -11,6 +11,8 @@ import allure,random,time
 from common.logger import get_logger
 from product.ubi.pages.indicator_view import IndicatorView
 
+@allure.feature("指标查看页")
+@allure.tag("API", "IndicatorView")
 class TestIndicatorView:
 
     logging = get_logger(__name__)
@@ -50,7 +52,8 @@ class TestIndicatorView:
 
     @allure.story("搜索指标接口校验")
     @allure.title("检查指标是否可以在指标查看被搜索")
-    @allure.tag("regression")
+    @allure.severity(allure.severity_level.CRITICAL)
+    @allure.tag("regression", "API")
     @allure.description("检查当前学校搜索指标接口")
     def test_IndicatorView01(self, load_page, indicators_data):
         list_ind_info= indicators_data
@@ -81,7 +84,8 @@ class TestIndicatorView:
 
     @allure.story("指标查看指标数据接口请求校验")
     @allure.title("检查指标数据接口请求")
-    @allure.tag("regression")
+    @allure.severity(allure.severity_level.CRITICAL)
+    @allure.tag("regression", "API")
     @allure.description("检查当前学校指标数据接口请求")
     def test_IndicatorView02(self, load_page, indicators_data):
         list_ind_info= indicators_data
@@ -115,7 +119,8 @@ class TestIndicatorView:
 
     @allure.story("收藏和取消收藏指标校验")
     @allure.title("收藏或取消收藏指标，并查看收藏列表中是否存在")
-    @allure.tag("regression")
+    @allure.severity(allure.severity_level.CRITICAL)
+    @allure.tag("regression", "API")
     @allure.description("若收藏列表中已存在该指标，则请求取消收藏接口；若不存在，则请求收藏接口")
     def test_IndicatorView03(self, load_page, indicators_data):
         # 获取包含指标名称和指标代码的字典

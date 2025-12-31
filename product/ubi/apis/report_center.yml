@@ -1,25 +1,13 @@
 report_center:
-  report_create:
-    description: 创建报告
-    method: POST
-    url: /ubi-api/v1/report/ranking_create
-    headers:
-        Accept: application/json, text/plain, */*
-        Content-Type: application/json
-    expected:
-        code: 200
-        message: "success"
-
   report_list:
     description: 报告中心列表
     method: POST
     url: /ubi-api/v1/report/report_list
     headers:
       Accept: application/json, text/plain, */*
-      Content-Type: application/json
-    data:
+    payload:
       reportLang: "zh-CN"
-      reportType: "ranking"
+      reportType:
     expected:
       code: 200
       message: "success"
@@ -62,3 +50,38 @@ report_center:
         code: 200
         message: "success"
 
+  ranking_create:
+    description: 创建报告
+    method: POST
+    url: /ubi-api/v1/report/ranking_create
+    headers:
+        Accept: application/json, text/plain, */*
+    payload:
+      name:
+      lang: "zh-CN"
+      rVerNo:
+      version:
+      OverViewImgUrls: []
+    expected:
+        code: 200
+        message: "success"
+
+  generate_report:
+    description: 生成报告
+    method: GET
+    url: /ubi-api/v1/report/{id}
+    headers:
+        Accept: application/json, text/plain, */*
+    expected:
+      code: 200
+      message: "success"
+
+  delete_report:
+      description: 删除报告
+      method: GET
+      url: /ubi-api/v1/report/delete/{reportId}?reportId={reportId}
+      headers:
+        Accept: application/json, text/plain, */*
+      expected:
+          code: 200
+          message: "success"

@@ -10,6 +10,8 @@ import allure
 import pytest
 from product.ubi.pages.ranking_monitor import RankingMonitor
 
+@allure.feature("排名监测页")
+@allure.tag("API", "RankingMonitor")
 class TestRankingMonitor:
     test_data = ["RC00005","RI02727"]
 
@@ -63,9 +65,10 @@ class TestRankingMonitor:
         page = RankingMonitor(session)
         yield page
 
-    @allure.step("排名监测数据导出")
+    @allure.story("排名监测数据导出")
     @allure.title("排名监测数据导出功能及文件是否正常")
-    @allure.tag("regression")
+    @allure.severity(allure.severity_level.CRITICAL)
+    @allure.tag("regression", "API")
     @allure.description("排名监测数据导出功能及文件是否正常")
     def test_ranking_monitor01(self, load_page, univCode):
         """
@@ -75,9 +78,10 @@ class TestRankingMonitor:
         filename = f"{univCode}_排名监测.xlsx"
         load_page.check_export_response(response, "xlsx", filename)
 
-    @allure.step("各类排名数据校验")
+    @allure.story("各类排名数据校验")
     @allure.title("各类排名数据校验")
-    @allure.tag("regression")
+    @allure.severity(allure.severity_level.CRITICAL)
+    @allure.tag("regression", "API")
     @allure.description("各类排名数据校验")
     def test_ranking_monitor02(self, load_page):
         """

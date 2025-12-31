@@ -10,6 +10,8 @@ import allure
 import pytest
 from product.ubi.pages.benchmark import Benchmark
 
+@allure.feature("标杆对比页")
+@allure.tag("API", "Benchmark")
 class TestBenchmark:
     test_data = ["RI02727"]
 
@@ -47,9 +49,10 @@ class TestBenchmark:
         list_ind_info = load_page.get_benchmark_indicators(rankingTypeId, verNo)
         yield list_ind_info, rankingTypeId, verNo
 
-    @allure.step("指标明细请求")
+    @allure.story("指标明细请求")
     @allure.title("检查指标明细是否可以请求成功，以及是否有数据")
-    @allure.tag("regression")
+    @allure.severity(allure.severity_level.CRITICAL)
+    @allure.tag("regression","API")
     @allure.description("检查指标明细是否可以请求成功，以及是否有数据")
     def test_benchmark01(self, indicators_data, load_page):
         """
@@ -102,9 +105,10 @@ class TestBenchmark:
             error_msg = f"{verNo} 下标杆对比共有 {len(list_fail_indicators)} 个指标明细请求失败。失败的指标有：{list_fail_indicators}"
             raise AssertionError(error_msg)
 
-    @allure.step("标杆对比数据导出")
+    @allure.story("标杆对比数据导出")
     @allure.title("标杆对比数据导出功能及文件是否正常")
-    @allure.tag("regression")
+    @allure.severity(allure.severity_level.CRITICAL)
+    @allure.tag("regression","API")
     @allure.description("标杆对比数据导出功能及文件是否正常")
     def test_benchmark02(self, indicators_data, load_page, univCode):
         """

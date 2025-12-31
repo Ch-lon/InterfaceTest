@@ -64,7 +64,12 @@ class ApiLoader:
         # 3. 再次检查并获取API配置
         try:
             # 创建并返回数据副本,避免直接返回原始数据引用
-            return self.apis[module_name][api_name].copy()
+            value = self.apis[module_name][api_name]
+            if isinstance(value, (dict, list)):
+                return value.copy()
+            else:
+                # 处理字符串类型的情况
+                return value  #
         except KeyError:
             # 如果加载后依然找不到，说明配置确实不存在
             raise ValueError(f"API配置 {api_file_name}.yml 中不存在: {module_name}.{api_name}")

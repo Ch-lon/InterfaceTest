@@ -11,6 +11,8 @@ from product.ubi.pages.simulate import Simulate
 import allure
 import pytest
 
+@allure.feature("排名推演页")
+@allure.tag("API", "Simulate")
 class TestSimulate:
 
     test_data =["RC00005"]
@@ -46,9 +48,10 @@ class TestSimulate:
         list_ind_info = load_page.simulate_indicators(rankingTypeId, verNo)
         yield list_ind_info, rankingTypeId, verNo
 
-    @allure.step("没改变传入参数直接点击模拟")
+    @allure.story("没改变传入参数直接点击模拟")
     @allure.title("检查没有改变传入参数模拟后，得分和排名是否改变")
-    @allure.tag("regression")
+    @allure.severity(allure.severity_level.CRITICAL)
+    @allure.tag("regression", "API")
     @allure.description("检查改变传入参数模拟后，得分和排名是否改变")
     def test_simulate01(self, load_page, indicators_data):
         list_ind_info, rankingTypeId, verNo = indicators_data
@@ -66,9 +69,10 @@ class TestSimulate:
         print(f"初始结果为：{dict_init_data}，\n模拟结果为：{dict_simulate_result}")
         assert dict_init_data == dict_simulate_result, f"请求模拟后得分或排名发生改变！初始结果为：{dict_init_data}，没有改变数据，模拟结果为：{dict_simulate_result}"
 
-    @allure.step("循环以大学联盟中10个数据进行模拟")
+    @allure.story("循环以大学联盟中10个数据进行模拟")
     @allure.title("循环以大学联盟中10个数据进行模拟，学校的得分和排名是否改变")
-    @allure.tag("regression")
+    @allure.severity(allure.severity_level.CRITICAL)
+    @allure.tag("regression", "API")
     @allure.description("检查循环模拟大学联盟中10个数据，学校的得分和排名是否改变")
     def test_simulate02(self, load_page, indicators_data):
         list_ind_info, rankingTypeId, verNo = indicators_data
@@ -108,9 +112,10 @@ class TestSimulate:
         if failed_cases:
             pytest.fail(f"以下测试用例失败:\n" + "\n".join(failed_cases))
 
-    @allure.step("数据导出")
+    @allure.story("数据导出")
     @allure.title("数据导出")
-    @allure.tag("regression")
+    @allure.severity(allure.severity_level.CRITICAL)
+    @allure.tag("regression", "API")
     @allure.description("数据导出")
     def test_simulate03(self, load_page, indicators_data, univCode):
         list_ind_info, rankingTypeId, verNo = indicators_data
@@ -118,9 +123,10 @@ class TestSimulate:
         file_name = f"{univCode}-ARWU推演-{verNo}.xlsx"
         load_page.check_export_response(resp, "xlsx", file_name)
 
-    @allure.step("指标明细请求")
+    @allure.story("指标明细请求")
     @allure.title("检查指标明细是否可以请求成功，以及是否有数据")
-    @allure.tag("regression")
+    @allure.severity(allure.severity_level.CRITICAL)
+    @allure.tag("regression", "API")
     @allure.description("检查指标明细是否可以请求成功，以及是否有数据")
     def test_simulate04(self, load_page, indicators_data):
         list_ind_info, rankingTypeId, verNo = indicators_data

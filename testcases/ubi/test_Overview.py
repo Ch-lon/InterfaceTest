@@ -41,12 +41,13 @@ class TestOverview:
         获取总定位数据
         """
         rankingTypeId, verNo = load_page.get_version()
-        list_ind_data = load_page.get_indicators_info(rankingTypeId, verNo)
+        list_ind_data = load_page.get_overview_indicators_info(rankingTypeId, verNo)
         yield list_ind_data,rankingTypeId,verNo
 
     @allure.story("数据导出校验")
     @allure.title("检查数据导出的响应")
-    @allure.tag("regression")
+    @allure.severity(allure.severity_level.CRITICAL)
+    @allure.tag("regression", "API")
     @allure.description("检查数据导出的响应是否符合预期")
     def test_Overview01(self, load_page,indicators_data,univCode):
         # 获取版本及排名类型信息
@@ -63,7 +64,8 @@ class TestOverview:
 
     @allure.story("总体定位指标排名校验")
     @allure.title("检查指标排名数值")
-    @allure.tag("regression")
+    @allure.severity(allure.severity_level.CRITICAL)
+    @allure.tag("regression", "API")
     @allure.description("指标排名不会为0或0+")
     def test_Overview02(self, load_page,indicators_data):
         list_ind_data,rankingTypeId, verNo = indicators_data
@@ -77,7 +79,8 @@ class TestOverview:
 
     @allure.story("总体定位明细点击校验")
     @allure.title("点击指标明细")
-    @allure.tag("regression")
+    @allure.severity(allure.severity_level.CRITICAL)
+    @allure.tag("regression", "API")
     @allure.description("查看指标明细是否有数据")
     def test_Overview03(self, load_page,indicators_data):
         #rankingTypeId, list_verNo = indicators_data

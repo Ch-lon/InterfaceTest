@@ -10,6 +10,8 @@ import pytest
 import allure
 from product.ubi.pages.Univranking import Univranking
 
+@allure.feature("动态排名页")
+@allure.tag("API", "Univranking")
 class TestUnivranking:
 
     test_data =["RI02727"]
@@ -41,23 +43,25 @@ class TestUnivranking:
         获取总定位数据
         """
         rankingTypeId, verNo = load_page.get_version()
-        list_ind_data = load_page.get_indicators_info(rankingTypeId, verNo)
-        yield list_ind_data, rankingTypeId, verNo
+        #list_ind_data = load_page.get_indicators_info(rankingTypeId, verNo)
+        yield rankingTypeId, verNo
 
     @allure.story("动态排名校验")
     @allure.title("检查各学校当前版本的排名")
-    @allure.tag("regression")
+    @allure.severity(allure.severity_level.CRITICAL)
+    @allure.tag("regression", "API")
     @allure.description("检查各学校当前版本的排名")
     def test_Univranking01(self, load_page, indicators_data):
-        _, rankingTypeId, verNo = indicators_data
+        rankingTypeId, verNo = indicators_data
         load_page.get_all_univ_ranking( rankingTypeId,verNo,"202508")
 
     @allure.story("动态排名数据导出校验")
     @allure.title("导出各学校当前版本的排名")
-    @allure.tag("regression")
+    @allure.severity(allure.severity_level.CRITICAL)
+    @allure.tag("regression", "API")
     @allure.description("导出各学校当前版本的排名")
     def test_Univranking02(self, load_page, indicators_data, univCode):
-        _, rankingTypeId, verNo = indicators_data
+        rankingTypeId, verNo = indicators_data
         res = load_page.export_univ_ranking(rankingTypeId, verNo, "202508")
         file_name = f"{univCode}-动态排名-{verNo}.xlsx"
         load_page.check_export_response(res, "xlsx", file_name)

@@ -1,532 +1,218 @@
-x= {'获权威奖项教师': {'code': 'indt', 'year': '1981-2024'}, '高被引科学家': {'code': 'arind3', 'year': '2025'},
-    '诺奖菲奖教师折合数': {'code': 'ind243', 'year': '1901-2025'},
-    '诺贝尔奖教师折合数': {'code': 'ind106', 'year': '1901-2025'},
-    '菲尔兹奖教师折合数': {'code': 'ind107', 'year': '1901-2025'}, '国际期刊主编': {'code': 'ijeb1', 'year': '2025'},
-    '国际学术组织负责人': {'code': 'iao', 'year': '2025'}, '国际权威奖项数': {'code': 'ind109', 'year': '1901-2024'},
-    '计算机科学与工程-图灵奖': {'code': 'ind10916', 'year': '1901-2024'},
-    '化学工程-安德烈亚斯·阿克里沃斯化学工程专业进步奖': {'code': 'ind10918', 'year': '1901-2024'},
-    '图书馆与信息科学-ASIST荣誉奖': {'code': 'ind10936', 'year': '1901-2024'},
-    '机械工程-美国机械工程师学会奖章': {'code': 'ind10911', 'year': '1901-2024'},
-    '船舶与海洋工程-ASME-OOAE终身成就奖': {'code': 'ind10925', 'year': '1901-2024'},
-    '通信工程-香农奖': {'code': 'ind10914', 'year': '1901-2024'},
-    '统计学-考普斯会长奖': {'code': 'ind10933', 'year': '1901-2024'},
-    '地球科学-克拉福德地球科学奖': {'code': 'ind1097', 'year': '1901-2024'},
-    '地球科学-欧洲地球科学联盟道尔顿奖': {'code': 'ind10924', 'year': '1901-2024'},
-    '数学-菲尔兹奖': {'code': 'ind1091', 'year': '1901-2024'},
-    '能源科学与工程-全球能源奖': {'code': 'ind10921', 'year': '1901-2024'},
-    '口腔科学-IADR杰出科学家奖': {'code': 'ind10928', 'year': '1901-2024'},
-    '医疗技术-IEEE生物医学工程奖': {'code': 'ind10931', 'year': '1901-2024'},
-    '自动化与控制-IEEE控制系统奖': {'code': 'ind10913', 'year': '1901-2024'},
-    '电气与电子工程-IEEE荣誉勋章': {'code': 'ind10912', 'year': '1901-2024'},
-    '土木工程-国际结构工程终身成就奖': {'code': 'ind10917', 'year': '1901-2024'},
-    '医学技术-ISMRM金奖': {'code': 'ind10930', 'year': '1901-2024'},
-    '临床医学-拉斯克-狄贝基临床医学研究奖': {'code': 'ind10927', 'year': '1901-2024'},
-    '通信工程-马可尼奖': {'code': 'ind10915', 'year': '1901-2024'},
-    '材料科学与工程-美国材料学会奖章': {'code': 'ind10920', 'year': '1901-2024'},
-    '化学-诺贝尔化学奖': {'code': 'ind1094', 'year': '1901-2024'},
-    '物理-诺贝尔物理学奖': {'code': 'ind1093', 'year': '1901-2024'},
-    '生物科学-诺贝尔生理学或医学奖': {'code': 'ind10926', 'year': '1901-2024'},
-    '护理-国际护理研究者名人堂': {'code': 'ind10929', 'year': '1901-2024'},
-    '化学-普利斯特里奖': {'code': 'ind1095', 'year': '1901-2024'},
-    '水资源-霍顿奖': {'code': 'ind10923', 'year': '1901-2024'},
-    '环境科学与工程-斯德哥尔摩水奖': {'code': 'ind10922', 'year': '1901-2024'},
-    '数学-阿贝尔奖': {'code': 'ind1092', 'year': '1901-2024'},
-    '大气科学-卡尔·古斯塔夫·罗斯贝奖章': {'code': 'ind1099', 'year': '1901-2024'},
-    '政治学-约翰·斯凯特政治科学奖': {'code': 'ind10934', 'year': '1901-2024'},
-    '大气科学-朱尔·查尼奖': {'code': 'ind1098', 'year': '1901-2024'},
-    '经济学-诺贝尔经济学奖': {'code': 'ind10932', 'year': '1901-2024'},
-    '机械工程-铁木辛柯奖': {'code': 'ind10910', 'year': '1901-2024'},
-    '旅游-尤利西斯奖': {'code': 'ind10935', 'year': '1901-2024'},
-    '材料科学与工程-冯·希佩尔奖': {'code': 'ind10919', 'year': '1901-2024'},
-    '化学-沃尔夫化学奖': {'code': 'ind1096', 'year': '1901-2024'},
-    '数学-沃尔夫数学奖': {'code': 'ind10974', 'year': '1901-2024'},
-    '海洋科学-斯维尔德鲁普金质奖章': {'code': 'ind10975', 'year': '1901-2024'},
-    '海洋科学-Henry Stommel研究奖章': {'code': 'ind10976', 'year': '1901-2024'},
-    '大气科学-罗杰·雷维尔奖章': {'code': 'ind10977', 'year': '1901-2024'},
-    '控制科学与工程-IEEE机器人和自动化奖': {'code': 'ind10978', 'year': '1901-2024'},
-    '冶金工程-TMS Fellow奖': {'code': 'ind10979', 'year': '1901-2024'},
-    '统计学-国际统计学奖': {'code': 'ind10980', 'year': '1901-2024'},
-    '心理学-美国心理学会杰出科学贡献奖': {'code': 'ind10981', 'year': '1901-2024'},
-    '公共管理-国际公共管理奖': {'code': 'ind10982', 'year': '1901-2024'},
-    '政治学-Stein Rokkan 比较社会科学研究奖': {'code': 'ind10983', 'year': '1901-2024'},
-    '公共管理-库伊曼奖': {'code': 'ind10984', 'year': '1901-2024'},
-    '旅游休闲管理-IFITT年度最佳期刊论文奖': {'code': 'ind10985', 'year': '1901-2024'},
-    'Nature和Science论文折合数': {'code': 'ind251', 'year': '2020-2024'},
-    'Nature论文': {'code': 'indnature', 'year': '2020-2024'},
-    'Science论文': {'code': 'indscience', 'year': '2020-2024'},
-    '顶尖期刊论文数-综合': {'code': 'ind240', 'year': '2020-2024'},
-    'Nature': {'code': 'indnature_all', 'year': '2020-2024'},
-    'Science': {'code': 'indscience_all', 'year': '2020-2024'},
-    '顶尖期刊论文数-自然科学': {'code': 'ind1141', 'year': '2020-2024'},
-    '大气科学': {'code': 'ind1141-4', 'year': '2020-2024'}, '化学': {'code': 'ind1141-8', 'year': '2020-2024'},
-    '地球科学': {'code': 'ind1141-3', 'year': '2020-2024'}, '生态学': {'code': 'ind1141-5', 'year': '2020-2024'},
-    '地理': {'code': 'ind1141-6', 'year': '2020-2024'}, '数学': {'code': 'ind1141-7', 'year': '2020-2024'},
-    '海洋学': {'code': 'ind1141-1', 'year': '2020-2024'}, '物理': {'code': 'ind1141-2', 'year': '2020-2024'},
-    '顶尖期刊论文数-工程学': {'code': 'ind1142', 'year': '2020-2024'},
-    '航空航天工程': {'code': 'ind1142-1', 'year': '2020-2024'},
-    '自动化与控制': {'code': 'ind1142-9', 'year': '2020-2024'}, '化学工程': {'code': 'ind1142-8', 'year': '2020-2024'},
-    '电气与电子工程': {'code': 'ind1142-10', 'year': '2020-2024'},
-    '能源科学与工程': {'code': 'ind1142-5', 'year': '2020-2024'},
-    '环境科学与工程': {'code': 'ind1142-4', 'year': '2020-2024'},
-    '食品科学与技术': {'code': 'ind1142-2', 'year': '2020-2024'},
-    '船舶与海洋工程': {'code': 'ind1142-11', 'year': '2020-2024'},
-    '材料科学与工程': {'code': 'ind1142-7', 'year': '2020-2024'},
-    '冶金工程': {'code': 'ind1142-14', 'year': '2020-2024'},
-    '采矿与矿物工程': {'code': 'ind1142-13', 'year': '2020-2024'},
-    '纳米科学与纳米技术': {'code': 'ind1142-6', 'year': '2020-2024'},
-    '遥感': {'code': 'ind1142-12', 'year': '2020-2024'}, '水资源': {'code': 'ind1142-3', 'year': '2020-2024'},
-    '机械工程': {'code': 'ind1142-15', 'year': '2020-2024'}, '通信工程': {'code': 'ind1142-16', 'year': '2020-2024'},
-    '生物医学工程': {'code': 'ind1142-17', 'year': '2020-2024'},
-    '顶尖期刊论文数-生命科学': {'code': 'ind1143', 'year': '2020-2024'},
-    '生物科学': {'code': 'ind1143-3', 'year': '2020-2024'}, '人类生物科学': {'code': 'ind1143-1', 'year': '2020-2024'},
-    '兽医科学': {'code': 'ind1143-2', 'year': '2020-2024'},
-    '顶尖期刊论文数-医学': {'code': 'ind1144', 'year': '2020-2024'},
-    '临床医学': {'code': 'ind1144-5', 'year': '2020-2024'},
-    '牙科和口腔科学': {'code': 'ind1144-4', 'year': '2020-2024'},
-    '医疗技术': {'code': 'ind1144-2', 'year': '2020-2024'}, '护理': {'code': 'ind1144-3', 'year': '2020-2024'},
-    '药学与制药科学': {'code': 'ind1144-1', 'year': '2020-2024'},
-    '顶尖期刊论文数-社会科学': {'code': 'ind1145', 'year': '2020-2024'},
-    '会计与金融': {'code': 'ind1145-9', 'year': '2020-2024'}, '通信': {'code': 'ind1145-7', 'year': '2020-2024'},
-    '经济学': {'code': 'ind1145-1', 'year': '2020-2024'}, '教育': {'code': 'ind1145-6', 'year': '2020-2024'},
-    '酒店与旅游管理': {'code': 'ind1145-12', 'year': '2020-2024'}, '法律': {'code': 'ind1145-3', 'year': '2020-2024'},
-    '图书馆与信息科学': {'code': 'ind1145-13', 'year': '2020-2024'},
-    '管理': {'code': 'ind1145-10', 'year': '2020-2024'}, '政治学': {'code': 'ind1145-4', 'year': '2020-2024'},
-    '心理学': {'code': 'ind1145-8', 'year': '2020-2024'}, '公共行政': {'code': 'ind1145-11', 'year': '2020-2024'},
-    '社会学': {'code': 'ind1145-5', 'year': '2020-2024'}, '统计学': {'code': 'ind1145-2', 'year': '2020-2024'},
-    '顶尖会议论文数-计算机': {'code': 'ind1146', 'year': '2020-2024'},
-    '计算机科学与工程': {'code': 'ind1146-1', 'year': '2020-2024'},
-    '诺奖菲奖校友折合数': {'code': 'ind242', 'year': '1901-2025'},
-    '诺贝尔奖校友折合数': {'code': 'ind115', 'year': '1901-2025'},
-    '菲尔兹奖校友折合数': {'code': 'ind116', 'year': '1901-2025'},
-    '获国际权威奖项校友': {'code': 'ind246', 'year': '1901-2024'}, '学校总收入': {'code': 'ind51', 'year': '2023'},
-    '捐赠收入': {'code': 'ind56', 'year': '2023'}, '企业科研经费': {'code': 'ind86', 'year': '2023'},
-    '国际论文折合数': {'code': 'ind252', 'year': '2024'}, 'SCIE论文': {'code': 'ind230', 'year': '2024'},
-    'SSCI论文': {'code': 'ind231', 'year': '2024'}, '被SCIE或SSCI收录的论文数': {'code': 'ind232', 'year': '2024'},
-    '国际期刊论文数': {'code': 'ind241', 'year': '2024'}, '国际期刊编委': {'code': 'ijeb2', 'year': '2025'},
-    '科研经费': {'code': 'ind70', 'year': '2023'},
-    '爱思唯尔全球前2%“终身影响力”上榜科学家(人次)': {'code': 'ind259', 'year': '2025'},
-    '爱思唯尔全球前2%“年度影响力”上榜科学家(人次)': {'code': 'ind260', 'year': '2025'},
-    '学生总数': {'code': 'ind39', 'year': '2023'}, '本科生数': {'code': 'ind40', 'year': '2023'},
-    '硕士生数': {'code': 'ind41', 'year': '2023'}, '博士生数': {'code': 'ind42', 'year': '2023'},
-    '研究生数': {'code': 'ind43', 'year': '2023'}, '研究生比例': {'code': 'ind44', 'year': '2023'},
-    '学士学位授予数': {'code': 'ind45', 'year': '2023'}, '硕士学位授予数': {'code': 'ind46', 'year': '2023'},
-    '博士学位授予数': {'code': 'ind47', 'year': '2023'}, '留学生数': {'code': 'ind126', 'year': '2023'},
-    '留学生比例': {'code': 'ind96', 'year': '2023'}, '本科留学生数': {'code': 'ind91', 'year': '2023'},
-    '本科留学生比例': {'code': 'ind92', 'year': '2023'}, '硕士留学生数': {'code': 'ind93', 'year': '2023'},
-    '硕士留学生比例': {'code': 'ind123', 'year': '2023'}, '博士留学生数': {'code': 'ind94', 'year': '2023'},
-    '博士留学生比例': {'code': 'ind124', 'year': '2023'}, '研究生留学生数': {'code': 'ind125', 'year': '2023'},
-    '研究生留学生比例': {'code': 'ind95', 'year': '2023'}, '师均表现综合得分': {'code': 'ind253', 'year': '2024'},
-    '诺奖菲奖校友折合数（师均）': {'code': 'ind254', 'year': '1901-2025'},
-    '诺奖菲奖教师折合数（师均）': {'code': 'ind255', 'year': '1901-2025'},
-    '高被引科学家（师均）': {'code': 'ind256', 'year': '2025'},
-    'Nature和Science论文折合数（师均）': {'code': 'ind257', 'year': '2020-2024'},
-    '国际论文折合数（师均）': {'code': 'ind258', 'year': '2024'}, '全时教师数': {'code': 'ind57', 'year': '2024'},
-    '师生比': {'code': 'ind62', 'year': '2023'}, '国际教师数': {'code': 'ind98', 'year': '2023'},
-    '国际教师比例': {'code': 'ind99', 'year': '2023'}, '专职科研人员': {'code': 'ind60', 'year': '2023'}}
+# InterfaceTest/run_test.py
+import pytest
+import os
+import yaml
+import time
+# 引入新写的类
+from common.FeishuNotification import FeishuNotification
+from common.ApiLoader import ApiLoader  # 假设你用这个读取config
+from common.path_util import get_absolute_path
+from common.FileManager import FileManager
 
-z= [{'id': '709', 'name': '获权威奖项教师', 'code': 'indt', 'editable': '', 'detailDefId': 1302,
-     'availVer': [1981, 2024], 'targetVerName': '1981-2024', 'weight': 0, 'isRank': False, 'isSim': False,
-     'indData': {}}, {'id': '22', 'name': '高被引科学家', 'code': 'arind3', 'editable': 'detail', 'detailDefId': 1299,
-                      'availVer': [2019, 2025], 'targetVerName': '2025', 'weight': 20, 'isRank': True, 'isSim': False,
-                      'indData': {}},
-    {'id': '526', 'name': '诺奖菲奖教师折合数', 'code': 'ind243', 'editable': '', 'detailDefId': 1298,
-     'availVer': [1901, 2025], 'targetVerName': '1901-2025', 'weight': 0, 'isRank': False, 'isSim': False,
-     'indData': {}}, {'id': '34', 'name': '诺贝尔奖教师折合数', 'code': 'ind106', 'editable': '', 'detailDefId': 1298,
-                      'availVer': [1901, 2025], 'targetVerName': '1901-2025', 'weight': 0, 'isRank': False,
-                      'isSim': False, 'indData': {}},
-    {'id': '35', 'name': '菲尔兹奖教师折合数', 'code': 'ind107', 'editable': '', 'detailDefId': 1298,
-     'availVer': [1901, 2025], 'targetVerName': '1901-2025', 'weight': 0, 'isRank': False, 'isSim': False,
-     'indData': {}}, {'id': '676', 'name': '国际期刊主编', 'code': 'ijeb1', 'editable': '', 'detailDefId': 1290,
-                      'availVer': [2023, 2025], 'targetVerName': '2025', 'weight': 0, 'isRank': False, 'isSim': False,
-                      'indData': {}},
-    {'id': '694', 'name': '国际学术组织负责人', 'code': 'iao', 'editable': '', 'detailDefId': 1301,
-     'availVer': [2025, 2025], 'targetVerName': '2025', 'weight': 0, 'isRank': False, 'isSim': False, 'indData': {}},
-    {'id': '202', 'name': '国际权威奖项数', 'code': 'ind109', 'editable': '', 'detailDefId': 1286,
-     'availVer': [1901, 2024], 'targetVerName': '1901-2024', 'weight': 0, 'isRank': False, 'isSim': False,
-     'indData': {}},
-    {'id': '347', 'name': '计算机科学与工程-图灵奖', 'code': 'ind10916', 'editable': '', 'detailDefId': 1286,
-     'availVer': [1901, 2024], 'targetVerName': '1901-2024', 'weight': 0, 'isRank': False, 'isSim': False,
-     'indData': {}},
-    {'id': '349', 'name': '化学工程-安德烈亚斯·阿克里沃斯化学工程专业进步奖', 'code': 'ind10918', 'editable': '',
-     'detailDefId': 1286, 'availVer': [1901, 2024], 'targetVerName': '1901-2024', 'weight': 0, 'isRank': False,
-     'isSim': False, 'indData': {}},
-    {'id': '367', 'name': '图书馆与信息科学-ASIST荣誉奖', 'code': 'ind10936', 'editable': '', 'detailDefId': 1286,
-     'availVer': [1901, 2024], 'targetVerName': '1901-2024', 'weight': 0, 'isRank': False, 'isSim': False,
-     'indData': {}},
-    {'id': '342', 'name': '机械工程-美国机械工程师学会奖章', 'code': 'ind10911', 'editable': '', 'detailDefId': 1286,
-     'availVer': [1901, 2024], 'targetVerName': '1901-2024', 'weight': 0, 'isRank': False, 'isSim': False,
-     'indData': {}},
-    {'id': '356', 'name': '船舶与海洋工程-ASME-OOAE终身成就奖', 'code': 'ind10925', 'editable': '', 'detailDefId': 1286,
-     'availVer': [1901, 2024], 'targetVerName': '1901-2024', 'weight': 0, 'isRank': False, 'isSim': False,
-     'indData': {}}, {'id': '345', 'name': '通信工程-香农奖', 'code': 'ind10914', 'editable': '', 'detailDefId': 1286,
-                      'availVer': [1901, 2024], 'targetVerName': '1901-2024', 'weight': 0, 'isRank': False,
-                      'isSim': False, 'indData': {}},
-    {'id': '364', 'name': '统计学-考普斯会长奖', 'code': 'ind10933', 'editable': '', 'detailDefId': 1286,
-     'availVer': [1901, 2024], 'targetVerName': '1901-2024', 'weight': 0, 'isRank': False, 'isSim': False,
-     'indData': {}},
-    {'id': '338', 'name': '地球科学-克拉福德地球科学奖', 'code': 'ind1097', 'editable': '', 'detailDefId': 1286,
-     'availVer': [1901, 2024], 'targetVerName': '1901-2024', 'weight': 0, 'isRank': False, 'isSim': False,
-     'indData': {}},
-    {'id': '355', 'name': '地球科学-欧洲地球科学联盟道尔顿奖', 'code': 'ind10924', 'editable': '', 'detailDefId': 1286,
-     'availVer': [1901, 2024], 'targetVerName': '1901-2024', 'weight': 0, 'isRank': False, 'isSim': False,
-     'indData': {}}, {'id': '332', 'name': '数学-菲尔兹奖', 'code': 'ind1091', 'editable': '', 'detailDefId': 1286,
-                      'availVer': [1901, 2024], 'targetVerName': '1901-2024', 'weight': 0, 'isRank': False,
-                      'isSim': False, 'indData': {}},
-    {'id': '352', 'name': '能源科学与工程-全球能源奖', 'code': 'ind10921', 'editable': '', 'detailDefId': 1286,
-     'availVer': [1901, 2024], 'targetVerName': '1901-2024', 'weight': 0, 'isRank': False, 'isSim': False,
-     'indData': {}},
-    {'id': '359', 'name': '口腔科学-IADR杰出科学家奖', 'code': 'ind10928', 'editable': '', 'detailDefId': 1286,
-     'availVer': [1901, 2024], 'targetVerName': '1901-2024', 'weight': 0, 'isRank': False, 'isSim': False,
-     'indData': {}},
-    {'id': '362', 'name': '医疗技术-IEEE生物医学工程奖', 'code': 'ind10931', 'editable': '', 'detailDefId': 1286,
-     'availVer': [1901, 2024], 'targetVerName': '1901-2024', 'weight': 0, 'isRank': False, 'isSim': False,
-     'indData': {}},
-    {'id': '344', 'name': '自动化与控制-IEEE控制系统奖', 'code': 'ind10913', 'editable': '', 'detailDefId': 1286,
-     'availVer': [1901, 2024], 'targetVerName': '1901-2024', 'weight': 0, 'isRank': False, 'isSim': False,
-     'indData': {}},
-    {'id': '343', 'name': '电气与电子工程-IEEE荣誉勋章', 'code': 'ind10912', 'editable': '', 'detailDefId': 1286,
-     'availVer': [1901, 2024], 'targetVerName': '1901-2024', 'weight': 0, 'isRank': False, 'isSim': False,
-     'indData': {}},
-    {'id': '348', 'name': '土木工程-国际结构工程终身成就奖', 'code': 'ind10917', 'editable': '', 'detailDefId': 1286,
-     'availVer': [1901, 2024], 'targetVerName': '1901-2024', 'weight': 0, 'isRank': False, 'isSim': False,
-     'indData': {}},
-    {'id': '361', 'name': '医学技术-ISMRM金奖', 'code': 'ind10930', 'editable': '', 'detailDefId': 1286,
-     'availVer': [1901, 2024], 'targetVerName': '1901-2024', 'weight': 0, 'isRank': False, 'isSim': False,
-     'indData': {}}, {'id': '358', 'name': '临床医学-拉斯克-狄贝基临床医学研究奖', 'code': 'ind10927', 'editable': '',
-                      'detailDefId': 1286, 'availVer': [1901, 2024], 'targetVerName': '1901-2024', 'weight': 0,
-                      'isRank': False, 'isSim': False, 'indData': {}},
-    {'id': '346', 'name': '通信工程-马可尼奖', 'code': 'ind10915', 'editable': '', 'detailDefId': 1286,
-     'availVer': [1901, 2024], 'targetVerName': '1901-2024', 'weight': 0, 'isRank': False, 'isSim': False,
-     'indData': {}},
-    {'id': '351', 'name': '材料科学与工程-美国材料学会奖章', 'code': 'ind10920', 'editable': '', 'detailDefId': 1286,
-     'availVer': [1901, 2024], 'targetVerName': '1901-2024', 'weight': 0, 'isRank': False, 'isSim': False,
-     'indData': {}}, {'id': '335', 'name': '化学-诺贝尔化学奖', 'code': 'ind1094', 'editable': '', 'detailDefId': 1286,
-                      'availVer': [1901, 2024], 'targetVerName': '1901-2024', 'weight': 0, 'isRank': False,
-                      'isSim': False, 'indData': {}},
-    {'id': '334', 'name': '物理-诺贝尔物理学奖', 'code': 'ind1093', 'editable': '', 'detailDefId': 1286,
-     'availVer': [1901, 2024], 'targetVerName': '1901-2024', 'weight': 0, 'isRank': False, 'isSim': False,
-     'indData': {}},
-    {'id': '357', 'name': '生物科学-诺贝尔生理学或医学奖', 'code': 'ind10926', 'editable': '', 'detailDefId': 1286,
-     'availVer': [1901, 2024], 'targetVerName': '1901-2024', 'weight': 0, 'isRank': False, 'isSim': False,
-     'indData': {}},
-    {'id': '360', 'name': '护理-国际护理研究者名人堂', 'code': 'ind10929', 'editable': '', 'detailDefId': 1286,
-     'availVer': [1901, 2024], 'targetVerName': '1901-2024', 'weight': 0, 'isRank': False, 'isSim': False,
-     'indData': {}}, {'id': '336', 'name': '化学-普利斯特里奖', 'code': 'ind1095', 'editable': '', 'detailDefId': 1286,
-                      'availVer': [1901, 2024], 'targetVerName': '1901-2024', 'weight': 0, 'isRank': False,
-                      'isSim': False, 'indData': {}},
-    {'id': '354', 'name': '水资源-霍顿奖', 'code': 'ind10923', 'editable': '', 'detailDefId': 1286,
-     'availVer': [1901, 2024], 'targetVerName': '1901-2024', 'weight': 0, 'isRank': False, 'isSim': False,
-     'indData': {}},
-    {'id': '353', 'name': '环境科学与工程-斯德哥尔摩水奖', 'code': 'ind10922', 'editable': '', 'detailDefId': 1286,
-     'availVer': [1901, 2024], 'targetVerName': '1901-2024', 'weight': 0, 'isRank': False, 'isSim': False,
-     'indData': {}}, {'id': '333', 'name': '数学-阿贝尔奖', 'code': 'ind1092', 'editable': '', 'detailDefId': 1286,
-                      'availVer': [1901, 2024], 'targetVerName': '1901-2024', 'weight': 0, 'isRank': False,
-                      'isSim': False, 'indData': {}},
-    {'id': '340', 'name': '大气科学-卡尔·古斯塔夫·罗斯贝奖章', 'code': 'ind1099', 'editable': '', 'detailDefId': 1286,
-     'availVer': [1901, 2024], 'targetVerName': '1901-2024', 'weight': 0, 'isRank': False, 'isSim': False,
-     'indData': {}},
-    {'id': '365', 'name': '政治学-约翰·斯凯特政治科学奖', 'code': 'ind10934', 'editable': '', 'detailDefId': 1286,
-     'availVer': [1901, 2024], 'targetVerName': '1901-2024', 'weight': 0, 'isRank': False, 'isSim': False,
-     'indData': {}},
-    {'id': '339', 'name': '大气科学-朱尔·查尼奖', 'code': 'ind1098', 'editable': '', 'detailDefId': 1286,
-     'availVer': [1901, 2024], 'targetVerName': '1901-2024', 'weight': 0, 'isRank': False, 'isSim': False,
-     'indData': {}},
-    {'id': '363', 'name': '经济学-诺贝尔经济学奖', 'code': 'ind10932', 'editable': '', 'detailDefId': 1286,
-     'availVer': [1901, 2024], 'targetVerName': '1901-2024', 'weight': 0, 'isRank': False, 'isSim': False,
-     'indData': {}},
-    {'id': '341', 'name': '机械工程-铁木辛柯奖', 'code': 'ind10910', 'editable': '', 'detailDefId': 1286,
-     'availVer': [1901, 2024], 'targetVerName': '1901-2024', 'weight': 0, 'isRank': False, 'isSim': False,
-     'indData': {}}, {'id': '366', 'name': '旅游-尤利西斯奖', 'code': 'ind10935', 'editable': '', 'detailDefId': 1286,
-                      'availVer': [1901, 2024], 'targetVerName': '1901-2024', 'weight': 0, 'isRank': False,
-                      'isSim': False, 'indData': {}},
-    {'id': '350', 'name': '材料科学与工程-冯·希佩尔奖', 'code': 'ind10919', 'editable': '', 'detailDefId': 1286,
-     'availVer': [1901, 2024], 'targetVerName': '1901-2024', 'weight': 0, 'isRank': False, 'isSim': False,
-     'indData': {}}, {'id': '337', 'name': '化学-沃尔夫化学奖', 'code': 'ind1096', 'editable': '', 'detailDefId': 1286,
-                      'availVer': [1901, 2024], 'targetVerName': '1901-2024', 'weight': 0, 'isRank': False,
-                      'isSim': False, 'indData': {}},
-    {'id': '817', 'name': '数学-沃尔夫数学奖', 'code': 'ind10974', 'editable': '', 'detailDefId': 1286,
-     'availVer': [1901, 2024], 'targetVerName': '1901-2024', 'weight': 0, 'isRank': False, 'isSim': False,
-     'indData': {}},
-    {'id': '818', 'name': '海洋科学-斯维尔德鲁普金质奖章', 'code': 'ind10975', 'editable': '', 'detailDefId': 1286,
-     'availVer': [1901, 2024], 'targetVerName': '1901-2024', 'weight': 0, 'isRank': False, 'isSim': False,
-     'indData': {}},
-    {'id': '819', 'name': '海洋科学-Henry Stommel研究奖章', 'code': 'ind10976', 'editable': '', 'detailDefId': 1286,
-     'availVer': [1901, 2024], 'targetVerName': '1901-2024', 'weight': 0, 'isRank': False, 'isSim': False,
-     'indData': {}},
-    {'id': '820', 'name': '大气科学-罗杰·雷维尔奖章', 'code': 'ind10977', 'editable': '', 'detailDefId': 1286,
-     'availVer': [1901, 2024], 'targetVerName': '1901-2024', 'weight': 0, 'isRank': False, 'isSim': False,
-     'indData': {}}, {'id': '821', 'name': '控制科学与工程-IEEE机器人和自动化奖', 'code': 'ind10978', 'editable': '',
-                      'detailDefId': 1286, 'availVer': [1901, 2024], 'targetVerName': '1901-2024', 'weight': 0,
-                      'isRank': False, 'isSim': False, 'indData': {}},
-    {'id': '822', 'name': '冶金工程-TMS Fellow奖', 'code': 'ind10979', 'editable': '', 'detailDefId': 1286,
-     'availVer': [1901, 2024], 'targetVerName': '1901-2024', 'weight': 0, 'isRank': False, 'isSim': False,
-     'indData': {}},
-    {'id': '823', 'name': '统计学-国际统计学奖', 'code': 'ind10980', 'editable': '', 'detailDefId': 1286,
-     'availVer': [1901, 2024], 'targetVerName': '1901-2024', 'weight': 0, 'isRank': False, 'isSim': False,
-     'indData': {}},
-    {'id': '824', 'name': '心理学-美国心理学会杰出科学贡献奖', 'code': 'ind10981', 'editable': '', 'detailDefId': 1286,
-     'availVer': [1901, 2024], 'targetVerName': '1901-2024', 'weight': 0, 'isRank': False, 'isSim': False,
-     'indData': {}},
-    {'id': '825', 'name': '公共管理-国际公共管理奖', 'code': 'ind10982', 'editable': '', 'detailDefId': 1286,
-     'availVer': [1901, 2024], 'targetVerName': '1901-2024', 'weight': 0, 'isRank': False, 'isSim': False,
-     'indData': {}}, {'id': '826', 'name': '政治学-Stein Rokkan 比较社会科学研究奖', 'code': 'ind10983', 'editable': '',
-                      'detailDefId': 1286, 'availVer': [1901, 2024], 'targetVerName': '1901-2024', 'weight': 0,
-                      'isRank': False, 'isSim': False, 'indData': {}},
-    {'id': '827', 'name': '公共管理-库伊曼奖', 'code': 'ind10984', 'editable': '', 'detailDefId': 1286,
-     'availVer': [1901, 2024], 'targetVerName': '1901-2024', 'weight': 0, 'isRank': False, 'isSim': False,
-     'indData': {}}, {'id': '828', 'name': '旅游休闲管理-IFITT年度最佳期刊论文奖', 'code': 'ind10985', 'editable': '',
-                      'detailDefId': 1286, 'availVer': [1901, 2024], 'targetVerName': '1901-2024', 'weight': 0,
-                      'isRank': False, 'isSim': False, 'indData': {}},
-    {'id': '892', 'name': 'Nature和Science论文折合数', 'code': 'ind251', 'editable': '', 'detailDefId': 1284,
-     'availVer': [2018, 2024], 'targetVerName': '2020-2024', 'weight': 0, 'isRank': False, 'isSim': False,
-     'indData': {}}, {'id': '36', 'name': 'Nature论文', 'code': 'indnature', 'editable': '', 'detailDefId': 1284,
-                      'availVer': [2018, 2024], 'targetVerName': '2020-2024', 'weight': 0, 'isRank': False,
-                      'isSim': False, 'indData': {}},
-    {'id': '37', 'name': 'Science论文', 'code': 'indscience', 'editable': '', 'detailDefId': 1284,
-     'availVer': [2018, 2024], 'targetVerName': '2020-2024', 'weight': 0, 'isRank': False, 'isSim': False,
-     'indData': {}}, {'id': '521', 'name': '顶尖期刊论文数-综合', 'code': 'ind240', 'editable': '', 'detailDefId': 1292,
-                      'availVer': [2018, 2024], 'targetVerName': '2020-2024', 'weight': 0, 'isRank': False,
-                      'isSim': False, 'indData': {}},
-    {'id': '541', 'name': 'Nature', 'code': 'indnature_all', 'editable': '', 'detailDefId': 1292,
-     'availVer': [2018, 2024], 'targetVerName': '2020-2024', 'weight': 0, 'isRank': False, 'isSim': False,
-     'indData': {}}, {'id': '542', 'name': 'Science', 'code': 'indscience_all', 'editable': '', 'detailDefId': 1292,
-                      'availVer': [2018, 2024], 'targetVerName': '2020-2024', 'weight': 0, 'isRank': False,
-                      'isSim': False, 'indData': {}},
-    {'id': '527', 'name': '顶尖期刊论文数-自然科学', 'code': 'ind1141', 'editable': '', 'detailDefId': 1300,
-     'availVer': [2020, 2024], 'targetVerName': '2020-2024', 'weight': 0, 'isRank': False, 'isSim': False,
-     'indData': {}}, {'id': '576', 'name': '大气科学', 'code': 'ind1141-4', 'editable': '', 'detailDefId': 1300,
-                      'availVer': [2020, 2024], 'targetVerName': '2020-2024', 'weight': 0, 'isRank': False,
-                      'isSim': False, 'indData': {}},
-    {'id': '580', 'name': '化学', 'code': 'ind1141-8', 'editable': '', 'detailDefId': 1300, 'availVer': [2020, 2024],
-     'targetVerName': '2020-2024', 'weight': 0, 'isRank': False, 'isSim': False, 'indData': {}},
-    {'id': '575', 'name': '地球科学', 'code': 'ind1141-3', 'editable': '', 'detailDefId': 1300,
-     'availVer': [2020, 2024], 'targetVerName': '2020-2024', 'weight': 0, 'isRank': False, 'isSim': False,
-     'indData': {}},
-    {'id': '577', 'name': '生态学', 'code': 'ind1141-5', 'editable': '', 'detailDefId': 1300, 'availVer': [2020, 2024],
-     'targetVerName': '2020-2024', 'weight': 0, 'isRank': False, 'isSim': False, 'indData': {}},
-    {'id': '578', 'name': '地理', 'code': 'ind1141-6', 'editable': '', 'detailDefId': 1300, 'availVer': [2020, 2024],
-     'targetVerName': '2020-2024', 'weight': 0, 'isRank': False, 'isSim': False, 'indData': {}},
-    {'id': '579', 'name': '数学', 'code': 'ind1141-7', 'editable': '', 'detailDefId': 1300, 'availVer': [2020, 2024],
-     'targetVerName': '2020-2024', 'weight': 0, 'isRank': False, 'isSim': False, 'indData': {}},
-    {'id': '573', 'name': '海洋学', 'code': 'ind1141-1', 'editable': '', 'detailDefId': 1300, 'availVer': [2020, 2024],
-     'targetVerName': '2020-2024', 'weight': 0, 'isRank': False, 'isSim': False, 'indData': {}},
-    {'id': '574', 'name': '物理', 'code': 'ind1141-2', 'editable': '', 'detailDefId': 1300, 'availVer': [2020, 2024],
-     'targetVerName': '2020-2024', 'weight': 0, 'isRank': False, 'isSim': False, 'indData': {}},
-    {'id': '528', 'name': '顶尖期刊论文数-工程学', 'code': 'ind1142', 'editable': '', 'detailDefId': 1300,
-     'availVer': [2020, 2024], 'targetVerName': '2020-2024', 'weight': 0, 'isRank': False, 'isSim': False,
-     'indData': {}}, {'id': '551', 'name': '航空航天工程', 'code': 'ind1142-1', 'editable': '', 'detailDefId': 1300,
-                      'availVer': [2020, 2024], 'targetVerName': '2020-2024', 'weight': 0, 'isRank': False,
-                      'isSim': False, 'indData': {}},
-    {'id': '559', 'name': '自动化与控制', 'code': 'ind1142-9', 'editable': '', 'detailDefId': 1300,
-     'availVer': [2020, 2024], 'targetVerName': '2020-2024', 'weight': 0, 'isRank': False, 'isSim': False,
-     'indData': {}}, {'id': '558', 'name': '化学工程', 'code': 'ind1142-8', 'editable': '', 'detailDefId': 1300,
-                      'availVer': [2020, 2024], 'targetVerName': '2020-2024', 'weight': 0, 'isRank': False,
-                      'isSim': False, 'indData': {}},
-    {'id': '560', 'name': '电气与电子工程', 'code': 'ind1142-10', 'editable': '', 'detailDefId': 1300,
-     'availVer': [2020, 2024], 'targetVerName': '2020-2024', 'weight': 0, 'isRank': False, 'isSim': False,
-     'indData': {}}, {'id': '555', 'name': '能源科学与工程', 'code': 'ind1142-5', 'editable': '', 'detailDefId': 1300,
-                      'availVer': [2020, 2024], 'targetVerName': '2020-2024', 'weight': 0, 'isRank': False,
-                      'isSim': False, 'indData': {}},
-    {'id': '554', 'name': '环境科学与工程', 'code': 'ind1142-4', 'editable': '', 'detailDefId': 1300,
-     'availVer': [2020, 2024], 'targetVerName': '2020-2024', 'weight': 0, 'isRank': False, 'isSim': False,
-     'indData': {}}, {'id': '552', 'name': '食品科学与技术', 'code': 'ind1142-2', 'editable': '', 'detailDefId': 1300,
-                      'availVer': [2020, 2024], 'targetVerName': '2020-2024', 'weight': 0, 'isRank': False,
-                      'isSim': False, 'indData': {}},
-    {'id': '561', 'name': '船舶与海洋工程', 'code': 'ind1142-11', 'editable': '', 'detailDefId': 1300,
-     'availVer': [2020, 2024], 'targetVerName': '2020-2024', 'weight': 0, 'isRank': False, 'isSim': False,
-     'indData': {}}, {'id': '557', 'name': '材料科学与工程', 'code': 'ind1142-7', 'editable': '', 'detailDefId': 1300,
-                      'availVer': [2020, 2024], 'targetVerName': '2020-2024', 'weight': 0, 'isRank': False,
-                      'isSim': False, 'indData': {}},
-    {'id': '564', 'name': '冶金工程', 'code': 'ind1142-14', 'editable': '', 'detailDefId': 1300,
-     'availVer': [2020, 2024], 'targetVerName': '2020-2024', 'weight': 0, 'isRank': False, 'isSim': False,
-     'indData': {}}, {'id': '563', 'name': '采矿与矿物工程', 'code': 'ind1142-13', 'editable': '', 'detailDefId': 1300,
-                      'availVer': [2020, 2024], 'targetVerName': '2020-2024', 'weight': 0, 'isRank': False,
-                      'isSim': False, 'indData': {}},
-    {'id': '556', 'name': '纳米科学与纳米技术', 'code': 'ind1142-6', 'editable': '', 'detailDefId': 1300,
-     'availVer': [2020, 2024], 'targetVerName': '2020-2024', 'weight': 0, 'isRank': False, 'isSim': False,
-     'indData': {}},
-    {'id': '562', 'name': '遥感', 'code': 'ind1142-12', 'editable': '', 'detailDefId': 1300, 'availVer': [2020, 2024],
-     'targetVerName': '2020-2024', 'weight': 0, 'isRank': False, 'isSim': False, 'indData': {}},
-    {'id': '553', 'name': '水资源', 'code': 'ind1142-3', 'editable': '', 'detailDefId': 1300, 'availVer': [2020, 2024],
-     'targetVerName': '2020-2024', 'weight': 0, 'isRank': False, 'isSim': False, 'indData': {}},
-    {'id': '916', 'name': '机械工程', 'code': 'ind1142-15', 'editable': '', 'detailDefId': 1300,
-     'availVer': [2020, 2024], 'targetVerName': '2020-2024', 'weight': 0, 'isRank': False, 'isSim': False,
-     'indData': {}}, {'id': '917', 'name': '通信工程', 'code': 'ind1142-16', 'editable': '', 'detailDefId': 1300,
-                      'availVer': [2020, 2024], 'targetVerName': '2020-2024', 'weight': 0, 'isRank': False,
-                      'isSim': False, 'indData': {}},
-    {'id': '918', 'name': '生物医学工程', 'code': 'ind1142-17', 'editable': '', 'detailDefId': 1300,
-     'availVer': [2020, 2024], 'targetVerName': '2020-2024', 'weight': 0, 'isRank': False, 'isSim': False,
-     'indData': {}},
-    {'id': '529', 'name': '顶尖期刊论文数-生命科学', 'code': 'ind1143', 'editable': '', 'detailDefId': 1300,
-     'availVer': [2020, 2024], 'targetVerName': '2020-2024', 'weight': 0, 'isRank': False, 'isSim': False,
-     'indData': {}}, {'id': '567', 'name': '生物科学', 'code': 'ind1143-3', 'editable': '', 'detailDefId': 1300,
-                      'availVer': [2020, 2024], 'targetVerName': '2020-2024', 'weight': 0, 'isRank': False,
-                      'isSim': False, 'indData': {}},
-    {'id': '565', 'name': '人类生物科学', 'code': 'ind1143-1', 'editable': '', 'detailDefId': 1300,
-     'availVer': [2020, 2024], 'targetVerName': '2020-2024', 'weight': 0, 'isRank': False, 'isSim': False,
-     'indData': {}}, {'id': '566', 'name': '兽医科学', 'code': 'ind1143-2', 'editable': '', 'detailDefId': 1300,
-                      'availVer': [2020, 2024], 'targetVerName': '2020-2024', 'weight': 0, 'isRank': False,
-                      'isSim': False, 'indData': {}},
-    {'id': '530', 'name': '顶尖期刊论文数-医学', 'code': 'ind1144', 'editable': '', 'detailDefId': 1300,
-     'availVer': [2020, 2024], 'targetVerName': '2020-2024', 'weight': 0, 'isRank': False, 'isSim': False,
-     'indData': {}}, {'id': '572', 'name': '临床医学', 'code': 'ind1144-5', 'editable': '', 'detailDefId': 1300,
-                      'availVer': [2020, 2024], 'targetVerName': '2020-2024', 'weight': 0, 'isRank': False,
-                      'isSim': False, 'indData': {}},
-    {'id': '571', 'name': '牙科和口腔科学', 'code': 'ind1144-4', 'editable': '', 'detailDefId': 1300,
-     'availVer': [2020, 2024], 'targetVerName': '2020-2024', 'weight': 0, 'isRank': False, 'isSim': False,
-     'indData': {}}, {'id': '569', 'name': '医疗技术', 'code': 'ind1144-2', 'editable': '', 'detailDefId': 1300,
-                      'availVer': [2020, 2024], 'targetVerName': '2020-2024', 'weight': 0, 'isRank': False,
-                      'isSim': False, 'indData': {}},
-    {'id': '570', 'name': '护理', 'code': 'ind1144-3', 'editable': '', 'detailDefId': 1300, 'availVer': [2020, 2024],
-     'targetVerName': '2020-2024', 'weight': 0, 'isRank': False, 'isSim': False, 'indData': {}},
-    {'id': '568', 'name': '药学与制药科学', 'code': 'ind1144-1', 'editable': '', 'detailDefId': 1300,
-     'availVer': [2020, 2024], 'targetVerName': '2020-2024', 'weight': 0, 'isRank': False, 'isSim': False,
-     'indData': {}},
-    {'id': '531', 'name': '顶尖期刊论文数-社会科学', 'code': 'ind1145', 'editable': '', 'detailDefId': 1300,
-     'availVer': [2020, 2024], 'targetVerName': '2020-2024', 'weight': 0, 'isRank': False, 'isSim': False,
-     'indData': {}}, {'id': '589', 'name': '会计与金融', 'code': 'ind1145-9', 'editable': '', 'detailDefId': 1300,
-                      'availVer': [2020, 2024], 'targetVerName': '2020-2024', 'weight': 0, 'isRank': False,
-                      'isSim': False, 'indData': {}},
-    {'id': '587', 'name': '通信', 'code': 'ind1145-7', 'editable': '', 'detailDefId': 1300, 'availVer': [2020, 2024],
-     'targetVerName': '2020-2024', 'weight': 0, 'isRank': False, 'isSim': False, 'indData': {}},
-    {'id': '581', 'name': '经济学', 'code': 'ind1145-1', 'editable': '', 'detailDefId': 1300, 'availVer': [2020, 2024],
-     'targetVerName': '2020-2024', 'weight': 0, 'isRank': False, 'isSim': False, 'indData': {}},
-    {'id': '586', 'name': '教育', 'code': 'ind1145-6', 'editable': '', 'detailDefId': 1300, 'availVer': [2020, 2024],
-     'targetVerName': '2020-2024', 'weight': 0, 'isRank': False, 'isSim': False, 'indData': {}},
-    {'id': '592', 'name': '酒店与旅游管理', 'code': 'ind1145-12', 'editable': '', 'detailDefId': 1300,
-     'availVer': [2020, 2024], 'targetVerName': '2020-2024', 'weight': 0, 'isRank': False, 'isSim': False,
-     'indData': {}},
-    {'id': '583', 'name': '法律', 'code': 'ind1145-3', 'editable': '', 'detailDefId': 1300, 'availVer': [2020, 2024],
-     'targetVerName': '2020-2024', 'weight': 0, 'isRank': False, 'isSim': False, 'indData': {}},
-    {'id': '593', 'name': '图书馆与信息科学', 'code': 'ind1145-13', 'editable': '', 'detailDefId': 1300,
-     'availVer': [2020, 2024], 'targetVerName': '2020-2024', 'weight': 0, 'isRank': False, 'isSim': False,
-     'indData': {}},
-    {'id': '590', 'name': '管理', 'code': 'ind1145-10', 'editable': '', 'detailDefId': 1300, 'availVer': [2020, 2024],
-     'targetVerName': '2020-2024', 'weight': 0, 'isRank': False, 'isSim': False, 'indData': {}},
-    {'id': '584', 'name': '政治学', 'code': 'ind1145-4', 'editable': '', 'detailDefId': 1300, 'availVer': [2020, 2024],
-     'targetVerName': '2020-2024', 'weight': 0, 'isRank': False, 'isSim': False, 'indData': {}},
-    {'id': '588', 'name': '心理学', 'code': 'ind1145-8', 'editable': '', 'detailDefId': 1300, 'availVer': [2020, 2024],
-     'targetVerName': '2020-2024', 'weight': 0, 'isRank': False, 'isSim': False, 'indData': {}},
-    {'id': '591', 'name': '公共行政', 'code': 'ind1145-11', 'editable': '', 'detailDefId': 1300,
-     'availVer': [2020, 2024], 'targetVerName': '2020-2024', 'weight': 0, 'isRank': False, 'isSim': False,
-     'indData': {}},
-    {'id': '585', 'name': '社会学', 'code': 'ind1145-5', 'editable': '', 'detailDefId': 1300, 'availVer': [2020, 2024],
-     'targetVerName': '2020-2024', 'weight': 0, 'isRank': False, 'isSim': False, 'indData': {}},
-    {'id': '582', 'name': '统计学', 'code': 'ind1145-2', 'editable': '', 'detailDefId': 1300, 'availVer': [2020, 2024],
-     'targetVerName': '2020-2024', 'weight': 0, 'isRank': False, 'isSim': False, 'indData': {}},
-    {'id': '532', 'name': '顶尖会议论文数-计算机', 'code': 'ind1146', 'editable': '', 'detailDefId': 1300,
-     'availVer': [2020, 2024], 'targetVerName': '2020-2024', 'weight': 0, 'isRank': False, 'isSim': False,
-     'indData': {}}, {'id': '550', 'name': '计算机科学与工程', 'code': 'ind1146-1', 'editable': '', 'detailDefId': 1300,
-                      'availVer': [2020, 2024], 'targetVerName': '2020-2024', 'weight': 0, 'isRank': False,
-                      'isSim': False, 'indData': {}},
-    {'id': '525', 'name': '诺奖菲奖校友折合数', 'code': 'ind242', 'editable': '', 'detailDefId': 1297,
-     'availVer': [1901, 2025], 'targetVerName': '1901-2025', 'weight': 0, 'isRank': False, 'isSim': False,
-     'indData': {}}, {'id': '32', 'name': '诺贝尔奖校友折合数', 'code': 'ind115', 'editable': '', 'detailDefId': 1297,
-                      'availVer': [1901, 2025], 'targetVerName': '1901-2025', 'weight': 0, 'isRank': False,
-                      'isSim': False, 'indData': {}},
-    {'id': '33', 'name': '菲尔兹奖校友折合数', 'code': 'ind116', 'editable': '', 'detailDefId': 1297,
-     'availVer': [1901, 2025], 'targetVerName': '1901-2025', 'weight': 0, 'isRank': False, 'isSim': False,
-     'indData': {}}, {'id': '711', 'name': '获国际权威奖项校友', 'code': 'ind246', 'editable': '', 'detailDefId': 1295,
-                      'availVer': [1901, 2024], 'targetVerName': '1901-2024', 'weight': 0, 'isRank': False,
-                      'isSim': False, 'indData': {}},
-    {'id': '128', 'name': '学校总收入', 'code': 'ind51', 'editable': '', 'detailDefId': 0, 'availVer': [2018, 2023],
-     'targetVerName': '2023', 'weight': 0, 'isRank': False, 'isSim': False, 'indData': {}},
-    {'id': '129', 'name': '捐赠收入', 'code': 'ind56', 'editable': '', 'detailDefId': 0, 'availVer': [2018, 2023],
-     'targetVerName': '2023', 'weight': 0, 'isRank': False, 'isSim': False, 'indData': {}},
-    {'id': '132', 'name': '企业科研经费', 'code': 'ind86', 'editable': '', 'detailDefId': 0, 'availVer': [2018, 2023],
-     'targetVerName': '2023', 'weight': 0, 'isRank': False, 'isSim': False, 'indData': {}},
-    {'id': '893', 'name': '国际论文折合数', 'code': 'ind252', 'editable': '', 'detailDefId': 0,
-     'availVer': [2021, 2024], 'targetVerName': '2024', 'weight': 0, 'isRank': False, 'isSim': False, 'indData': {}},
-    {'id': '190', 'name': 'SCIE论文', 'code': 'ind230', 'editable': '', 'detailDefId': 0, 'availVer': [2021, 2024],
-     'targetVerName': '2024', 'weight': 0, 'isRank': False, 'isSim': False, 'indData': {}},
-    {'id': '191', 'name': 'SSCI论文', 'code': 'ind231', 'editable': '', 'detailDefId': 0, 'availVer': [2021, 2024],
-     'targetVerName': '2024', 'weight': 0, 'isRank': False, 'isSim': False, 'indData': {}},
-    {'id': '192', 'name': '被SCIE或SSCI收录的论文数', 'code': 'ind232', 'editable': '', 'detailDefId': 0,
-     'availVer': [2021, 2024], 'targetVerName': '2024', 'weight': 0, 'isRank': False, 'isSim': False, 'indData': {}},
-    {'id': '677', 'name': '国际期刊编委', 'code': 'ijeb2', 'editable': '', 'detailDefId': 1291,
-     'availVer': [2023, 2025], 'targetVerName': '2025', 'weight': 0, 'isRank': False, 'isSim': False, 'indData': {}},
-    {'id': '522', 'name': '国际期刊论文数', 'code': 'ind241', 'editable': '', 'detailDefId': 0,
-     'availVer': [2022, 2024], 'targetVerName': '2024', 'weight': 0, 'isRank': False, 'isSim': False, 'indData': {}},
-    {'id': '116', 'name': '科研经费', 'code': 'ind70', 'editable': '', 'detailDefId': 0, 'availVer': [2018, 2023],
-     'targetVerName': '2023', 'weight': 0, 'isRank': False, 'isSim': False, 'indData': {}},
-    {'id': '922', 'name': '爱思唯尔全球前2%“终身影响力”上榜科学家(人次)', 'code': 'ind259', 'editable': '',
-     'detailDefId': 1303, 'availVer': [2025, 2025], 'targetVerName': '2025', 'weight': 0, 'isRank': False,
-     'isSim': False, 'indData': {}},
-    {'id': '923', 'name': '爱思唯尔全球前2%“年度影响力”上榜科学家(人次)', 'code': 'ind260', 'editable': '',
-     'detailDefId': 1304, 'availVer': [2025, 2025], 'targetVerName': '2025', 'weight': 0, 'isRank': False,
-     'isSim': False, 'indData': {}},
-    {'id': '140', 'name': '学生总数', 'code': 'ind39', 'editable': '', 'detailDefId': 0, 'availVer': [2018, 2023],
-     'targetVerName': '2023', 'weight': 0, 'isRank': False, 'isSim': False, 'indData': {}},
-    {'id': '135', 'name': '本科生数', 'code': 'ind40', 'editable': '', 'detailDefId': 0, 'availVer': [2018, 2023],
-     'targetVerName': '2023', 'weight': 0, 'isRank': False, 'isSim': False, 'indData': {}},
-    {'id': '137', 'name': '硕士生数', 'code': 'ind41', 'editable': '', 'detailDefId': 0, 'availVer': [2018, 2023],
-     'targetVerName': '2023', 'weight': 0, 'isRank': False, 'isSim': False, 'indData': {}},
-    {'id': '120', 'name': '博士生数', 'code': 'ind42', 'editable': '', 'detailDefId': 0, 'availVer': [2018, 2023],
-     'targetVerName': '2023', 'weight': 0, 'isRank': False, 'isSim': False, 'indData': {}},
-    {'id': '126', 'name': '研究生数', 'code': 'ind43', 'editable': '', 'detailDefId': 0, 'availVer': [2018, 2023],
-     'targetVerName': '2023', 'weight': 0, 'isRank': False, 'isSim': False, 'indData': {}},
-    {'id': '134', 'name': '研究生比例', 'code': 'ind44', 'editable': '', 'detailDefId': 0, 'availVer': [2018, 2023],
-     'targetVerName': '2023', 'weight': 0, 'isRank': False, 'isSim': False, 'indData': {}},
-    {'id': '117', 'name': '学士学位授予数', 'code': 'ind45', 'editable': '', 'detailDefId': 0, 'availVer': [2018, 2023],
-     'targetVerName': '2023', 'weight': 0, 'isRank': False, 'isSim': False, 'indData': {}},
-    {'id': '124', 'name': '硕士学位授予数', 'code': 'ind46', 'editable': '', 'detailDefId': 0, 'availVer': [2018, 2023],
-     'targetVerName': '2023', 'weight': 0, 'isRank': False, 'isSim': False, 'indData': {}},
-    {'id': '131', 'name': '博士学位授予数', 'code': 'ind47', 'editable': '', 'detailDefId': 0, 'availVer': [2018, 2023],
-     'targetVerName': '2023', 'weight': 0, 'isRank': False, 'isSim': False, 'indData': {}},
-    {'id': '133', 'name': '留学生数', 'code': 'ind126', 'editable': '', 'detailDefId': 0, 'availVer': [2018, 2023],
-     'targetVerName': '2023', 'weight': 0, 'isRank': False, 'isSim': False, 'indData': {}},
-    {'id': '122', 'name': '留学生比例', 'code': 'ind96', 'editable': '', 'detailDefId': 0, 'availVer': [2018, 2023],
-     'targetVerName': '2023', 'weight': 0, 'isRank': False, 'isSim': False, 'indData': {}},
-    {'id': '127', 'name': '本科留学生数', 'code': 'ind91', 'editable': '', 'detailDefId': 0, 'availVer': [2018, 2023],
-     'targetVerName': '2023', 'weight': 0, 'isRank': False, 'isSim': False, 'indData': {}},
-    {'id': '123', 'name': '本科留学生比例', 'code': 'ind92', 'editable': '', 'detailDefId': 0, 'availVer': [2018, 2023],
-     'targetVerName': '2023', 'weight': 0, 'isRank': False, 'isSim': False, 'indData': {}},
-    {'id': '141', 'name': '硕士留学生数', 'code': 'ind93', 'editable': '', 'detailDefId': 0, 'availVer': [2018, 2023],
-     'targetVerName': '2023', 'weight': 0, 'isRank': False, 'isSim': False, 'indData': {}},
-    {'id': '114', 'name': '硕士留学生比例', 'code': 'ind123', 'editable': '', 'detailDefId': 0,
-     'availVer': [2018, 2023], 'targetVerName': '2023', 'weight': 0, 'isRank': False, 'isSim': False, 'indData': {}},
-    {'id': '138', 'name': '博士留学生数', 'code': 'ind94', 'editable': '', 'detailDefId': 0, 'availVer': [2018, 2023],
-     'targetVerName': '2023', 'weight': 0, 'isRank': False, 'isSim': False, 'indData': {}},
-    {'id': '136', 'name': '博士留学生比例', 'code': 'ind124', 'editable': '', 'detailDefId': 0,
-     'availVer': [2018, 2023], 'targetVerName': '2023', 'weight': 0, 'isRank': False, 'isSim': False, 'indData': {}},
-    {'id': '119', 'name': '研究生留学生数', 'code': 'ind125', 'editable': '', 'detailDefId': 0,
-     'availVer': [2018, 2023], 'targetVerName': '2023', 'weight': 0, 'isRank': False, 'isSim': False, 'indData': {}},
-    {'id': '115', 'name': '研究生留学生比例', 'code': 'ind95', 'editable': '', 'detailDefId': 0,
-     'availVer': [2018, 2023], 'targetVerName': '2023', 'weight': 0, 'isRank': False, 'isSim': False, 'indData': {}},
-    {'id': '894', 'name': '师均表现综合得分', 'code': 'ind253', 'editable': '', 'detailDefId': 0,
-     'availVer': [2024, 2024], 'targetVerName': '2024', 'weight': 0, 'isRank': False, 'isSim': False, 'indData': {}},
-    {'id': '895', 'name': '诺奖菲奖校友折合数（师均）', 'code': 'ind254', 'editable': '', 'detailDefId': 0,
-     'availVer': None, 'targetVerName': '1901-2025', 'weight': 0, 'isRank': False, 'isSim': False, 'indData': {}},
-    {'id': '896', 'name': '诺奖菲奖教师折合数（师均）', 'code': 'ind255', 'editable': '', 'detailDefId': 0,
-     'availVer': None, 'targetVerName': '1901-2025', 'weight': 0, 'isRank': False, 'isSim': False, 'indData': {}},
-    {'id': '897', 'name': '高被引科学家（师均）', 'code': 'ind256', 'editable': '', 'detailDefId': 0,
-     'availVer': [2019, 2025], 'targetVerName': '2025', 'weight': 0, 'isRank': False, 'isSim': False, 'indData': {}},
-    {'id': '898', 'name': 'Nature和Science论文折合数（师均）', 'code': 'ind257', 'editable': '', 'detailDefId': 0,
-     'availVer': [2018, 2024], 'targetVerName': '2020-2024', 'weight': 0, 'isRank': False, 'isSim': False,
-     'indData': {}}, {'id': '899', 'name': '国际论文折合数（师均）', 'code': 'ind258', 'editable': '', 'detailDefId': 0,
-                      'availVer': [2021, 2024], 'targetVerName': '2024', 'weight': 0, 'isRank': False, 'isSim': False,
-                      'indData': {}},
-    {'id': '130', 'name': '全时教师数', 'code': 'ind57', 'editable': '', 'detailDefId': 0, 'availVer': [2018, 2024],
-     'targetVerName': '2024', 'weight': 0, 'isRank': False, 'isSim': False, 'indData': {}},
-    {'id': '113', 'name': '师生比', 'code': 'ind62', 'editable': '', 'detailDefId': 0, 'availVer': [2018, 2023],
-     'targetVerName': '2023', 'weight': 0, 'isRank': False, 'isSim': False, 'indData': {}},
-    {'id': '139', 'name': '国际教师数', 'code': 'ind98', 'editable': '', 'detailDefId': 0, 'availVer': [2018, 2023],
-     'targetVerName': '2023', 'weight': 0, 'isRank': False, 'isSim': False, 'indData': {}},
-    {'id': '125', 'name': '国际教师比例', 'code': 'ind99', 'editable': '', 'detailDefId': 0, 'availVer': [2018, 2023],
-     'targetVerName': '2023', 'weight': 0, 'isRank': False, 'isSim': False, 'indData': {}},
-    {'id': '118', 'name': '专职科研人员', 'code': 'ind60', 'editable': '', 'detailDefId': 0, 'availVer': [2018, 2023],
-     'targetVerName': '2023', 'weight': 0, 'isRank': False, 'isSim': False, 'indData': {}},
-    {'id': '700', 'name': '软科世界大学学术排名', 'code': 'ARWU', 'editable': '', 'detailDefId': 1251,
-     'availVer': [2013, 2025], 'targetVerName': '2025', 'weight': 0, 'isRank': False, 'isSim': False, 'indData': {}},
-    {'id': '701', 'name': 'QS世界大学排名', 'code': 'QS_WUR', 'editable': '', 'detailDefId': 1224,
-     'availVer': [2016, 2025], 'targetVerName': '2025', 'weight': 0, 'isRank': False, 'isSim': False, 'indData': {}},
-    {'id': '702', 'name': 'THE世界大学排名', 'code': 'THE_WUR', 'editable': '', 'detailDefId': 1231,
-     'availVer': [2010, 2025], 'targetVerName': '2025', 'weight': 0, 'isRank': False, 'isSim': False, 'indData': {}},
-    {'id': '703', 'name': 'U.S.News世界大学排名', 'code': 'USNEWS_BGU', 'editable': '', 'detailDefId': 1238,
-     'availVer': [2016, 2025], 'targetVerName': '2025', 'weight': 0, 'isRank': False, 'isSim': False, 'indData': {}},
-    {'id': '706', 'name': 'Scimago世界大学排名', 'code': 'SCIMAGO_UR', 'editable': '', 'detailDefId': 1230,
-     'availVer': [2009, 2025], 'targetVerName': '2025', 'weight': 0, 'isRank': False, 'isSim': False, 'indData': {}},
-    {'id': '705', 'name': '自然指数（Nature Index）排名', 'code': 'NI_IRO', 'editable': '', 'detailDefId': 1248,
-     'availVer': [2016, 2025], 'targetVerName': '2025', 'weight': 0, 'isRank': False, 'isSim': False, 'indData': {}},
-    {'id': '707', 'name': 'CWTS世界大学排名', 'code': 'CWTS', 'editable': '', 'detailDefId': 1219,
-     'availVer': [2018, 2024], 'targetVerName': '2024', 'weight': 0, 'isRank': False, 'isSim': False, 'indData': {}}]
+
+def run():
+    # 1. 执行测试
+    pytest.main(['-vs', './testcases/ubi', '--alluredir', './reports/allure_results', '--clean-alluredir'])
+
+    # 2. 生成 Allure 报告 (这一步很重要，必须生成报告后才有 summary.json)
+    # 注意：确保你的系统安装了 allure 命令行工具，并且在环境变量中
+    os.system(f"allure generate ./reports/allure_results -o ./reports/allure_reports --clean")
+
+    # 3. 发送飞书通知
+    try:
+        # 读取配置 (根据你项目中读取 config.yml 的方式调整)
+        # 这里假设手动读取，或者你使用现有的 ApiLoader/ConfigLoader
+        fm = FileManager()
+        config_path = get_absolute_path("config/config.yml")
+        config = fm.load_yaml_file(config_path)
+
+        webhook_url = config.get('lark_url', {}).get('test')
+        report_url = config.get('lark_url', {}).get('report_url', "")
+
+        if webhook_url:
+            print("正在发送飞书通知...")
+            feishu = FeishuNotification(webhook_url)
+            feishu.send_notification(report_url)
+        else:
+            print("未配置飞书 Webhook，跳过发送通知。")
+
+    except Exception as e:
+        print(f"发送通知流程异常: {e}")
+
+
+if __name__ == '__main__':
+    run()
+
+
+
+
+# @pytest.fixture(scope="class")
+    # def captured_oss_urls(self, ubi_session, config, univCode,auth_token,load_page):
+    #     """
+    #     使用 Playwright 访问报告中心页面，拦截前端自动调用的接口响应，获取 OSS 地址。
+    #     """
+    #     print("\n--- [Fixture] Playwright 启动：监听前端自动生成的图片接口 ---")
+    #     session, _ = ubi_session
+    #
+    #     # 1. 准备 Cookies (免登录)
+    #     #requests_cookies = session.session.cookies.get_dict()
+    #     requests_cookies = load_page.ru.session.cookies.get_dict()
+    #     playwright_cookies = []
+    #     base_url = config.get("ubi_base_url")  # 确保 config.yml 中配置了前端地址
+    #     if not base_url:
+    #         # 如果配置里没写，这里临时给个默认值或报错，请根据实际情况调整
+    #         raise ValueError("config.yml 中缺少 'ubi_base_url' 配置")
+    #
+    #     domain = urlparse(base_url).hostname
+    #     for k, v in requests_cookies.items():
+    #         playwright_cookies.append({
+    #             "name": k, "value": v, "domain": domain, "path": "/"
+    #         })
+    #
+    #     # 用于存储捕获到的 OSS 地址
+    #     oss_urls = []
+    #
+    #     # 2. 定义响应拦截处理函数
+    #     def handle_response(response):
+    #         # 【关键配置】请将 'generating_interface_keyword' 替换为那个自动生成图片的接口 URL 中的独特关键字
+    #         # 例如接口是 /api/report/generate_chart，关键字可以是 "generate_chart"
+    #         target_api_keyword = "upload-report-images"  # <--- 请根据实际接口URL修改这里！
+    #
+    #         if target_api_keyword in response.url and response.status == 200:
+    #             try:
+    #                 resp_json = response.json()
+    #                 print(f"  -> 捕获到目标接口响应: {response.url}")
+    #                 # 【关键配置】根据实际返回结构提取 OSS 地址
+    #                 # 假设返回结构是 {"code": 200, "data": "https://oss...", ...}
+    #                 # 或者是 {"data": ["url1"]}，请根据实际情况调整
+    #                 if "data" in resp_json:
+    #                     data = resp_json["data"]
+    #                     # 如果 data 是列表取第一个，如果是字符串直接用
+    #                     url = data[0] if isinstance(data, list) else data
+    #                     if url and str(url).startswith("http"):
+    #                         oss_urls.append(url)
+    #                         print(f"     已提取 OSS 地址: {url}")
+    #             except Exception as e:
+    #                 print(f"     解析响应失败: {e}")
+    #
+    #     # 3. 启动浏览器并访问
+    #     with sync_playwright() as p:
+    #         browser = p.chromium.launch(headless=False)  # 调试时可改为 False 观察过程
+    #         context = browser.new_context()
+    #         context.add_cookies(playwright_cookies)
+    #
+    #         # 开启网络监听
+    #         page = context.new_page()
+    #         page.on("response", handle_response)
+    #
+    #         # 拼接报告中心的前端 URL，请根据实际路由修改
+    #         # 假设报告中心路由是 /#/report-center 或 /#/analysis/report
+    #         ubi_url =f"https://ubi-3f3ab907.gaojidata.com/login?loginTypeId=2&univCode={univCode}&loginName=chenglong.yu&token={auth_token}"
+    #         target_url = f"{base_url}/report-center"
+    #         print(f"  -> 正在访问页面: {target_url}")
+    #
+    #         try:
+    #             page.goto(ubi_url, wait_until="networkidle")
+    #             page.goto(target_url, wait_until="networkidle")  # 等待网络空闲，通常接口就加载完了
+    #             reportType = "ranking"
+    #             list_reports = load_page.report_list_request(reportType)
+    #             if list_reports:
+    #                 button_generate_report_whit_list=page.locator(".create-report.px-12.py-10.cursor-pointer")
+    #                 button_generate_report_whit_list.click()
+    #             else:
+    #                 button_generate_report_without_list=page.locator(".ant-btn.ant-btn-primary.immediately_report")
+    #                 button_generate_report_without_list.click()
+    #             button=page.wait_for_selector("//button[@class='ant-btn ant-btn-primary']//span[text()='生成报告']")
+    #             button.click()
+    #             # 4. 轮询等待，直到获取到 2 个地址或超时
+    #             timeout = 15  # 秒
+    #             start_time = time.time()
+    #             while len(oss_urls) < 2:
+    #                 if time.time() - start_time > timeout:
+    #                     print("  -> ⚠️ 等待超时，未捕获到足够的 OSS 地址。")
+    #                     break
+    #                 time.sleep(1)
+    #
+    #         except Exception as e:
+    #             print(f"Playwright 执行异常: {e}")
+    #         finally:
+    #             browser.close()
+    #
+    #     print(f"--- [Fixture] 监听结束，共获取 {len(oss_urls)} 个地址 ---")
+    #     yield oss_urls
+
+    # @pytest.fixture(scope="class")
+    # def report_context(self, load_page, captured_oss_urls,indicators_data, univCode):
+    #     """
+    #     前置操作：生成报告，并返回报告的相关数据。
+    #     scope="class" 表示在整个测试类执行期间只运行一次，
+    #     所有用例共享这一份生成的报告数据。
+    #     """
+    #     print("\n--- [Fixture] 开始准备测试数据：生成报告 ---")
+    #     _, _, verNo = indicators_data
+    #     list_OverViewImgUrls = captured_oss_urls#load_page.upload_report_images()
+    #
+    #     report_name = f"{univCode}世界大学学术排名指标数据分析报告{verNo}"
+    #     version = load_page.df.format_date_string(verNo)
+    #
+    #     # 创建报告
+    #     report_info = load_page.request_ranking_create(report_name, verNo, version, list_OverViewImgUrls)
+    #     reportId = report_info["id"]
+    #
+    #     # 轮询生成报告 (利用你之前写好的逻辑)
+    #     report_data = load_page.request_ranking_generate(reportId)
+    #     print(f"报告【{report_name}】已生成完毕！选择年份：{version}，院校名：{univCode}")
+    #     yield report_name,report_info,report_data # 返回数据给测试用例
+    #
+    #     # (可选) 后置操作：测试结束后删除报告
+    #     print("\n--- [Fixture] 清理测试数据 ---")
+    #     #load_page.delete_report(reportId)
+    #     print(f"报告【{reportId}】已成功删除！")
+    #
+    #
+    # @allure.story("验证htmlData：ARWU世界大学学术排名指标数据分析报告")
+    # @allure.title("验证htmlData：ARWU世界大学学术排名指标数据分析报告")
+    # @allure.severity(allure.severity_level.CRITICAL)
+    # @allure.tag("regression", "API")
+    # @allure.description("验证htmlData：ARWU世界大学学术排名指标数据分析报告")
+    # def test_report_center01(self,load_page,report_context,indicators_data,univCode):
+    #     """
+    #     报告中心
+    #     """
+    #     _,_,verNo = indicators_data
+    #     report_name, report_info, report_data=report_context
+    #     version = load_page.df.format_date_string(verNo)
+    #
+    #     report_htmlData = report_data["htmlData"]
+    #     assert univCode in report_htmlData, f"报告HTML内容错误,期望院校：{univCode}，生成版本：{verNo}。实际数据：{report_htmlData}"
+    #
+    #     # 验证OSS下word文件内容
+    #     report_docx_path = report_data["path"]
+    #     print(f"报告路径: {report_docx_path}")
+    #     load_page.fv.verify_file_content(report_docx_path, ["上海交通大学", f"{version}"])
+    #     # 报告列表中会出现该份报告
+    #     reportType = report_info["reportType"]
+    #     list_reports = load_page.report_list_request(reportType)
+    #     # 获取最新的报告信息
+    #     dict_new_report= list_reports[0]
+    #     assert dict_new_report["name"] == report_name, f"最新报告列表中不存在该报告,期望名称：{report_name}，实际名称：{dict_new_report['name']}"
+    #
+    # @allure.story("下载PDF报告并验证")
+    # @allure.title("下载PDF报告并验证")
+    # @allure.severity(allure.severity_level.CRITICAL)
+    # @allure.tag("regression", "API")
+    # @allure.description("下载PDF报告并验证")
+    # def test_report_center02(self,load_page,report_context,univCode):
+    #     """
+    #     下载PDF报告
+    #     """
+    #     report_name, report_info, report_data = report_context
+    #     report_path = report_data["path"]
+    #     print(f"报告路径: {report_path}")
+    #     #使用rsplit从右边分割，只分割一次，取第一部分
+    #     path = report_path.rsplit(".", 1)[0]
+    #     #print(f"分隔后报告路径: {path}")
+    #     #report_name_encode = load_page.do.url_encode(report_name)
+    #     pdf_url = f"{path}.pdf"
+    #     print(f"PDF报告URL: {pdf_url}")
+    #     load_page.fv.verify_file_content(pdf_url, ["上海交通大学"])

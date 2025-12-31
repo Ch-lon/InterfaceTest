@@ -12,7 +12,10 @@ from common.path_util import get_absolute_path
 from common.logger import get_logger
 from common.FileManager import FileManager
 from common.DataOperation import DataOperation
+from common.date_format import DateFormat
+from common.file_verify import FileVerify
 import allure
+from product.cg.pages.CGOperations import CGOperations
 
 
 class UbiCommon:
@@ -22,8 +25,11 @@ class UbiCommon:
         self.ru = session
         self.fm = FileManager()
         self.do = DataOperation()
+        self.df = DateFormat()
+        self.fv = FileVerify()
         api_path = get_absolute_path("product/ubi/apis/")
         self.al = ApiLoader(api_path)
+        self.cg = CGOperations(session)
         self.logging = get_logger(__name__)
 
     @allure.step("获取当前最新版本信息及排名类型")
@@ -211,7 +217,7 @@ class UbiCommon:
         return level_3_results
 
 
-    @allure.step("数据导出相关断言")
+    @allure.step("数据导出文件校验")
     def check_export_response(self,resp, file_type, filename):
         """
         检查数据导出的响应是否符合预期
@@ -270,3 +276,4 @@ class UbiCommon:
                 if list_ind_detail is None or len(list_ind_detail) == 0 :
                     list_fail_indicators.append(ind_name)
         assert not list_fail_indicators, f"共有 {len(list_fail_indicators)} 个指标明细请求失败。失败的指标有：{list_fail_indicators}"
+

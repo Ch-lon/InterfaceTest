@@ -52,4 +52,5 @@ class Univranking(UbiCommon):
             url=url,
             headers=api_export_univranking.get('headers')
         )
+        assert response.status_code == api_export_univranking["expected"]["code"], f"动态排名数据导出失败！请求响应:{response}"
         return  response

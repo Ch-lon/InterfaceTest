@@ -12,6 +12,8 @@ import allure
 from common.logger import get_logger
 from product.ubi.pages.indicator_data import IndicatorData
 
+@allure.feature("全部指标页")
+@allure.tag("API", "IndicatorData")
 class TestIndicatorData:
 
     test_data = ["RI02727"]
@@ -49,7 +51,8 @@ class TestIndicatorData:
 
     @allure.story("对所有指标明细进行请求")
     @allure.title("请求全部指标页面所有明细")
-    @allure.tag("regression")
+    @allure.severity(allure.severity_level.CRITICAL)
+    @allure.tag("regression", "API")
     @allure.description("请求全部指标页面所有明细，查看是否请求成功")
     def test_IndicatorData01(self, load_page, indicators_data):
         list_ind_info, dict_indicators_details = indicators_data
@@ -60,7 +63,8 @@ class TestIndicatorData:
 
     @allure.story("导出全部指标页面所有学校的所有指标明细数据")
     @allure.title("导出全部指标页面所有学校的所有指标明细数据")
-    @allure.tag("regression")
+    @allure.severity(allure.severity_level.CRITICAL)
+    @allure.tag("regression", "API")
     @allure.description("导出全部指标页面所有学校的所有指标明细数据，查看是否请求成功")
     def test_IndicatorData02(self, load_page, univCode):
         response = load_page.export_all_indicator_data(univCode)

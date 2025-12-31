@@ -10,7 +10,8 @@ import allure
 import pytest
 from product.ubi.pages.detail_query import DetailQuery
 
-
+@allure.feature("数据查询页")
+@allure.tag("API", "DetailQuery")
 class TestDetailQuery:
     test_data = ["RC00005"]
 
@@ -50,7 +51,8 @@ class TestDetailQuery:
 
     @allure.story("数据查询搜索校验")
     @allure.title("数据查询搜索校验")
-    @allure.tag("regression")
+    @allure.severity(allure.severity_level.CRITICAL)
+    @allure.tag("regression", "API")
     @allure.description("检查是否搜索接口是否正常")
     def test_detail_query01(self, indicators_data, univCode,load_page):
         """

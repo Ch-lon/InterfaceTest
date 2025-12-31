@@ -12,6 +12,8 @@ import allure
 from common.logger import get_logger
 from product.ubi.pages.DevelopTrend import DevelopTrend
 
+@allure.feature("排名趋势页")
+@allure.tag("API", "DevelopTrend")
 class TestDevelopTrend:
 
     logging = get_logger(__name__)
@@ -51,7 +53,8 @@ class TestDevelopTrend:
 
     @allure.story("排名趋势排名校验")
     @allure.title("检查当前学校排名趋势页数据")
-    @allure.tag("regression")
+    @allure.severity(allure.severity_level.CRITICAL)
+    @allure.tag("regression", "API")
     @allure.description("检查当前学校排名趋势页数据")
     def test_DevelopTrend01(self, load_page, indicators_data):
         list_ind_info,rankingTypeId, verNo = indicators_data
@@ -93,7 +96,8 @@ class TestDevelopTrend:
 
     @allure.story("名次对比数据导出校验")
     @allure.title("检查当前学校名次对比数据导出")
-    @allure.tag("regression")
+    @allure.severity(allure.severity_level.CRITICAL)
+    @allure.tag("regression", "API")
     @allure.description("检查当前学校名次对比数据导出")
     def test_DevelopTrend03(self, load_page, indicators_data,univCode):
         _,rankingTypeId, verNo = indicators_data
@@ -103,7 +107,8 @@ class TestDevelopTrend:
 
     @allure.story("名次对比-对比版本的明细点击校验")
     @allure.title("检查当前学校名次对比-对比版本的明细请求")
-    @allure.tag("regression")
+    @allure.severity(allure.severity_level.CRITICAL)
+    @allure.tag("regression", "API")
     @allure.description("检查当前学校名次对比-对比版本的明细请求")
     def test_DevelopTrend04(self, load_page, indicators_data):
         list_ind_info, rankingTypeId, verNo = indicators_data
@@ -111,7 +116,8 @@ class TestDevelopTrend:
 
     @allure.story("趋势分析-各指标趋势分析")
     @allure.title("检查当前学校与对比学校各指标趋势")
-    @allure.tag("regression")
+    @allure.severity(allure.severity_level.CRITICAL)
+    @allure.tag("regression", "API")
     @allure.description("检查当前学校与对比学校各指标趋势")
     def test_DevelopTrend05(self, load_page, indicators_data):
         list_ind_info, rankingTypeId, verNo = indicators_data

@@ -1,0 +1,78 @@
+# 导航栏对应route
+vub:
+  总体定位: overview
+  实时排名: univ-ranking
+  排名趋势: develop-trend
+  排名推演: simulate
+  对标赶超: benchmark
+  数据反馈: data-feedback
+  标杆对比: indicator-data
+  各类排名: ranking-monitor
+  分类监测: classify-monitor
+  目标达成: goal-achieve
+  双高监测: double-high
+  指标选择: indicator-view
+  明细查询: detail-query
+
+ub:
+  首页: dashboard
+  总体定位: overview
+  实时排名: univ-ranking
+  排名趋势: develop-trend
+  排名推演: simulate
+  对标赶超: benchmark
+  明细查询: detail-query
+  数据反馈: data-feedback
+  标杆对比: indicator-data
+  全部指标: indicator-data
+  差距对比: single-school-comparison
+  定位分析: group-comparison
+  各类排名: ranking-monitor
+  发展速度: develop-speed
+  指标监测: annual-data
+  领域监测: domain-ranking
+  目标达成: goal-achieve
+  指标选择: indicator-view
+  指标组合: concatenation
+  情报消息: intelligence
+  AI报告-优势/短板: ranking-report
+  AI报告-对标赶超: rbenchmark-report
+  AI报告-实时监测: kpi-report
+  AI报告-排名推演: simulate-report
+  AI报告-标杆对比: benchmark-report
+  AI报告-年度进展: annual-report
+  AI报告-省内定位: provincial-report
+  AI报告-专题报告: special-report
+  咨询动态: news
+  五年目标设定: five-year-goal
+
+ubi:
+  总体定位: overview
+  动态排名: univ-ranking
+  排名趋势: develop-trend
+  ARWU推演: simulate
+  核心指标: core-indicator
+  标杆对比: benchmark
+  数据反馈: data-feedback
+  全部指标: indicator-data
+  排名监测: ranking-monitor
+  指标查看: indicator-view
+  数据查询: detail-query
+  报告中心: report-center
+
+gras:
+  排名总览: subj-overview
+  学科排名: subj-rank
+  排名趋势: trend
+  排名模拟: rank-simulation
+  核心指标: monitor
+  标杆对比: benchmark
+  数据反馈: data-feedback
+  全部指标: ind-all
+  数据查询: data-query
+  报告中心: report-center
+
+spm:
+  首页: homepage_overview
+  学科水平: subj-overview
+  全部指标: indicators

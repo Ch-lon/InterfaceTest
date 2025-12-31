@@ -28,8 +28,8 @@ login_cg:
         code: 200
         message: "success"
 
-  school_cookie:
-    description: 获取cookie,(从浏览器中获取cookies，现在不用)
+  school_route:
+    description: 国际360院校接口
     method: GET
     url: /login?loginTypeId={loginTypeId}&univCode={univCode}&loginName={loginName}&token={token}
 

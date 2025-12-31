@@ -7,6 +7,7 @@ from common.FileManager import FileManager
 from common.path_util import get_absolute_path
 from common.logger import get_logger
 from common.ApiLoader import ApiLoader
+from playwright.sync_api import Page,expect,Playwright,Browser
 
 logging = get_logger(__name__)
 fm = FileManager()
@@ -31,7 +32,7 @@ def cg_session(config):
 @pytest.fixture(scope="session")
 def cg_ops(cg_session, config):
     """提供一个CGOperations的实例，用于执行CG平台的操作。"""
-    return CGOperations(cg_session, config)
+    return CGOperations(cg_session)
 
 @pytest.fixture(scope="session")
 def auth_token(cg_ops):
@@ -103,11 +104,21 @@ def choose_product_session(auth_token, cg_ops, cg_api_loader, config):
         product_session.session.cookies.update(cookies)
         # 同样可以将 token 设置到请求头中,传入'Accept-language': 'zh-CN'，确保中文版
         product_session.session.headers.update({'Authorization': auth_token,'Accept-language': 'zh-CN'})
+        # 将config附加到session实例上，方便后续调用
+        product_session.config = config
         return product_session
 
     # 外层 fixture 返回内部函数
     return _choose_product_session
 
+@pytest.fixture(scope="session")
+def browser_type_launch_args(browser_type_launch_args):
+    return {
+        **browser_type_launch_args,
+        "headless": False,  # 强制开启有头模式
+        #"slow_mo": 1000,    # 可选：设置慢动作 1000ms
+        #"args": ["--start-maximized"] # 可选：启动时最大化
+    }
 # @pytest.fixture(scope="session")
 # def version():
 #     """获取当前版本信息"""
